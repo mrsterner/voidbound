@@ -1,0 +1,30 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "stone_axe"
+    },
+    {
+      "count": 1,
+      "item": "chest"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:core_empty"
+  },
+  "output": {
+    "item": "voidbound:golem_core_lumber"
+  },
+  "spirits": [
+    {
+      "type": "wicked",
+      "count": 4
+    },
+    {
+      "type": "earthen",
+      "count": 4
+    }
+  ]
+}

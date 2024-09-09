@@ -1,0 +1,22 @@
+{
+  "registry_name": "minecraft:sweeping",
+  "texture": "voidbound:textures/gui/enchantment/sweeping.png",
+  "spirits": [
+    {
+      "spirit": "aerial",
+      "count": 8
+    },
+    {
+      "spirit": "earthen",
+      "count": 8
+    },
+    {
+      "spirit": "infernal",
+      "count": 8
+    },
+    {
+      "spirit": "wicked",
+      "count": 8
+    }
+  ]
+}

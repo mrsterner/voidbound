@@ -1,0 +1,34 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 2,
+      "item": "feather"
+    },
+    {
+      "count": 2,
+      "item": "malum:hallowed_gold_nugget"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "leather_boots"
+  },
+  "output": {
+    "item": "voidbound:nomads_strider"
+  },
+  "spirits": [
+    {
+      "type": "earthen",
+      "count": 16
+    },
+    {
+      "type": "aerial",
+      "count": 16
+    },
+    {
+      "type": "aqueous",
+      "count": 16
+    }
+  ]
+}

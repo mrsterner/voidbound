@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "modifier=none": {
+      "model": "voidbound:block/spirit_binder"
+    },
+    "modifier=brilliant": {
+      "model": "voidbound:block/spirit_binder_brilliant"
+    },
+    "modifier=hex_ash": {
+      "model": "voidbound:block/spirit_binder_hex_ash"
+    }
+  }
+}

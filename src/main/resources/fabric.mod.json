@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "voidbound",
+  "version": "${version}",
+  "name": "VoidBound",
+  "description": "Malum Addon",
+  "authors": [
+    "MrSterner"
+  ],
+  "license": "Custom",
+  "icon": "assets/voidbound/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "value": "dev.sterner.VoidBound",
+        "adapter": "kotlin"
+      }
+    ],
+    "client": [
+      {
+        "value": "dev.sterner.VoidBound",
+        "adapter": "kotlin"
+      }
+    ],
+    "cardinal-components-world": [
+      "dev.sterner.registry.VoidBoundComponentRegistry"
+    ],
+    "cardinal-components-entity": [
+      "dev.sterner.registry.VoidBoundComponentRegistry"
+    ]
+  },
+  "mixins": [
+    "voidbound.mixins.json"
+  ],
+  "accessWidener": "voidbound.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*",
+    "fabric-language-kotlin": "*",
+    "malum": "*",
+    "lodestone": ">=1.20.1-1.6.2.2",
+    "smartbrainlib": "*"
+  },
+  "custom": {
+    "cardinal-components": [
+      "voidbound:world",
+      "voidbound:entity",
+      "voidbound:player",
+      "voidbound:revelation"
+    ]
+  }
+}

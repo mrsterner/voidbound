@@ -1,0 +1,26 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 2,
+      "item": "malum:alchemical_calx"
+    },
+    {
+      "count": 1,
+      "tag": "c:copper_ingots"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:crystal_focus"
+  },
+  "output": {
+    "item": "voidbound:shock_focus"
+  },
+  "spirits": [
+    {
+      "type": "aerial",
+      "count": 16
+    }
+  ]
+}

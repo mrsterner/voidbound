@@ -1,0 +1,58 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 2,
+      "item": "voidbound:ichor"
+    },
+    {
+      "count": 2,
+      "item": "malum:hallowed_gold_ingot"
+    },
+    {
+      "count": 4,
+      "item": "malum:spectral_lens"
+    },
+    {
+      "count": 4,
+      "item": "malum:null_slate"
+    },
+    {
+      "count": 1,
+      "item": "malum:block_of_soul_stained_steel"
+    },
+    {
+      "count": 1,
+      "item": "tnt"
+    },
+    {
+      "count": 1,
+      "item": "voidbound:fire_focus"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:netherite_scrap"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "malum:soul_stained_steel_scythe"
+  },
+  "output": {
+    "item": "voidbound:ichorium_scythe"
+  },
+  "spirits": [
+    {
+      "type": "aerial",
+      "count": 32
+    },
+    {
+      "type": "wicked",
+      "count": 32
+    },
+    {
+      "type": "arcane",
+      "count": 32
+    }
+  ]
+}

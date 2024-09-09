@@ -1,0 +1,30 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "malum:hex_ash"
+    },
+    {
+      "count": 1,
+      "item": "malum:warp_flux"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "malum:blighted_gunk"
+  },
+  "output": {
+    "item": "voidbound:call_of_the_void"
+  },
+  "spirits": [
+    {
+      "type": "wicked",
+      "count": 4
+    },
+    {
+      "type": "sacred",
+      "count": 4
+    }
+  ]
+}

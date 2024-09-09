@@ -1,0 +1,26 @@
+{
+  "registry_name": "minecraft:power",
+  "texture": "voidbound:textures/gui/enchantment/power.png",
+  "spirits": [
+    {
+      "spirit": "aerial",
+      "count": 8
+    },
+    {
+      "spirit": "aqueous",
+      "count": 8
+    },
+    {
+      "spirit": "earthen",
+      "count": 8
+    },
+    {
+      "spirit": "infernal",
+      "count": 8
+    },
+    {
+      "spirit": "wicked",
+      "count": 8
+    }
+  ]
+}

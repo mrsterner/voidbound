@@ -1,0 +1,29 @@
+{
+	"parent": "builtin/entity",
+	"textures": {
+		"2": "voidbound:item/soul_stained_steel_capped_soulwood_wand"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 0, 1.25],
+			"scale": [0.7, 0.69, 0.69]
+		},
+		"firstperson_righthand": {
+			"rotation": [-15, -8, -11],
+			"translation": [1.25, -2.5, 0],
+			"scale": [0.73, 0.72, 0.79]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-9, 0, 0]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [-34, 0, -31],
+			"translation": [0, -0.5, 0],
+			"scale": [0.65, 0.65, 0.65]
+		}
+	}
+}

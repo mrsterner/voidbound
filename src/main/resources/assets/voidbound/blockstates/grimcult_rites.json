@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "voidbound:block/grimcult_rites",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "voidbound:block/grimcult_rites"
+    },
+    "facing=south": {
+      "model": "voidbound:block/grimcult_rites",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "voidbound:block/grimcult_rites",
+      "y": 270
+    }
+  }
+}

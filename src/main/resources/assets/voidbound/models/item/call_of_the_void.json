@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "voidbound:item/call_of_the_void"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "voidbound:glowing": 1
+      },
+      "model": "voidbound:item/call_of_the_void_glowing"
+    }
+  ]
+}

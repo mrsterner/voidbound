@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "voidbound:item/ichorium_scythe"
+  }
+}

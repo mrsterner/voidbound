@@ -1,0 +1,20 @@
+{
+  "soul_speak": {
+    "sounds":[
+      "enchant/soulspeed/soulspeed1",
+      "enchant/soulspeed/soulspeed2",
+      "enchant/soulspeed/soulspeed3",
+      "enchant/soulspeed/soulspeed4",
+      "enchant/soulspeed/soulspeed5",
+      "enchant/soulspeed/soulspeed6",
+      "enchant/soulspeed/soulspeed7",
+      "enchant/soulspeed/soulspeed8",
+      "enchant/soulspeed/soulspeed9",
+      "enchant/soulspeed/soulspeed10",
+      "enchant/soulspeed/soulspeed11",
+      "enchant/soulspeed/soulspeed12"
+
+    ],
+    "subtitle": "voudbound.subtitle.soul_speak"
+  }
+}

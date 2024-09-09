@@ -1,0 +1,14 @@
+{
+  "registry_name": "minecraft:lure",
+  "texture": "voidbound:textures/gui/enchantment/lure.png",
+  "spirits": [
+    {
+      "spirit": "aqueous",
+      "count": 8
+    },
+    {
+      "spirit": "sacred",
+      "count": 8
+    }
+  ]
+}

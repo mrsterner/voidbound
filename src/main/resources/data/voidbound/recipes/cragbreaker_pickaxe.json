@@ -1,0 +1,34 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "malum:hex_ash"
+    },
+    {
+      "count": 8,
+      "item": "malum:blazing_quartz"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "malum:soul_stained_steel_pickaxe"
+  },
+  "output": {
+    "item": "voidbound:cragbreaker_pickaxe"
+  },
+  "spirits": [
+    {
+      "type": "infernal",
+      "count": 32
+    },
+    {
+      "type": "arcane",
+      "count": 16
+    },
+    {
+      "type": "eldritch",
+      "count": 4
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "voidbound:tidecutter_axe",
+    "voidbound:cragbreaker_pickaxe",
+    "voidbound:earthsplitter_shovel",
+    "voidbound:gales_sword",
+    "voidbound:earthsong_hoe",
+
+    "voidbound:ichorium_scythe",
+    "voidbound:ichorium_axe",
+    "voidbound:ichorium_pickaxe",
+    "voidbound:ichorium_shovel",
+    "voidbound:ichorium_sword",
+    "voidbound:ichorium_hoe"
+  ]
+}

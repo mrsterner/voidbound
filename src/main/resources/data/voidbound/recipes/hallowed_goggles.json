@@ -1,0 +1,30 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 4,
+      "item": "malum:hallowed_gold_ingot"
+    },
+    {
+      "count": 2,
+      "item": "malum:spectral_lens"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "minecraft:leather"
+  },
+  "output": {
+    "item": "voidbound:hallowed_goggles"
+  },
+  "spirits": [
+    {
+      "type": "arcane",
+      "count": 8
+    },
+    {
+      "type": "eldritch",
+      "count": 8
+    }
+  ]
+}

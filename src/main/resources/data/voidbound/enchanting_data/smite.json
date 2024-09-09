@@ -1,0 +1,22 @@
+{
+  "registry_name": "minecraft:smite",
+  "texture": "voidbound:textures/gui/enchantment/smite.png",
+  "spirits": [
+    {
+      "spirit": "aerial",
+      "count": 8
+    },
+    {
+      "spirit": "infernal",
+      "count": 8
+    },
+    {
+      "spirit": "sacred",
+      "count": 20
+    },
+    {
+      "spirit": "arcane",
+      "count": 8
+    }
+  ]
+}

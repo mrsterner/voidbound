@@ -1,0 +1,30 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 4,
+      "item": "malum:hallowed_gold_nugget"
+    },
+    {
+      "count": 1,
+      "item": "malum:hex_ash"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:hallowed_goggles"
+  },
+  "output": {
+    "item": "voidbound:hallowed_monocle"
+  },
+  "spirits": [
+    {
+      "type": "arcane",
+      "count": 4
+    },
+    {
+      "type": "eldritch",
+      "count": 4
+    }
+  ]
+}

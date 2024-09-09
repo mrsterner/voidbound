@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "voidbound:eldritch_obelisk",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 4206968,
+    "spacing": 16,
+    "separation": 10
+  }
+}

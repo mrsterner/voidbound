@@ -1,0 +1,54 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 2,
+      "item": "voidbound:ichor"
+    },
+    {
+      "count": 2,
+      "item": "malum:hallowed_gold_ingot"
+    },
+    {
+      "count": 4,
+      "item": "malum:runewood_log"
+    },
+    {
+      "count": 4,
+      "item": "malum:soulwood_log"
+    },
+    {
+      "count": 4,
+      "item": "oak_sapling"
+    },
+    {
+      "count": 1,
+      "item": "tnt"
+    },
+    {
+      "count": 1,
+      "item": "voidbound:excavation_focus"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:netherite_scrap"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:tidecutter_axe"
+  },
+  "output": {
+    "item": "voidbound:ichorium_axe"
+  },
+  "spirits": [
+    {
+      "type": "aerial",
+      "count": 32
+    },
+    {
+      "type": "aqueous",
+      "count": 64
+    }
+  ]
+}

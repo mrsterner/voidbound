@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "voidbound:ichor"
+    },
+    "hidden": true,
+    "title": {
+      "translate": "advancements.voidbound.ichor.title"
+    },
+    "description": {
+      "translate": "advancements.voidbound.ichor.description"
+    }
+  },
+  "requirements": [
+    [
+      "has_ichor"
+    ]
+  ],
+  "criteria": {
+    "has_ichor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "voidbound:ichor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  }
+}

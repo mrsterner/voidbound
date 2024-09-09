@@ -1,0 +1,18 @@
+{
+  "registry_name": "minecraft:flame",
+  "texture": "voidbound:textures/gui/enchantment/flame.png",
+  "spirits": [
+    {
+      "spirit": "aerial",
+      "count": 8
+    },
+    {
+      "spirit": "infernal",
+      "count": 8
+    },
+    {
+      "spirit": "wicked",
+      "count": 8
+    }
+  ]
+}

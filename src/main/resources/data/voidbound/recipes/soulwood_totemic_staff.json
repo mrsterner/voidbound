@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "tag": "c:wooden_rods"
+    },
+    "Y": {
+      "tag": "malum:soulwood_planks"
+    }
+  },
+  "pattern": [
+    "  Y",
+    " X ",
+    "X  "
+  ],
+  "result": {
+    "item": "voidbound:soulwood_totemic_staff"
+  },
+  "show_notification": true
+}

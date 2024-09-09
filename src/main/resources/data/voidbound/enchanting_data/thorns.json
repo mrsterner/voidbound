@@ -1,0 +1,30 @@
+{
+  "registry_name": "minecraft:thorns",
+  "texture": "voidbound:textures/gui/enchantment/thorns.png",
+  "spirits": [
+    {
+      "spirit": "aerial",
+      "count": 8
+    },
+    {
+      "spirit": "earthen",
+      "count": 8
+    },
+    {
+      "spirit": "infernal",
+      "count": 8
+    },
+    {
+      "spirit": "wicked",
+      "count": 8
+    },
+    {
+      "spirit": "eldritch",
+      "count": 8
+    },
+    {
+      "spirit": "arcane",
+      "count": 8
+    }
+  ]
+}

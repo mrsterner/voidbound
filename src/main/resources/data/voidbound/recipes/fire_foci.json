@@ -1,0 +1,26 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 2,
+      "item": "malum:alchemical_calx"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:fire_charge"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:crystal_focus"
+  },
+  "output": {
+    "item": "voidbound:fire_focus"
+  },
+  "spirits": [
+    {
+      "type": "infernal",
+      "count": 16
+    }
+  ]
+}

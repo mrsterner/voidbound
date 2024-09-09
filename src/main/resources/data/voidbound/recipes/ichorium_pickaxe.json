@@ -1,0 +1,54 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 2,
+      "item": "voidbound:ichor"
+    },
+    {
+      "count": 2,
+      "item": "malum:hallowed_gold_ingot"
+    },
+    {
+      "count": 2,
+      "item": "raw_iron_block"
+    },
+    {
+      "count": 2,
+      "item": "raw_copper_block"
+    },
+    {
+      "count": 2,
+      "item": "raw_gold_block"
+    },
+    {
+      "count": 1,
+      "item": "tnt"
+    },
+    {
+      "count": 1,
+      "item": "voidbound:excavation_focus"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:netherite_scrap"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:cragbreaker_pickaxe"
+  },
+  "output": {
+    "item": "voidbound:ichorium_pickaxe"
+  },
+  "spirits": [
+    {
+      "type": "infernal",
+      "count": 32
+    },
+    {
+      "type": "earthen",
+      "count": 64
+    }
+  ]
+}

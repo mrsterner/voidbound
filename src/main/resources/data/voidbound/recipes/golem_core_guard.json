@@ -1,0 +1,26 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "stone_sword"
+    },
+    {
+      "count": 4,
+      "item": "rotten_flesh"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:core_empty"
+  },
+  "output": {
+    "item": "voidbound:golem_core_guard"
+  },
+  "spirits": [
+    {
+      "type": "infernal",
+      "count": 8
+    }
+  ]
+}

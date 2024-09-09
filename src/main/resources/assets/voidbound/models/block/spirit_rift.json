@@ -1,0 +1,10 @@
+{
+  "parent": "block/block",
+  "texture_size": [
+    16,
+    16
+  ],
+  "textures": {
+    "particle": "voidbound:block/air"
+  }
+}

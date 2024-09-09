@@ -1,0 +1,31 @@
+{
+  "required": true,
+  "package": "dev.sterner.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ItemEntityMixin",
+    "LodestoneBlockEntityRegistryMixin",
+    "ReboundEnchantmentMixin",
+    "ScytheBoomerangEntityMixin",
+    "ServerPlayerGameModeMixin",
+    "ServerPlayerMixin",
+    "ward.BlockBehaviourMixin",
+    "ward.EndermanTakeBlockGoalMixin",
+    "ward.ExplosionMixin",
+    "ward.FallingBlockMixin",
+    "ward.ItemMixin",
+    "ward.LevelMixin",
+    "ward.PistonBaseBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "client.EntityRenderDispatcherMixin",
+    "client.ItemInHandRendererMixin",
+    "client.LevelRendererMixin",
+    "client.MinecraftMixin",
+    "client.ward.ClientLevelMixin",
+    "client.ward.ParticleEngineMixin"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "registry_name": "minecraft:impaling",
+  "texture": "voidbound:textures/gui/enchantment/impaling.png",
+  "spirits": [
+    {
+      "spirit": "aerial",
+      "count": 8
+    },
+    {
+      "spirit": "aqueous",
+      "count": 8
+    },
+    {
+      "spirit": "wicked",
+      "count": 8
+    },
+    {
+      "spirit": "arcane",
+      "count": 8
+    }
+  ]
+}

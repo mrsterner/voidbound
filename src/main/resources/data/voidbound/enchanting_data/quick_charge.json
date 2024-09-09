@@ -1,0 +1,18 @@
+{
+  "registry_name": "minecraft:quick_charge",
+  "texture": "voidbound:textures/gui/enchantment/quick_charge.png",
+  "spirits": [
+    {
+      "spirit": "aerial",
+      "count": 8
+    },
+    {
+      "spirit": "aqueous",
+      "count": 8
+    },
+    {
+      "spirit": "earthen",
+      "count": 8
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "registry_name": "minecraft:loyalty",
+  "texture": "voidbound:textures/gui/enchantment/loyalty.png",
+  "spirits": [
+    {
+      "spirit": "aerial",
+      "count": 8
+    },
+    {
+      "spirit": "aqueous",
+      "count": 8
+    },
+    {
+      "spirit": "eldritch",
+      "count": 8
+    },
+    {
+      "spirit": "arcane",
+      "count": 8
+    }
+  ]
+}

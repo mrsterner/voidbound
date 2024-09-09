@@ -1,0 +1,18 @@
+{
+  "registry_name": "minecraft:bane_of_arthropods",
+  "texture": "voidbound:textures/gui/enchantment/bane_of_arthropods.png",
+  "spirits": [
+    {
+      "spirit": "earthen",
+      "count": 8
+    },
+    {
+      "spirit": "wicked",
+      "count": 8
+    },
+    {
+      "spirit": "sacred",
+      "count": 8
+    }
+  ]
+}

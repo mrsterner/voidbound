@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:bedrock",
+    "minecraft:obsidian",
+    "minecraft:crying_obsidian",
+    "voidbound:portable_hole",
+    "voidbound:spirit_rift"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "malum:hex_ash"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:netherite_scrap"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:earthsong_hoe"
+  },
+  "output": {
+    "item": "voidbound:earthsong_hoe",
+    "nbt": "{Netherited:1b}"
+  },
+  "spirits": [
+    {
+      "type": "infernal",
+      "count": 16
+    }
+  ]
+}

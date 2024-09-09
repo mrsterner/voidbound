@@ -1,0 +1,26 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "stone_axe"
+    },
+    {
+      "count": 4,
+      "item": "bone"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:core_empty"
+  },
+  "output": {
+    "item": "voidbound:golem_core_butcher"
+  },
+  "spirits": [
+    {
+      "type": "wicked",
+      "count": 8
+    }
+  ]
+}

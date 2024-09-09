@@ -1,0 +1,66 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "red_carpet"
+    },
+    {
+      "count": 4,
+      "item": "malum:warp_flux"
+    },
+    {
+      "count": 4,
+      "item": "malum:runewood_planks"
+    },
+    {
+      "count": 4,
+      "item": "malum:null_slate"
+    },
+    {
+      "count": 1,
+      "item": "enchanting_table"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "lectern"
+  },
+  "output": {
+    "item": "voidbound:osmotic_enchanter"
+  },
+  "spirits": [
+    {
+      "type": "wicked",
+      "count": 16
+    },
+    {
+      "type": "eldritch",
+      "count": 16
+    },
+    {
+      "type": "sacred",
+      "count": 16
+    },
+    {
+      "type": "arcane",
+      "count": 16
+    },
+    {
+      "type": "infernal",
+      "count": 16
+    },
+    {
+      "type": "aerial",
+      "count": 16
+    },
+    {
+      "type": "earthen",
+      "count": 16
+    },
+    {
+      "type": "aqueous",
+      "count": 16
+    }
+  ]
+}

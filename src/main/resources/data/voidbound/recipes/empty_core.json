@@ -1,0 +1,29 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [],
+  "input": {
+    "count": 1,
+    "item": "malum:runewood_item_stand"
+  },
+  "output": {
+    "item": "voidbound:core_empty"
+  },
+  "spirits": [
+    {
+      "type": "earthen",
+      "count": 1
+    },
+    {
+      "type": "infernal",
+      "count": 1
+    },
+    {
+      "type": "aqueous",
+      "count": 1
+    },
+    {
+      "type": "aerial",
+      "count": 1
+    }
+  ]
+}

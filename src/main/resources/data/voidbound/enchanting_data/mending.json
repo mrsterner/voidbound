@@ -1,0 +1,38 @@
+{
+  "registry_name": "minecraft:mending",
+  "texture": "voidbound:textures/gui/enchantment/mending.png",
+  "spirits": [
+    {
+      "spirit": "aerial",
+      "count": 8
+    },
+    {
+      "spirit": "aqueous",
+      "count": 8
+    },
+    {
+      "spirit": "earthen",
+      "count": 8
+    },
+    {
+      "spirit": "infernal",
+      "count": 8
+    },
+    {
+      "spirit": "wicked",
+      "count": 8
+    },
+    {
+      "spirit": "sacred",
+      "count": 8
+    },
+    {
+      "spirit": "eldritch",
+      "count": 8
+    },
+    {
+      "spirit": "arcane",
+      "count": 8
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "slime_ball"
+    },
+    {
+      "count": 1,
+      "item": "chest"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:core_empty"
+  },
+  "output": {
+    "item": "voidbound:golem_core_gather"
+  },
+  "spirits": [
+    {
+      "type": "earthen",
+      "count": 8
+    }
+  ]
+}

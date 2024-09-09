@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "voidbound:block/osmotic_enchanter",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "voidbound:block/osmotic_enchanter"
+    },
+    "facing=south": {
+      "model": "voidbound:block/osmotic_enchanter",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "voidbound:block/osmotic_enchanter",
+      "y": 270
+    }
+  }
+}

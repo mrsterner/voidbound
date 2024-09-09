@@ -1,0 +1,55 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 4,
+      "item": "malum:cluster_of_brilliance"
+    },
+    {
+      "count": 4,
+      "item": "malum:auric_embers"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:crystal_focus"
+  },
+  "output": {
+    "item": "voidbound:warding_focus"
+  },
+  "spirits": [
+    {
+      "type": "wicked",
+      "count": 8
+    },
+    {
+      "type": "eldritch",
+      "count": 8
+    },
+    {
+      "type": "arcane",
+      "count": 8
+    },
+    {
+      "type": "sacred",
+      "count": 8
+    },
+    {
+      "type": "infernal",
+      "count": 8
+    },
+    {
+      "type": "aerial",
+      "count": 8
+    },
+    {
+      "type": "earthen",
+      "count": 8
+    }
+  ,
+    {
+      "type": "aqueous",
+      "count": 8
+    }
+  ]
+}

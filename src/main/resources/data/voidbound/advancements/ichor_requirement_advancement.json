@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "item": "voidbound:strange_matter"
+    },
+    "hidden": true,
+    "title": {
+      "translate": "advancements.voidbound.strange_matter.title"
+    },
+    "description": {
+      "translate": "advancements.voidbound.strange_matter.description"
+    }
+  },
+  "criteria": {
+    "opened_grimcult_rites": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

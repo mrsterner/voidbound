@@ -1,0 +1,18 @@
+{
+  "registry_name": "minecraft:depth_strider",
+  "texture": "voidbound:textures/gui/enchantment/depth_strider.png",
+  "spirits": [
+    {
+      "spirit": "aqueous",
+      "count": 8
+    },
+    {
+      "spirit": "earthen",
+      "count": 8
+    },
+    {
+      "spirit": "eldritch",
+      "count": 8
+    }
+  ]
+}

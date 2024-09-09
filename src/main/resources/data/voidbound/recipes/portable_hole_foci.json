@@ -1,0 +1,34 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "malum:null_slate"
+    },
+    {
+      "count": 1,
+      "item": "malum:warp_flux"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:crystal_focus"
+  },
+  "output": {
+    "item": "voidbound:portable_hole_focus"
+  },
+  "spirits": [
+    {
+      "type": "eldritch",
+      "count": 32
+    },
+    {
+      "type": "arcane",
+      "count": 16
+    },
+    {
+      "type": "earthen",
+      "count": 16
+    }
+  ]
+}

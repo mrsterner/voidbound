@@ -1,0 +1,22 @@
+{
+  "registry_name": "minecraft:fire_aspect",
+  "texture": "voidbound:textures/gui/enchantment/fire_aspect.png",
+  "spirits": [
+    {
+      "spirit": "infernal",
+      "count": 10
+    },
+    {
+      "spirit": "wicked",
+      "count": 8
+    },
+    {
+      "spirit": "eldritch",
+      "count": 8
+    },
+    {
+      "spirit": "arcane",
+      "count": 8
+    }
+  ]
+}

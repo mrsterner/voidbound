@@ -1,0 +1,38 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 1,
+      "item": "malum:hex_ash"
+    },
+    {
+      "count": 2,
+      "item": "malum:hallowed_gold_ingot"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "malum:totemic_staff"
+  },
+  "output": {
+    "item": "voidbound:hallowed_gold_capped_runewood_wand"
+  },
+  "spirits": [
+    {
+      "type": "wicked",
+      "count": 1
+    },
+    {
+      "type": "eldritch",
+      "count": 1
+    },
+    {
+      "type": "arcane",
+      "count": 1
+    },
+    {
+      "type": "sacred",
+      "count": 1
+    }
+  ]
+}

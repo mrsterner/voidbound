@@ -1,0 +1,30 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+    {
+      "count": 2,
+      "item": "feather"
+    },
+    {
+      "count": 1,
+      "item": "chest"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "voidbound:core_empty"
+  },
+  "output": {
+    "item": "voidbound:golem_core_empty"
+  },
+  "spirits": [
+    {
+      "type": "earthen",
+      "count": 4
+    },
+    {
+      "type": "aerial",
+      "count": 4
+    }
+  ]
+}

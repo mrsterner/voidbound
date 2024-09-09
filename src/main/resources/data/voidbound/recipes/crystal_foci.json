@@ -1,0 +1,27 @@
+{
+  "type": "malum:spirit_infusion",
+  "extra_items": [
+
+  ],
+  "input": {
+    "count": 1,
+    "tag": "c:quartz"
+  },
+  "output": {
+    "item": "voidbound:crystal_focus"
+  },
+  "spirits": [
+    {
+      "type": "wicked",
+      "count": 4
+    },
+    {
+      "type": "eldritch",
+      "count": 4
+    },
+    {
+      "type": "arcane",
+      "count": 4
+    }
+  ]
+}
