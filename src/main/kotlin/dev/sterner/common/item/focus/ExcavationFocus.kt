@@ -44,38 +44,39 @@ class ExcavationFocus : IWandFocus {
     private var blockState: BlockState? = null
 
     override fun onUsingFocusTick(stack: ItemStack, level: Level, player: Player) {
-        if (level.isClientSide) {
-            val client = Minecraft.getInstance()
-            val maxReach = 10.0
-            val tickDelta = 1.0f
-            val includeFluids = false
+        val maxReach = 10.0
+        val tickDelta = 1.0f
+        val includeFluids = false
 
-            val hit: HitResult? = client.cameraEntity?.pick(maxReach, tickDelta, includeFluids)
+        val hit: HitResult? = player.pick(maxReach, tickDelta, includeFluids)
 
-            if (hit != null) {
-                if (hit.type == HitResult.Type.BLOCK) {
-                    val blockHit = hit as BlockHitResult
-                    val blockPos = blockHit.blockPos
-                    val newState = client.level?.getBlockState(blockPos) ?: return
+        if (hit != null) {
+            if (hit.type == HitResult.Type.BLOCK) {
+                val blockHit = hit as BlockHitResult
+                val blockPos = blockHit.blockPos
+                val newState = level.getBlockState(blockPos) ?: return
 
-                    if (blockState != newState) {
-                        this.breakTime = 0
-                        this.breakProgress = -1
-                    }
+                if (blockState != newState) {
+                    this.breakTime = 0
+                    this.breakProgress = -1
+                }
 
-                    blockState = newState
+                blockState = newState
 
 
-                    val pos = getProjectileSpawnPos(player, InteractionHand.MAIN_HAND, 1.5f, 0.6f)
+                val pos = getProjectileSpawnPos(player, InteractionHand.MAIN_HAND, 1.5f, 0.6f)
+                if (level.isClientSide) {
                     spawnChargeParticles(player.level(), player, pos, 0.5f)
                     spec(level, player.lookAngle.normalize(), pos, SpiritTypeRegistry.EARTHEN_SPIRIT, level.random)
+                }
 
-                    if (!VoidBoundApi.canPlayerBreakBlock(level, player, blockPos)) {
-                        ParticleEngineMixinLogic.logic(level, blockPos, blockState!!, level.random, hit.direction)
-                        return
-                    }
+                if (!VoidBoundApi.canPlayerBreakBlock(level, player, blockPos)) {
+                    ParticleEngineMixinLogic.logic(level, blockPos, blockState!!, level.random, hit.direction)
+                    return
+                }
 
-                    timeToBreak = (20 * blockState!!.getDestroySpeed(level, blockPos))
+                timeToBreak = (20 * blockState!!.getDestroySpeed(level, blockPos))
+                if (level.isClientSide) {
                     val coordPos: List<Vec3> = VoidBoundPosUtils.getFaceCoords(level, blockState!!, blockPos)
                     for (pos1 in coordPos) {
                         val lightSpecs: ParticleEffectSpawner =
@@ -86,9 +87,12 @@ class ExcavationFocus : IWandFocus {
                         lightSpecs.spawnParticles()
                         lightSpecs.spawnParticles()
                     }
-                    this.breakTime++
-                    val progress: Int = (this.breakTime / this.timeToBreak!!.toFloat() * 10).toInt()
+                }
 
+                this.breakTime++
+                val progress: Int = (this.breakTime / this.timeToBreak!!.toFloat() * 10).toInt()
+
+                if (level.isClientSide) {
                     VoidBoundPacketRegistry.VOID_BOUND_CHANNEL.sendToServer(
                         ExcavationPacket(
                             blockPos,
@@ -97,20 +101,20 @@ class ExcavationFocus : IWandFocus {
                             progress
                         )
                     )
+                }
 
-                    if (breakTime % 6 == 0) {
-                        level.playSound(player, blockPos, blockState!!.soundType.breakSound, SoundSource.BLOCKS)
-                    }
+                if (breakTime % 6 == 0 && level.isClientSide) {
+                    level.playSound(player, blockPos, blockState!!.soundType.breakSound, SoundSource.BLOCKS)
+                }
 
-                    if (progress != this.breakProgress) {
-                        this.breakProgress = progress
-                    }
-                    level.destroyBlockProgress(player.id + ExcavationPacket.generatePosHash(blockPos), blockPos, progress)
+                if (progress != this.breakProgress) {
+                    this.breakProgress = progress
+                }
+                level.destroyBlockProgress(player.id + ExcavationPacket.generatePosHash(blockPos), blockPos, progress)
 
-                    if (this.breakTime >= this.timeToBreak!!) {
-                        this.breakTime = 0
-                        this.breakProgress = -1
-                    }
+                if (this.breakTime >= this.timeToBreak!!) {
+                    this.breakTime = 0
+                    this.breakProgress = -1
                 }
             }
         }
