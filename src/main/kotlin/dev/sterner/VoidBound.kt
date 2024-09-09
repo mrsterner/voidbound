@@ -1,5 +1,6 @@
 package dev.sterner
 
+import com.mojang.serialization.Codec
 import com.sammy.malum.MalumMod
 import com.sammy.malum.MalumModClient
 import dev.emi.trinkets.api.client.TrinketRendererRegistry
@@ -7,8 +8,12 @@ import dev.sterner.client.VoidBoundModelLoaderPlugin
 import dev.sterner.client.renderer.HallowedMonocleRenderer
 import dev.sterner.client.renderer.WandItemRenderer
 import dev.sterner.client.screen.OsmoticEnchanterScreen
+import dev.sterner.common.VoidBoundLootModifier
 import dev.sterner.listener.EnchantSpiritDataReloadListenerFabricImpl
 import dev.sterner.registry.*
+import io.github.fabricators_of_create.porting_lib.loot.IGlobalLootModifier
+import io.github.fabricators_of_create.porting_lib.loot.PortingLibLoot
+import io.github.fabricators_of_create.porting_lib.util.RegistryObject
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
@@ -29,6 +34,7 @@ object VoidBound : ModInitializer, ClientModInitializer {
     const val modid: String = "voidbound"
     private val logger = LoggerFactory.getLogger(modid)
 
+
     override fun onInitialize() {
         LodestoneLib()
         MalumMod()
@@ -48,6 +54,7 @@ object VoidBound : ModInitializer, ClientModInitializer {
         VoidBoundMenuTypeRegistry.MENU_TYPES.register()
         VoidBoundStructureRegistry.STRUCTURES.register()
         VoidBoundSoundEvents.SOUNDS.register()
+        VoidBoundLootModifier.MODIFIERS.register()
 
         VoidBoundCreativeTabRegistry.init()
         VoidBoundEvents.init()

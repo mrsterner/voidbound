@@ -193,4 +193,8 @@ object VoidBoundApi {
             }
         }
     }
+
+    fun hasItemAbility(stack: ItemStack, ability: ItemAbility): Boolean {
+        return !getItemAbility(stack).none { it.itemAbility == ability }
+    }
 }
