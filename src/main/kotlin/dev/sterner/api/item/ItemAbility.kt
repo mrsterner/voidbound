@@ -17,7 +17,7 @@ enum class ItemAbility(private val equipmentSlot: EquipmentSlot?, private val cl
         return this.name.lowercase()
     }
 
-    fun getAbilityFromItem(item: Item): List<ItemAbility> {
+    fun getAvailableAbilitiesFromItem(item: Item): List<ItemAbility> {
         val list = mutableListOf<ItemAbility>()
         for (ability in entries) {
             // Check if the item matches the clazz or the equipmentSlot
