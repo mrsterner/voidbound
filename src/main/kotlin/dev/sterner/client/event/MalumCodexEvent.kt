@@ -155,6 +155,12 @@ object MalumCodexEvent {
                         VoidBoundItemRegistry.TEAR_OF_CRIMSON.get()
                     )
                 )
+                .addPage(
+                    HeadlineTextPage(
+                        "void.dimensional_tear",
+                        "void.dimensional_tear.4"
+                    )
+                )
                 .setEntryVisibleWhen {
                     VoidBoundApi.hasTearKnowledgeClient()
                 }
