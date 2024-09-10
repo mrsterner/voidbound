@@ -30,6 +30,11 @@ class IchoriumPickaxeItem(material: Tier, damage: Int, speed: Float, magicDamage
         return 1
     }
 
+    override fun use(level: Level, player: Player, usedHand: InteractionHand): InteractionResultHolder<ItemStack> {
+        //VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player).addUnlockedItemAbility(ItemAbility.DISPERSED_STRIKE)
+        return super.use(level, player, usedHand)
+    }
+
     override fun appendHoverText(
         stack: ItemStack,
         level: Level?,

@@ -19,8 +19,6 @@ enum class ItemAbility(private val equipmentSlot: EquipmentSlot?, private val cl
         return this.name.lowercase()
     }
 
-
-
     fun writeNbt(): CompoundTag {
         val tag = CompoundTag()
         tag.putString("Ability", name)

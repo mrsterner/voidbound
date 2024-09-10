@@ -59,6 +59,12 @@
   "block.voidbound.osmotic_enchanter": "Osmotic Enchanter",
   "itemGroup.voidbound": "Void Bound",
 
+  "voidbound.ability.vampirism": "Vampirism",
+  "voidbound.ability.dispersed_strike": "Dispersed Strike",
+  "voidbound.ability.autosmelt": "Autosmelt",
+  "voidbound.ability.quickdraw": "Quickdraw",
+  "voidbound.ability.slow_fall": "Slow fall",
+
   "entity.voidbound.particle_entity": "Particle",
   "entity.voidbound.soul_steel_golem": "Soul Steel Golem",
   "entity.voidbound.grimcult_knight": "Grimcult Knight",

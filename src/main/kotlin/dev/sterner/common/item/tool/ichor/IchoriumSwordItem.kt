@@ -23,6 +23,8 @@ class IchoriumSwordItem(
     properties
 ) {
 
+
+
     override fun appendHoverText(
         stack: ItemStack,
         level: Level?,

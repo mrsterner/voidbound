@@ -70,7 +70,7 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
 
         val gray = VoidBound.id("textures/gui/ability_selection.png")
         RenderSystem.enableBlend()
-        RenderSystem.setShaderColor(1f, 1f, 1f, if (focus) 7 / 8f else 0f)
+        RenderSystem.setShaderColor(1f, 1f, 1f, if (focus) 7 / 8f else 0.2f)
 
         guiGraphics.blit(
             gray,
@@ -108,7 +108,7 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
             if (index == selection) {
                 guiGraphics.drawCenteredString(
                     minecraft!!.font,
-                    ability.name.lowercase().replaceFirstChar { it.uppercase() }, // Access ability directly
+                    "voidbound.ability." + ability.name.lowercase(),
                     abilityX + 24,
                     y + 34,
                     0xDDCCFF

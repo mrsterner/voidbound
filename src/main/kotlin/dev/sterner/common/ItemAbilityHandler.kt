@@ -15,30 +15,46 @@ class ItemAbilityHandler {
     var selectionScreen: ItemAbilityScreen? = null
     var currentAbility: ItemAbility? = ItemAbility.NONE
     var active: Boolean = false
+    private var lastMainHandItem: ItemStack? = null // Track the previous main hand item
 
     init {
         currentAbility = ItemAbility.NONE
-
     }
 
     fun tick() {
         val mc = Minecraft.getInstance()
+
+        // Disable if the player is in spectator mode
         if (mc.gameMode != null && mc.gameMode!!.playerMode == GameType.SPECTATOR) {
             if (active) {
                 active = false
             }
             return
         }
-        val player = mc.player
-        if (player != null && selectionScreen == null) {
-            selectionScreen = ItemAbilityScreen(player.mainHandItem)
+
+        val player = mc.player ?: return // Return if player is null
+        val stack = player.mainHandItem
+
+        // If the current main hand item has changed, update the selection screen
+        if (stack != lastMainHandItem) {
+            lastMainHandItem = stack
+
+            // Only create a new screen if the item is not null
+            if (stack != null) {
+                selectionScreen = ItemAbilityScreen(stack)
+            } else {
+                selectionScreen = null
+            }
         }
-        val stack = player?.mainHandItem
+
+        // If no stack, deactivate the handler
         if (stack == null) {
             active = false
             return
         }
+
         init(player)
+
         if (!active) {
             return
         }
@@ -87,5 +103,4 @@ class ItemAbilityHandler {
         }
         return false
     }
-
 }
