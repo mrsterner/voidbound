@@ -3,6 +3,7 @@ package dev.sterner.common
 import dev.sterner.VoidBound
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.client.screen.ItemAbilityScreen
+import dev.sterner.registry.VoidBoundTags
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.player.LocalPlayer
@@ -40,10 +41,10 @@ class ItemAbilityHandler {
             lastMainHandItem = stack
 
             // Only create a new screen if the item is not null
-            if (stack != null) {
-                selectionScreen = ItemAbilityScreen(stack)
+            selectionScreen = if (stack != null && stack.`is`(VoidBoundTags.ITEM_WITH_ABILITY)) {
+                ItemAbilityScreen(stack)
             } else {
-                selectionScreen = null
+                null
             }
         }
 
