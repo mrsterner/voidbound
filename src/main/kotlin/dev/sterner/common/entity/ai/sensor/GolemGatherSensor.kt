@@ -37,6 +37,10 @@ class GolemGatherSensor : PredicateSensor<ItemEntity, SoulSteelGolemEntity>(
     }
 
     override fun doTick(level: ServerLevel, entity: SoulSteelGolemEntity) {
+        if (entity.getGolemCore() != GolemCore.GATHER) {
+            return  // Exit early if the predicate is false
+        }
+
         BrainUtils.setMemory(
             entity,
             VoidBoundMemoryTypeRegistry.NEARBY_ITEMS.get(),

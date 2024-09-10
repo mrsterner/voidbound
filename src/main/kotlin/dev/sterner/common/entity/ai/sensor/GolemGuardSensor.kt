@@ -36,6 +36,10 @@ class GolemGuardSensor : PredicateSensor<LivingEntity, SoulSteelGolemEntity>(
     }
 
     override fun doTick(level: ServerLevel, entity: SoulSteelGolemEntity) {
+        if (entity.getGolemCore() != GolemCore.GUARD) {
+            return  // Exit early if the predicate is false
+        }
+
         val v: List<LivingEntity> = EntityRetrievalUtil.getEntities(
             level,
             this.radius.inflateAABB(entity.boundingBox)

@@ -37,6 +37,10 @@ class GolemStorageSensor : PredicateSensor<BlockEntity, SoulSteelGolemEntity>(
     }
 
     override fun doTick(level: ServerLevel, entity: SoulSteelGolemEntity) {
+        if (!(entity.getGolemCore() == GolemCore.FILL || entity.getGolemCore() == GolemCore.EMPTY)) {
+            return  // Exit early if the predicate is false
+        }
+
         val blocks: MutableList<BlockPos> = ObjectArrayList()
 
         for (pos in BlockPos.betweenClosed(

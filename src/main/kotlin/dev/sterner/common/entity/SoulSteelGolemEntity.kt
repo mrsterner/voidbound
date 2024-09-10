@@ -166,9 +166,9 @@ open class SoulSteelGolemEntity(level: Level) :
             NearbyLivingEntitySensor<SoulSteelGolemEntity>().setRadius(24.0, 16.0),
 
             //Golem Harvester
-            GolemHarvestSensor(),
+            GolemHarvestSensor().setPredicate { _, u -> u.getGolemCore() == GolemCore.HARVEST },
             //Golem Gatherer
-            GolemGatherSensor(),
+            GolemGatherSensor().setPredicate { _, u -> u.getGolemCore() == GolemCore.GATHER },
             //Golem Guard
             NearbyHostileSensor<SoulSteelGolemEntity>().setPredicate { _, u -> u.getGolemCore() == GolemCore.GUARD },
             HurtBySensor<SoulSteelGolemEntity>().setPredicate { _, u -> u.getGolemCore() == GolemCore.GUARD },

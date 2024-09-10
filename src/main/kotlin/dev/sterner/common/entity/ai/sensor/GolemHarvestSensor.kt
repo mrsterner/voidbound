@@ -42,6 +42,12 @@ class GolemHarvestSensor : PredicateSensor<BlockState, SoulSteelGolemEntity>(
     }
 
     override fun doTick(level: ServerLevel, entity: SoulSteelGolemEntity) {
+        if (entity.getGolemCore() != GolemCore.HARVEST) {
+            return  // Exit early if the predicate is false
+        }
+
+        //test golemcore predicate here
+
         val blocks: MutableList<Pair<BlockPos, BlockState>> = ObjectArrayList()
 
         for (pos in BlockPos.betweenClosed(
