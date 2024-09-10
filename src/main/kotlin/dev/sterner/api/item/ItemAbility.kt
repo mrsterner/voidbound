@@ -8,14 +8,14 @@ import net.minecraft.world.item.*
 import kotlin.reflect.KClass
 
 enum class ItemAbility(private val equipmentSlot: EquipmentSlot?, private val clazz: KClass<out Item>?): StringRepresentable {
-    NONE(null, null),
-    AUTOSMELT(null, DiggerItem::class),
-    MINING_3X3(null, DiggerItem::class),
-    MINING_5X5(null, DiggerItem::class),
-    VAMPIRISM(null, SwordItem::class),
-    QUICKDRAW(null, ProjectileWeaponItem::class),
-    DISPERSED_STRIKE(null, SwordItem::class),
-    SLOW_FALL(EquipmentSlot.FEET, null);
+    NONE(null, null),//TODO implement
+    AUTOSMELT(null, DiggerItem::class),//Fully implemented
+    MINING_3X3(null, DiggerItem::class),//TODO implement
+    MINING_5X5(null, DiggerItem::class),//TODO implement
+    VAMPIRISM(null, SwordItem::class),//TODO implement
+    QUICKDRAW(null, ProjectileWeaponItem::class),//TODO implement
+    DISPERSED_STRIKE(null, SwordItem::class),//TODO implement
+    SLOW_FALL(EquipmentSlot.FEET, null);//TODO implement
 
     override fun getSerializedName(): String {
         return this.name.lowercase()
