@@ -10,6 +10,8 @@ import kotlin.reflect.KClass
 enum class ItemAbility(private val equipmentSlot: EquipmentSlot?, private val clazz: KClass<out Item>?): StringRepresentable {
     NONE(null, null),
     AUTOSMELT(null, DiggerItem::class),
+    MINING_3X3(null, DiggerItem::class),
+    MINING_5X5(null, DiggerItem::class),
     VAMPIRISM(null, SwordItem::class),
     QUICKDRAW(null, ProjectileWeaponItem::class),
     DISPERSED_STRIKE(null, SwordItem::class),
