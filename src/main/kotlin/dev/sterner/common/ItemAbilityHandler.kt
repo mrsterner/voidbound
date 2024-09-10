@@ -3,6 +3,8 @@ package dev.sterner.common
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.client.screen.ItemAbilityScreen
 import net.minecraft.client.Minecraft
+import net.minecraft.client.gui.GuiGraphics
+import net.minecraft.client.player.LocalPlayer
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.GameType
 import org.lwjgl.glfw.GLFW
@@ -28,6 +30,7 @@ class ItemAbilityHandler {
             active = false
             return
         }
+        init(player)
         if (!active) {
             return
         }
@@ -35,10 +38,23 @@ class ItemAbilityHandler {
         selectionScreen.update()
     }
 
+    fun render(graphics: GuiGraphics, partialTicks: Float, width: Int, height: Int) {
+        if (Minecraft.getInstance().options.hideGui || !active) {
+            return
+        }
+
+        selectionScreen.render(graphics, partialTicks)
+    }
+
+    private fun init(player: LocalPlayer?) {
+        active = true
+    }
+
     fun onKeyInput(key: Int, pressed: Boolean) {
         if (!active) {
             return
         }
+
         if (key != GLFW.GLFW_KEY_LEFT_ALT) {
             return
         }

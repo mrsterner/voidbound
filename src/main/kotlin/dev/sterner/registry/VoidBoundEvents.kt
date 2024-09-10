@@ -12,7 +12,6 @@ import dev.sterner.common.components.VoidBoundWorldComponent
 import dev.sterner.common.item.tool.TidecutterItem
 import dev.sterner.common.item.tool.UpgradableTool
 import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents
-import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents.BlockBreak
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
@@ -21,7 +20,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents
 import net.fabricmc.fabric.api.event.player.UseBlockCallback
 import net.fabricmc.fabric.api.event.player.UseEntityCallback
 import net.fabricmc.fabric.api.item.v1.ModifyItemAttributeModifiersCallback
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents
+import net.minecraft.client.Minecraft
+import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.entity.ai.attributes.Attribute
@@ -31,9 +31,7 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.RecipeType
 import net.minecraft.world.item.crafting.SmeltingRecipe
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.entity.FurnaceBlockEntity
 import java.util.*
-import io.github.fabricators_of_create.porting_lib.loot.LootModifier;
 
 
 object VoidBoundEvents {
@@ -125,5 +123,9 @@ object VoidBoundEvents {
         ClientTickEvents.END_CLIENT_TICK.register{
             VoidBoundClient.ITEM_ABILITY_HANDLER.tick()
         }
+        HudRenderCallback.EVENT.register(HudRenderCallback { graphics: GuiGraphics, partialTicks: Float ->
+            val window = Minecraft.getInstance().window
+            VoidBoundClient.ITEM_ABILITY_HANDLER.render(graphics, partialTicks, window.width, window.height)
+        })
     }
 }
