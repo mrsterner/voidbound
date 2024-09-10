@@ -155,7 +155,6 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
         for (i in 0 until unlockedList.size) {
             val item = unlockedList.getCompound(i)
             val itemAbility = ItemAbility.readNbt(item)
-            println("TT: $itemAbility")
             unlockedItemAbilities.add(itemAbility)
         }
     }
@@ -185,7 +184,6 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
 
         val unlockedList = ListTag()
         unlockedItemAbilities.forEach { unlockedTag ->
-            println(unlockedTag)
             val abilityTag = unlockedTag.writeNbt()
             unlockedList.add(abilityTag)
         }
