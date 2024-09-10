@@ -54,7 +54,11 @@ class GolemStorageSensor : PredicateSensor<BlockEntity, SoulSteelGolemEntity>(
         }
 
         if (blocks.isEmpty()) {
-            BrainUtils.clearMemory(entity, VoidBoundMemoryTypeRegistry.NEARBY_CROPS.get())
+            if (entity.getGolemCore() == GolemCore.FILL) {
+                BrainUtils.clearMemory(entity, VoidBoundMemoryTypeRegistry.OUTPUT_STORAGE_LOCATIONS.get())
+            } else if (entity.getGolemCore() == GolemCore.EMPTY) {
+                BrainUtils.clearMemory(entity, VoidBoundMemoryTypeRegistry.INPUT_STORAGE_LOCATIONS.get())
+            }
         } else {
             if (entity.getGolemCore() == GolemCore.FILL) {
                 BrainUtils.setMemory(entity, VoidBoundMemoryTypeRegistry.OUTPUT_STORAGE_LOCATIONS.get(), blocks)

@@ -23,7 +23,7 @@ class ItemAbilityHandler {
             return
         }
         val player = mc.player
-        val stack = player!!.mainHandItem
+        val stack = player?.mainHandItem
         if (stack == null) {
             active = false
             return
