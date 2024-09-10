@@ -33,7 +33,7 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
         initialized = false
 
         w = 180
-        h = 37
+        h = 41
         abilities = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(minecraft!!.player!!).unlockedItemAbilities
     }
 
@@ -108,13 +108,13 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
                     minecraft!!.font,
                     ability.name.lowercase().replaceFirstChar { it.uppercase() }, // Access ability directly
                     abilityX + 24,
-                    y + 32,
+                    y + 34,
                     0xDDCCFF
                 )
             }
 
             val texture = VoidBound.id("textures/gui/" + ability.name.lowercase() + ".png")
-            guiGraphics.blit(texture, abilityX + 16, y + 16, 0, 0f, 0f, 16, 16, 16, 16)
+            guiGraphics.blit(texture, abilityX + 16, y + 18, 0, 0f, 0f, 16, 16, 16, 16)
 
             matrixStack.popPose()
 
