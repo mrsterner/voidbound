@@ -31,7 +31,7 @@ class VoidBoundLootModifier(conditionsIn: Array<out LootItemCondition>?) : LootM
     ): ObjectArrayList<ItemStack> {
 
         val stack = context?.getParamOrNull(LootContextParams.TOOL)
-        if (stack != null && VoidBoundApi.hasItemAbility(stack, ItemAbility.AUTOSMELT)) {
+        if (stack != null && VoidBoundApi.getActiveAbility(stack) == ItemAbility.AUTOSMELT) {
 
             val level = context.level
             val smeltedItems = generatedLoot?.asSequence()?.map { originalStack ->

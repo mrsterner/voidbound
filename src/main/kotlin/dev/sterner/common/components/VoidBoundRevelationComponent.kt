@@ -2,6 +2,8 @@ package dev.sterner.common.components
 
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent
 import dev.onyxstudios.cca.api.v3.component.tick.CommonTickingComponent
+import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.item.ItemAbility
 import dev.sterner.registry.VoidBoundComponentRegistry
 import dev.sterner.registry.VoidBoundSoundEvents
 import net.minecraft.nbt.CompoundTag
@@ -14,6 +16,13 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
     data class ThoughtData(var duration: Int, var delay: Int)
 
     var thoughtsQueue: MutableMap<Component, ThoughtData> = mutableMapOf()
+
+    var unlockedItemAbilities = mutableSetOf<ItemAbility>(ItemAbility.VAMPIRISM, ItemAbility.AUTOSMELT)
+
+    fun addUnlockedItemAbility(ability: ItemAbility) {
+        unlockedItemAbilities.add(ability)
+        sync()
+    }
 
     override fun tick() {
         // Ensure the queue does not exceed 16 elements
@@ -140,6 +149,15 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
                 thoughtsQueue[thought] = ThoughtData(duration, delay)
             }
         }
+
+        unlockedItemAbilities.clear()
+        val unlockedList = tag.getList("UnlockedItems", 10)
+        for (i in 0 until unlockedList.size) {
+            val item = unlockedList.getCompound(i)
+            val itemAbility = ItemAbility.readNbt(item)
+            println("TT: $itemAbility")
+            unlockedItemAbilities.add(itemAbility)
+        }
     }
 
     override fun writeToNbt(tag: CompoundTag) {
@@ -164,5 +182,13 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
             thoughtsList.add(thoughtTag)
         }
         tag.put("ThoughtsQueue", thoughtsList)
+
+        val unlockedList = ListTag()
+        unlockedItemAbilities.forEach { unlockedTag ->
+            println(unlockedTag)
+            val abilityTag = unlockedTag.writeNbt()
+            unlockedList.add(abilityTag)
+        }
+        tag.put("UnlockedItems", unlockedList)
     }
 }

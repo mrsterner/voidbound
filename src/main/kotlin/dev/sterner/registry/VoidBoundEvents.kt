@@ -48,7 +48,7 @@ object VoidBoundEvents {
             if (player?.level() is ServerLevel) {
                 val level = player.level() as? ServerLevel
                 val pos = event.pos
-                if (VoidBoundApi.hasItemAbility(player.mainHandItem, ItemAbility.AUTOSMELT) && false) {
+                if (VoidBoundApi.getActiveAbility(player.mainHandItem) == ItemAbility.AUTOSMELT) {
                     val blockState = level!!.getBlockState(pos)
                     val blockEntity = level.getBlockEntity(pos)
 

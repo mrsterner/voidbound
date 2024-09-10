@@ -1,9 +1,14 @@
 package dev.sterner.common.item.tool.ichor
 
+import dev.sterner.api.item.ItemAbility
 import dev.sterner.common.item.tool.CragbreakerItem
+import dev.sterner.registry.VoidBoundComponentRegistry
 import net.minecraft.ChatFormatting
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.Style
+import net.minecraft.world.InteractionHand
+import net.minecraft.world.InteractionResultHolder
+import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Tier
 import net.minecraft.world.item.TooltipFlag

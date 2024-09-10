@@ -50,6 +50,8 @@ object VoidBoundPacketRegistry {
         VOID_BOUND_CHANNEL.registerC2SPacket(
             ExcavationPacket::class.java, index++
         )
-
+        VOID_BOUND_CHANNEL.registerC2SPacket(
+            AbilityUpdatePacket::class.java, index++
+        )
     }
 }

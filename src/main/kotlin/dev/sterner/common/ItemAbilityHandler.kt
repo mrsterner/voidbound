@@ -1,5 +1,6 @@
 package dev.sterner.common
 
+import dev.sterner.VoidBound
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.client.screen.ItemAbilityScreen
 import net.minecraft.client.Minecraft
@@ -11,10 +12,14 @@ import org.lwjgl.glfw.GLFW
 
 class ItemAbilityHandler {
 
-    var selectionScreen: ItemAbilityScreen = ItemAbilityScreen(ItemStack.EMPTY)
+    var selectionScreen: ItemAbilityScreen? = null
     var currentAbility: ItemAbility? = ItemAbility.NONE
     var active: Boolean = false
 
+    init {
+        currentAbility = ItemAbility.NONE
+
+    }
 
     fun tick() {
         val mc = Minecraft.getInstance()
@@ -25,6 +30,9 @@ class ItemAbilityHandler {
             return
         }
         val player = mc.player
+        if (player != null && selectionScreen == null) {
+            selectionScreen = ItemAbilityScreen(player.mainHandItem)
+        }
         val stack = player?.mainHandItem
         if (stack == null) {
             active = false
@@ -35,7 +43,7 @@ class ItemAbilityHandler {
             return
         }
 
-        selectionScreen.update()
+        selectionScreen?.update()
     }
 
     fun render(graphics: GuiGraphics, partialTicks: Float, width: Int, height: Int) {
@@ -43,7 +51,7 @@ class ItemAbilityHandler {
             return
         }
 
-        selectionScreen.render(graphics, partialTicks)
+        selectionScreen?.render(graphics, partialTicks)
     }
 
     private fun init(player: LocalPlayer?) {
@@ -59,12 +67,12 @@ class ItemAbilityHandler {
             return
         }
 
-        if (pressed && !selectionScreen.focus) {
-            selectionScreen.focus = true
+        if (pressed && selectionScreen?.focus != true) {
+            selectionScreen?.focus = true
         }
-        if (!pressed && selectionScreen.focus) {
-            selectionScreen.focus = false
-            selectionScreen.onClose()
+        if (!pressed && selectionScreen?.focus == true) {
+            selectionScreen!!.focus = false
+            selectionScreen!!.onClose()
         }
     }
 
@@ -73,8 +81,8 @@ class ItemAbilityHandler {
             return false
         }
 
-        if (selectionScreen.focus) {
-            selectionScreen.cycle(delta.toInt())
+        if (selectionScreen?.focus == true) {
+            selectionScreen?.cycle(delta.toInt())
             return true
         }
         return false

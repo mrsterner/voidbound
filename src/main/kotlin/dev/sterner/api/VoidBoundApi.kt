@@ -142,39 +142,63 @@ object VoidBoundApi {
         return false
     }
 
-    fun getItemAbility(stack: ItemStack): List<ItemAbility> {
-        val abilities = mutableListOf<ItemAbility>()
+    // Function to retrieve abilities from the ItemStack's NBT, returns a Set
+    fun getItemAbilities(stack: ItemStack): Set<ItemAbility> {
+        val abilities = mutableSetOf<ItemAbility>()
         val tag = stack.tag ?: return abilities // Return empty if no NBT
 
         val abilitiesTag = tag.getList("Abilities", 10) // 10 is the NBT type for CompoundTag
         for (i in 0 until abilitiesTag.size) {
             val abilityTag = abilitiesTag.getCompound(i)
             val ability = ItemAbility.readNbt(abilityTag)
-            abilities.add(ability)
+            abilities.add(ability) // Add to the set, prevents duplicates
         }
+
         return abilities
     }
 
-    // Function to add an ItemAbilityWithLevel to an ItemStack's NBT
-    fun addItemAbility(stack: ItemStack, abilityWithLevel: ItemAbility) {
+    // Function to add an ItemAbility to the ItemStack's NBT
+    fun addItemAbility(stack: ItemStack, ability: ItemAbility, makeActive: Boolean = false) {
         val tag = stack.orCreateTag // Ensures the stack has NBT
         val abilitiesTag = tag.getList("Abilities", 10) // Fetch or create list
 
-        // Check if ability already exists, if so, skip adding a duplicate
+        // Check if ability already exists, if so, exit
         for (i in 0 until abilitiesTag.size) {
             val abilityTag = abilitiesTag.getCompound(i)
             val existingAbility = ItemAbility.readNbt(abilityTag)
-            if (existingAbility == abilityWithLevel) {
+            if (existingAbility == ability) {
                 return // Ability already exists, exit without adding
             }
         }
 
         // Add new ability
-        abilitiesTag.add(abilityWithLevel.writeNbt())
+        abilitiesTag.add(ability.writeNbt())
         tag.put("Abilities", abilitiesTag)
+
+        // Optionally set the new ability as the active one
+        if (makeActive) {
+            setActiveAbility(stack, ability)
+        }
     }
 
-    fun hasItemAbility(stack: ItemStack, ability: ItemAbility): Boolean {
-        return !getItemAbility(stack).none { it == ability }
+    // Function to set the active ability in NBT
+    fun setActiveAbility(stack: ItemStack, ability: ItemAbility) {
+        val tag = stack.orCreateTag
+        val abilities = getItemAbilities(stack)
+
+        if (abilities.contains(ability)) {
+            // Store the active ability as a string in NBT
+            tag.putString("ActiveAbility", ability.name)
+        }
+    }
+
+    // Function to get the active ability from the ItemStack's NBT
+    fun getActiveAbility(stack: ItemStack): ItemAbility? {
+        val tag = stack.tag ?: return null
+        val activeAbilityName = tag.getString("ActiveAbility")
+
+        // Check if the active ability is one of the stored abilities
+        val abilities = getItemAbilities(stack)
+        return abilities.firstOrNull { it.name == activeAbilityName }
     }
 }
