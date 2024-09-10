@@ -34,7 +34,9 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
 
         w = 180
         h = 41
-        abilities = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(minecraft!!.player!!).unlockedItemAbilities
+        val compatibleAbilities = ItemAbility.getAvailableAbilitiesFromItem(stack.item)
+        val unlockedAbilities = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(minecraft!!.player!!).unlockedItemAbilities
+        abilities = compatibleAbilities.intersect(unlockedAbilities)
     }
 
     fun cycle(direction: Int) {
