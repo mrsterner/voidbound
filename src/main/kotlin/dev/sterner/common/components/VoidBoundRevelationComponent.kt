@@ -17,7 +17,7 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
 
     var thoughtsQueue: MutableMap<Component, ThoughtData> = mutableMapOf()
 
-    var unlockedItemAbilities = mutableSetOf<ItemAbility>(ItemAbility.VAMPIRISM, ItemAbility.AUTOSMELT)
+    var unlockedItemAbilities = mutableSetOf<ItemAbility>()
 
     fun addUnlockedItemAbility(ability: ItemAbility) {
         unlockedItemAbilities.add(ability)
