@@ -19,7 +19,7 @@
     ],
     "client": [
       {
-        "value": "dev.sterner.VoidBound",
+        "value": "dev.sterner.VoidBoundClient",
         "adapter": "kotlin"
       }
     ],

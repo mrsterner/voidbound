@@ -4,7 +4,6 @@ import com.sammy.malum.client.VoidRevelationHandler
 import com.sammy.malum.common.container.WeaversWorkbenchContainer.component
 import com.sammy.malum.core.systems.recipe.SpiritWithCount
 import dev.sterner.api.item.ItemAbility
-import dev.sterner.api.item.ItemAbilityWithLevel
 import dev.sterner.listener.EnchantSpiritDataReloadListener
 import dev.sterner.registry.VoidBoundComponentRegistry
 import dev.sterner.registry.VoidBoundItemRegistry
@@ -143,29 +142,29 @@ object VoidBoundApi {
         return false
     }
 
-    fun getItemAbility(stack: ItemStack): List<ItemAbilityWithLevel> {
-        val abilities = mutableListOf<ItemAbilityWithLevel>()
+    fun getItemAbility(stack: ItemStack): List<ItemAbility> {
+        val abilities = mutableListOf<ItemAbility>()
         val tag = stack.tag ?: return abilities // Return empty if no NBT
 
         val abilitiesTag = tag.getList("Abilities", 10) // 10 is the NBT type for CompoundTag
         for (i in 0 until abilitiesTag.size) {
             val abilityTag = abilitiesTag.getCompound(i)
-            val ability = ItemAbilityWithLevel.readNbt(abilityTag)
+            val ability = ItemAbility.readNbt(abilityTag)
             abilities.add(ability)
         }
         return abilities
     }
 
     // Function to add an ItemAbilityWithLevel to an ItemStack's NBT
-    fun addItemAbility(stack: ItemStack, abilityWithLevel: ItemAbilityWithLevel) {
+    fun addItemAbility(stack: ItemStack, abilityWithLevel: ItemAbility) {
         val tag = stack.orCreateTag // Ensures the stack has NBT
         val abilitiesTag = tag.getList("Abilities", 10) // Fetch or create list
 
         // Check if ability already exists, if so, skip adding a duplicate
         for (i in 0 until abilitiesTag.size) {
             val abilityTag = abilitiesTag.getCompound(i)
-            val existingAbility = ItemAbilityWithLevel.readNbt(abilityTag)
-            if (existingAbility.itemAbility == abilityWithLevel.itemAbility) {
+            val existingAbility = ItemAbility.readNbt(abilityTag)
+            if (existingAbility == abilityWithLevel) {
                 return // Ability already exists, exit without adding
             }
         }
@@ -175,26 +174,7 @@ object VoidBoundApi {
         tag.put("Abilities", abilitiesTag)
     }
 
-    // Function to modify the level of an existing ItemAbility in NBT
-    fun modifyItemAbilityLevel(stack: ItemStack, itemAbility: ItemAbility, newLevel: Int) {
-        val tag = stack.tag ?: return // No NBT, nothing to modify
-        val abilitiesTag = tag.getList("Abilities", 10)
-
-        // Find the ability and modify its level
-        for (i in 0 until abilitiesTag.size) {
-            val abilityTag = abilitiesTag.getCompound(i)
-            val ability = ItemAbilityWithLevel.readNbt(abilityTag)
-            if (ability.itemAbility == itemAbility) {
-                // Modify the level and update the NBT
-                abilityTag.putInt("Level", newLevel)
-                abilitiesTag[i] = abilityTag // Replace the modified ability in the list
-                tag.put("Abilities", abilitiesTag)
-                return
-            }
-        }
-    }
-
     fun hasItemAbility(stack: ItemStack, ability: ItemAbility): Boolean {
-        return !getItemAbility(stack).none { it.itemAbility == ability }
+        return !getItemAbility(stack).none { it == ability }
     }
 }

@@ -1,5 +1,6 @@
 package dev.sterner.api.item
 
+import net.minecraft.nbt.CompoundTag
 import net.minecraft.util.StringRepresentable
 import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.item.*
@@ -7,6 +8,7 @@ import net.minecraft.world.item.*
 import kotlin.reflect.KClass
 
 enum class ItemAbility(private val equipmentSlot: EquipmentSlot?, private val clazz: KClass<out Item>?): StringRepresentable {
+    NONE(null, null),
     AUTOSMELT(null, DiggerItem::class),
     VAMPIRISM(null, SwordItem::class),
     QUICKDRAW(null, ProjectileWeaponItem::class),
@@ -28,5 +30,17 @@ enum class ItemAbility(private val equipmentSlot: EquipmentSlot?, private val cl
             }
         }
         return list
+    }
+
+    fun writeNbt(): CompoundTag {
+        val tag = CompoundTag()
+        tag.putString("Ability", name)
+        return tag
+    }
+
+    companion object {
+        fun readNbt(abilityTag: CompoundTag): ItemAbility {
+            return valueOf(abilityTag.getString("Ability"))
+        }
     }
 }

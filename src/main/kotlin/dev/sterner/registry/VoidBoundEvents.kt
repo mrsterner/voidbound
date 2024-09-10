@@ -2,6 +2,7 @@ package dev.sterner.registry
 
 import com.google.common.collect.Multimap
 import com.sammy.malum.common.events.MalumCodexEvents
+import dev.sterner.VoidBoundClient
 import dev.sterner.api.ClientTickHandler
 import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.item.ItemAbility
@@ -121,5 +122,8 @@ object VoidBoundEvents {
         HudRenderCallback.EVENT.register(SpiritJarHudRenderEvent::spiritJarHud)
         HudRenderCallback.EVENT.register(ThoughtsTextHudRenderEvent::renderThoughts)
         ClientTickEvents.END_CLIENT_TICK.register(ClientTickHandler::clientTickEnd)
+        ClientTickEvents.END_CLIENT_TICK.register{
+            VoidBoundClient.ITEM_ABILITY_HANDLER.tick()
+        }
     }
 }
