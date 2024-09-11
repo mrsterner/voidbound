@@ -8,7 +8,12 @@ import net.minecraft.world.item.ItemStack
 
 object ReboundEnchantmentMixinLogic {
 
-    fun logic(player: ServerPlayer, stack: ItemStack, baseDamage: Float, magicDamage: Float, yOffset: Int) {
+    fun logic(player: ServerPlayer, stack: ItemStack, baseDamage: Float, magicDamage: Float) {
+        shootScythe(player, stack, baseDamage, magicDamage, 25)
+        shootScythe(player, stack, baseDamage, magicDamage, -25)
+    }
+
+    private fun shootScythe(player: ServerPlayer, stack: ItemStack, baseDamage: Float, magicDamage: Float, yRotOffset: Int) {
         val entity = ScytheBoomerangEntity(
             player.level(),
             player.position().x,
@@ -22,7 +27,7 @@ object ReboundEnchantmentMixinLogic {
         (entity as IchoriumScytheGhost).setGhost(true)
 
         entity.shootFromRotation(
-            player, player.xRot, player.yRot + yOffset, 0.0f,
+            player, player.xRot, player.yRot + yRotOffset, 0.0f,
             (1.5f + player.getAttributeValue(AttributeRegistry.SCYTHE_PROFICIENCY.get()) * 0.125f).toFloat(), 0f
         )
         player.level().addFreshEntity(entity)

@@ -19,8 +19,7 @@ public class ReboundEnchantmentMixin {
     private static void voidbound$onRightClick(ServerPlayer player, InteractionHand interactionHand, ItemStack stack, CallbackInfoReturnable<Boolean> cir, @Local(ordinal = 0) float baseDamage, @Local(ordinal = 1) float magicDamage) {
 
         if (stack.getItem() instanceof IchoriumScytheItem) {
-            ReboundEnchantmentMixinLogic.INSTANCE.logic(player, stack, baseDamage, magicDamage, 25);
-            ReboundEnchantmentMixinLogic.INSTANCE.logic(player, stack, baseDamage, magicDamage, -25);
+            ReboundEnchantmentMixinLogic.INSTANCE.logic(player, stack, baseDamage, magicDamage);
         }
     }
 }
