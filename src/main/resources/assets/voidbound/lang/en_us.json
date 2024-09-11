@@ -57,10 +57,9 @@
   "itemGroup.voidbound": "Void Bound",
 
   "voidbound.ability.vampirism": "Vampirism",
-  "voidbound.ability.dispersed_strike": "Dispersed Strike",
+  "voidbound.ability.opener": "Opener",
+  "voidbound.ability.none": "None",
   "voidbound.ability.autosmelt": "Autosmelt",
-  "voidbound.ability.quickdraw": "Quickdraw",
-  "voidbound.ability.slow_fall": "Slow fall",
   "voidbound.ability.mining_3x3": "3x3 Mining",
   "voidbound.ability.mining_5x5": "5x5 Mining",
 
