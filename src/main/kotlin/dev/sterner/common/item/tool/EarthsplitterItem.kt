@@ -32,6 +32,10 @@ open class EarthsplitterItem(
         return super.getDestroySpeed(stack, state) + getExtraMiningSpeed(stack)
     }
 
+    override fun isIchor(): Boolean {
+        return false
+    }
+
     override fun getRadius(): Int {
         return 3
     }

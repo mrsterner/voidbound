@@ -16,13 +16,13 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.levelgen.structure.BoundingBox
 import net.minecraft.world.phys.BlockHitResult
-import java.util.function.Consumer
 
 /**
  * Implement to add a classic hammer behaviour to an item, this means an item which should break multiple blocks on one break
  */
 interface HammerLikeItem {
 
+    fun isIchor(): Boolean
     fun getRadius(): Int
     fun getDepth(): Int
     fun getHammerTier(): Tier
@@ -36,7 +36,8 @@ interface HammerLikeItem {
         blockPos: BlockPos,
         blockState: BlockState,
         itemStack: ItemStack,
-        player: ServerPlayer
+        player: ServerPlayer,
+        five: Boolean
     ) {
         // Only proceed if not on the client side and the block can be broken
         if (level.isClientSide || blockState.getDestroySpeed(level, blockPos) == 0.0f) return
@@ -48,13 +49,17 @@ interface HammerLikeItem {
         val hitResult = player.pick(20.0, 0.0f, false) as? BlockHitResult ?: return
 
         // Perform the AOE block break
-        breakNearbyBlocks(hitResult, blockPos, itemStack, level, player)
+        breakNearbyBlocks(hitResult, blockPos, itemStack, level, player, five)
     }
 
     /**
      * Determines if the hammer can break the block based on its tier.
      */
     fun isToolEffective(state: BlockState): Boolean {
+        if (isIchor()) {
+            return true
+        }
+
         val tierLevel = getHammerTier().level
         return when {
             tierLevel < 3 && state.`is`(BlockTags.NEEDS_DIAMOND_TOOL) -> false
@@ -79,12 +84,13 @@ interface HammerLikeItem {
         blockPos: BlockPos,
         hammerStack: ItemStack,
         level: Level,
-        entity: LivingEntity
+        entity: LivingEntity,
+        five: Boolean
     ) {
         if (entity !is ServerPlayer) return
 
         val direction = hitResult.direction
-        val areaOfEffect = calculateAoeBoundingBox(blockPos, direction, getRadius(), getDepth())
+        val areaOfEffect = calculateAoeBoundingBox(blockPos, direction, if (five) 5 else getRadius(), getDepth())
 
         if (!entity.isCreative && hammerStack.damageValue >= hammerStack.maxDamage - 1) return
 

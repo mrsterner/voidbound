@@ -20,7 +20,6 @@ class AbilityUpdatePacket(val uuid: UUID, val itemAbility: ItemAbility) : Lodest
 
     constructor(buf: FriendlyByteBuf) : this(buf.readUUID(), ItemAbility.valueOf(buf.readUtf()))
 
-
     override fun executeServer(
         server: MinecraftServer?,
         player: ServerPlayer?,
@@ -31,7 +30,7 @@ class AbilityUpdatePacket(val uuid: UUID, val itemAbility: ItemAbility) : Lodest
         server?.execute {
             if (player?.uuid == uuid) {
                 val item = player.mainHandItem
-                VoidBoundApi.addItemAbility(item, itemAbility, true)
+                VoidBoundApi.setActiveAbility(item, itemAbility)
             }
         }
     }
