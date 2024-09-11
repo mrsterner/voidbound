@@ -28,6 +28,16 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
         sync()
     }
 
+    fun isTearKnowledgeComplete(): Boolean {
+        return hasWellKnowledge && hasEndKnowledge && hasNetherKnowledge
+    }
+
+    fun addThought(thought: Component, durationTicks: Int, delayTicks: Int) {
+        val data = ThoughtData(durationTicks, delayTicks)
+        thoughtsQueue[thought] = data
+        sync()
+    }
+
     override fun tick() {
         // Ensure the queue does not exceed 16 elements
         while (thoughtsQueue.size > 16) {
@@ -114,16 +124,6 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
             field = value
             sync()
         }
-
-    fun isTearKnowledgeComplete(): Boolean {
-        return hasWellKnowledge && hasEndKnowledge && hasNetherKnowledge
-    }
-
-    fun addThought(thought: Component, durationTicks: Int, delayTicks: Int) {
-        val data = ThoughtData(durationTicks, delayTicks)
-        thoughtsQueue[thought] = data
-        sync()
-    }
 
     private fun sync(){
         VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.sync(player)

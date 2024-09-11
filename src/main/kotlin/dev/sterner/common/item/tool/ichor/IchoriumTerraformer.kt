@@ -36,11 +36,6 @@ class IchoriumTerraformer(tier: Tier, attackDamageModifier: Float, attackSpeedMo
         return true
     }
 
-    override fun use(level: Level, player: Player, usedHand: InteractionHand): InteractionResultHolder<ItemStack> {
-        println(VoidBoundApi.getActiveAbility(player.mainHandItem))
-        return super.use(level, player, usedHand)
-    }
-
     override fun getDefaultAttributeModifiers(equipmentSlot: EquipmentSlot): Multimap<Attribute, AttributeModifier> {
 
         val attributeBuilder = ImmutableMultimap.Builder<Attribute, AttributeModifier>()

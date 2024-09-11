@@ -69,9 +69,10 @@ class IchoriumVorpal(tier: Tier, attackDamageModifier: Int, attackSpeedModifier:
                     )
                 }
             }
+            return InteractionResult.SUCCESS
         }
 
-        return InteractionResult.SUCCESS
+        return InteractionResult.PASS
     }
 
 
