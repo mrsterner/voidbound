@@ -17,7 +17,11 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
 
     var thoughtsQueue: MutableMap<Component, ThoughtData> = mutableMapOf()
 
-    var unlockedItemAbilities = mutableSetOf(ItemAbility.NONE)
+    var unlockedItemAbilities = defaultAbilities()
+
+    private fun defaultAbilities(): MutableSet<ItemAbility> {
+        return mutableSetOf(ItemAbility.NONE, ItemAbility.MINING_3X3)
+    }
 
     fun addUnlockedItemAbility(ability: ItemAbility) {
         unlockedItemAbilities.add(ability)
@@ -151,7 +155,9 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
         }
 
         unlockedItemAbilities.clear()
-        unlockedItemAbilities.add(ItemAbility.NONE)
+        defaultAbilities().forEach{
+            unlockedItemAbilities.add(it)
+        }
         val unlockedList = tag.getList("UnlockedItems", 10)
         for (i in 0 until unlockedList.size) {
             val item = unlockedList.getCompound(i)
