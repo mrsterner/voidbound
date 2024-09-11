@@ -30,6 +30,7 @@ class AbilityUpdatePacket(val uuid: UUID, val itemAbility: ItemAbility) : Lodest
         server?.execute {
             if (player?.uuid == uuid) {
                 val item = player.mainHandItem
+                VoidBoundApi.addItemAbility(item, itemAbility, true)
                 VoidBoundApi.setActiveAbility(item, itemAbility)
             }
         }

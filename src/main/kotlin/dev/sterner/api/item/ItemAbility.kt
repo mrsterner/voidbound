@@ -1,6 +1,7 @@
 package dev.sterner.api.item
 
 import dev.sterner.common.item.tool.ichor.IchoriumTerraformer
+import dev.sterner.common.item.tool.ichor.IchoriumVorpal
 import dev.sterner.registry.VoidBoundTags
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.tags.TagKey
@@ -16,7 +17,7 @@ enum class ItemAbility: StringRepresentable {
     MINING_3X3,//Fully implemented
     MINING_5X5,//Fully implemented
     VAMPIRISM,//TODO implement
-    HARVEST,
+    HARVEST,//TODO implement
     OPENER;//TODO implement
 
     override fun getSerializedName(): String {
@@ -42,7 +43,7 @@ enum class ItemAbility: StringRepresentable {
                 list.add(MINING_3X3)
                 list.add(MINING_5X5)
             }
-            if (item is IchoriumTerraformer) {
+            if (item is IchoriumVorpal) {
                 list.add(VAMPIRISM)
                 list.add(OPENER)
                 list.add(HARVEST)
