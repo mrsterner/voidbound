@@ -3,6 +3,8 @@ package dev.sterner.api
 import com.sammy.malum.client.VoidRevelationHandler
 import com.sammy.malum.common.container.WeaversWorkbenchContainer.component
 import com.sammy.malum.core.systems.recipe.SpiritWithCount
+import com.sammy.malum.core.systems.spirit.MalumSpiritType
+import com.sammy.malum.registry.common.SpiritTypeRegistry
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.listener.EnchantSpiritDataReloadListener
 import dev.sterner.registry.VoidBoundComponentRegistry
@@ -63,6 +65,17 @@ object VoidBoundApi {
             }
         }
 
+        if (out.isEmpty()) {
+            out.add(SpiritWithCount(SpiritTypeRegistry.AQUEOUS_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.INFERNAL_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.EARTHEN_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.AERIAL_SPIRIT, 4 * level))
+
+            out.add(SpiritWithCount(SpiritTypeRegistry.ARCANE_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.ELDRITCH_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.SACRED_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.WICKED_SPIRIT, 4 * level))
+        }
         return out
     }
 

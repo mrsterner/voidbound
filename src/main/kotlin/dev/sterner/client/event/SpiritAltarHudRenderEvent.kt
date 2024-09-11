@@ -49,8 +49,8 @@ object SpiritAltarHudRenderEvent {
                         val recipe: SpiritInfusionRecipe? = se.possibleRecipes.entries.stream()
                             .filter { it: Map.Entry<SpiritInfusionRecipe?, Ranking?> -> it.value != null }
                             .max(java.util.Map.Entry.comparingByValue())
-                            .map({ it.key })
-                            .orElse(null) as SpiritInfusionRecipe
+                            .map { it.key }
+                            .orElse(null)
                         val extras = recipe?.extraItems
                         val inventory = se.extrasInventory
 

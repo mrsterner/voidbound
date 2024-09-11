@@ -17,7 +17,6 @@ class OsmoticEnchanterMenu(
     i: Int, inventory: Inventory, val pos: BlockPos,
 ) : AbstractContainerMenu(VoidBoundMenuTypeRegistry.OSMOTIC_ENCHANTER.get(), i) {
 
-    var inventory: LodestoneBlockEntityInventory? = null
     var osmoticEnchanter: OsmoticEnchanterBlockEntity? = null
     var shouldRefresh = true
 
@@ -78,15 +77,15 @@ class OsmoticEnchanterMenu(
         if (slot.hasItem()) {
             val itemStack1 = slot.item
             itemStack = itemStack1.copy()
-            if (index < this.inventory!!.stacks.size) {
+            if (index < osmoticEnchanter?.inventory!!.stacks.size) {
                 if (!this.moveItemStackTo(
-                        itemStack1, this.inventory!!.stacks.size,
+                        itemStack1, osmoticEnchanter?.inventory!!.stacks.size,
                         slots.size, true
                     )
                 ) {
                     return ItemStack.EMPTY
                 }
-            } else if (!this.moveItemStackTo(itemStack1, 0, this.inventory!!.stacks.size, false)) {
+            } else if (!this.moveItemStackTo(itemStack1, 0, osmoticEnchanter?.inventory!!.stacks.size, false)) {
                 return ItemStack.EMPTY
             }
 
