@@ -16,6 +16,7 @@ enum class ItemAbility: StringRepresentable {
     MINING_3X3,//Fully implemented
     MINING_5X5,//Fully implemented
     VAMPIRISM,//TODO implement
+    HARVEST,
     OPENER;//TODO implement
 
     override fun getSerializedName(): String {
@@ -44,6 +45,7 @@ enum class ItemAbility: StringRepresentable {
             if (item is IchoriumTerraformer) {
                 list.add(VAMPIRISM)
                 list.add(OPENER)
+                list.add(HARVEST)
             }
 
             return list
