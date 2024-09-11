@@ -45,7 +45,7 @@ class IchoriumTerraformer(tier: Tier, attackDamageModifier: Float, attackSpeedMo
             AttributeModifier(
                 LodestoneAttributeRegistry.UUIDS[LodestoneAttributeRegistry.MAGIC_DAMAGE],
                 "Weapon magic damage",
-                5.0,
+                2.0,
                 AttributeModifier.Operation.ADDITION
             )
         )
