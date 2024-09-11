@@ -49,67 +49,70 @@ open class GalesEdgeItem(
     }
 
     override fun onUseTick(level: Level, player: LivingEntity, stack: ItemStack, remainingUseDuration: Int) {
-        val ticks: Int = this.getUseDuration(stack) - remainingUseDuration
-        var newMotionY = player.deltaMovement.y
-
-        if (newMotionY < 0.0) {
-            newMotionY /= 1.2000000476837158
-            player.fallDistance /= 1.2f
-        }
-
-        newMotionY += 0.07999999821186066
-        if (newMotionY > 0.5) {
-            newMotionY = 0.20000000298023224
-        }
-
-        player.deltaMovement = Vec3(player.deltaMovement.x, newMotionY, player.deltaMovement.z)
-
-        val targets: List<*> =
-            player.level().getEntities(player, player.boundingBox.inflate(2.5, 2.5, 2.5))
-        var miny: Int
-        if (targets.isNotEmpty()) {
-            miny = 0
-            while (miny < targets.size) {
-                val entity: Entity = targets[miny] as Entity
-                if (entity !is Player && entity is LivingEntity && !entity.isDeadOrDying && (player.passengers == null || player.passengers !== entity)) {
-                    val p = Vec3(player.x, player.y, player.z)
-                    val t = Vec3(entity.x, entity.y, entity.z)
-                    val distance: Double = p.distanceTo(t) + 0.1
-                    val r = Vec3(t.x - p.x, t.y - p.y, t.z - p.z)
-
-                    val prevDeltaMovement = entity.deltaMovement
-                    entity.deltaMovement = Vec3(
-                        prevDeltaMovement.x + r.x / 2.5 / distance,
-                        prevDeltaMovement.y + r.y / 2.5 / distance,
-                        prevDeltaMovement.z + r.z / 2.5 / distance
-                    )
-
-                }
-                ++miny
-            }
-        }
-
-        if (player.level().isClientSide) {
-            for (i in 1..4) {
-                genParticleOrbit(level, player.position(), 4, i)
-            }
-        }
-
-        if (ticks % 20 == 0) {
-
-            stack.hurtAndBreak(
-                1, player
-            ) { _: LivingEntity ->
-                player.broadcastBreakEvent(
-                    player.usedItemHand
-                )
-            }
-        }
-
+        ascend(player, stack, this.getUseDuration(stack) - remainingUseDuration)
         super.onUseTick(level, player, stack, remainingUseDuration)
     }
 
     companion object {
+
+        fun ascend(player: LivingEntity, stack: ItemStack, ticks: Int){
+            var newMotionY = player.deltaMovement.y
+
+            if (newMotionY < 0.0) {
+                newMotionY /= 1.2
+                player.fallDistance /= 1.2f
+            }
+
+            newMotionY += 0.08
+            if (newMotionY > 0.5) {
+                newMotionY = 0.2
+            }
+
+            player.deltaMovement = Vec3(player.deltaMovement.x, newMotionY, player.deltaMovement.z)
+
+            val targets: List<*> =
+                player.level().getEntities(player, player.boundingBox.inflate(2.5, 2.5, 2.5))
+            var miny: Int
+            if (targets.isNotEmpty()) {
+                miny = 0
+                while (miny < targets.size) {
+                    val entity: Entity = targets[miny] as Entity
+                    if (entity !is Player && entity is LivingEntity && !entity.isDeadOrDying && (player.passengers == null || player.passengers !== entity)) {
+                        val p = Vec3(player.x, player.y, player.z)
+                        val t = Vec3(entity.x, entity.y, entity.z)
+                        val distance: Double = p.distanceTo(t) + 0.1
+                        val r = Vec3(t.x - p.x, t.y - p.y, t.z - p.z)
+
+                        val prevDeltaMovement = entity.deltaMovement
+                        entity.deltaMovement = Vec3(
+                            prevDeltaMovement.x + r.x / 2.5 / distance,
+                            prevDeltaMovement.y + r.y / 2.5 / distance,
+                            prevDeltaMovement.z + r.z / 2.5 / distance
+                        )
+
+                    }
+                    ++miny
+                }
+            }
+
+            if (player.level().isClientSide) {
+                for (i in 1..4) {
+                    genParticleOrbit(player.level(), player.position(), 4, i)
+                }
+            }
+
+            if (ticks % 20 == 0) {
+
+                stack.hurtAndBreak(
+                    1, player
+                ) { _: LivingEntity ->
+                    player.broadcastBreakEvent(
+                        player.usedItemHand
+                    )
+                }
+            }
+        }
+
         fun genParticleOrbit(level: Level, pos: Vec3, range: Int, direction: Int) {
             val clampedDir = Mth.clamp(direction, 1, 4)
             val discRad = (range * (1 / 3f) + level.getRandom().nextGaussian() / 5f)

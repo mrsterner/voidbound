@@ -134,7 +134,7 @@ open class TidecutterItem(
             if (level != null) {
                 val block = level.getBlockState(pos)
                 if (!player.isShiftKeyDown && block.`is`(BlockTags.LOGS)) {
-                    if (player.mainHandItem.`is`(VoidBoundItemRegistry.ICHORIUM_AXE.get())) {
+                    if (player.mainHandItem.`is`(VoidBoundItemRegistry.ICHORIUM_TERRAFORMER.get())) {
                         val logsToBreak: List<BlockPos> = VoidBoundBlockUtils.gatherConnectedLogs(
                             level,
                             pos,

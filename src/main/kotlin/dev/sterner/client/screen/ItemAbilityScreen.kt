@@ -108,7 +108,7 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
             if (index == selection) {
                 guiGraphics.drawCenteredString(
                     minecraft!!.font,
-                    "voidbound.ability." + ability.name.lowercase(),
+                    Component.translatable("voidbound.ability." + ability.name.lowercase()),
                     abilityX + 24,
                     y + 34,
                     0xDDCCFF

@@ -188,24 +188,12 @@ object VoidBoundItemRegistry {
         Item(Item.Properties())
     }
 
-    val ICHORIUM_PICKAXE: RegistryObject<IchoriumPickaxeItem> = ITEMS.register("ichorium_pickaxe") {
-        IchoriumPickaxeItem(VoidBoundTiers.ICHORIUM, -2, 1f, 2f, ichorProptery)
+    val ICHORIUM_VORPAL: RegistryObject<IchoriumVorpal> = ITEMS.register("ichorium_vorpal") {
+        IchoriumVorpal(VoidBoundTiers.ICHORIUM, -2, 1f, 2f, ichorProptery)
     }
 
-    val ICHORIUM_HOE: RegistryObject<EarthsongItem> = ITEMS.register("ichorium_hoe") {
-        IchoriumHoeItem(VoidBoundTiers.ICHORIUM, 0, -1.5f, 1f, ichorProptery)
-    }
-
-    val ICHORIUM_AXE: RegistryObject<TidecutterItem> = ITEMS.register("ichorium_axe") {
-        IchoriumAxeItem(VoidBoundTiers.ICHORIUM, -3f, 2f, 4f, ichorProptery)
-    }
-
-    val ICHORIUM_SHOVEL: RegistryObject<EarthsplitterItem> = ITEMS.register("ichorium_shovel") {
-        IchoriumShovelItem(VoidBoundTiers.ICHORIUM, -2, 0f, 2f, ichorProptery)
-    }
-
-    val ICHORIUM_SWORD: RegistryObject<GalesEdgeItem> = ITEMS.register("ichorium_sword") {
-        IchoriumSwordItem(VoidBoundTiers.ICHORIUM, -1, 0f, 3f, ichorProptery)
+    val ICHORIUM_TERRAFORMER: RegistryObject<IchoriumTerraformer> = ITEMS.register("ichorium_terraformer") {
+        IchoriumTerraformer(VoidBoundTiers.ICHORIUM, -1.5f, 1f, ichorProptery)
     }
 
     val ICHORIUM_SCYTHE: RegistryObject<Item> = ITEMS.register("ichorium_scythe") {

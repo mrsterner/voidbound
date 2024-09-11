@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "voidbound:ichorium_sword",
-    "voidbound:ichorium_pickaxe"
+    "voidbound:ichorium_vorpal",
+    "voidbound:ichorium_terraformer",
+    "voidbound:ichorium_scythe"
   ]
 }

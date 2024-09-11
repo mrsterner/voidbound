@@ -247,18 +247,18 @@ object MalumCodexEvent {
         }
 
         screen?.addEntry(
-            "void.ichorium_pickaxe", -1, -4
+            "void.ichorium_vorpal", -1, -4
         ) { b: PlacedBookEntryBuilder ->
             b
                 .configureWidget { w: ProgressionEntryObject ->
                     w.setIcon(
-                        VoidBoundItemRegistry.ICHORIUM_PICKAXE.get()
+                        VoidBoundItemRegistry.ICHORIUM_VORPAL.get()
                     ).setStyle(VOID_GILDED)
                 }
-                .addPage(HeadlineTextPage("void.ichorium_pickaxe", "void.ichorium_pickaxe.1"))
+                .addPage(HeadlineTextPage("void.ichorium_vorpal", "void.ichorium_vorpal.1"))
                 .addPage(
                     SpiritInfusionPage.fromOutput(
-                        VoidBoundItemRegistry.ICHORIUM_PICKAXE.get()
+                        VoidBoundItemRegistry.ICHORIUM_VORPAL.get()
                     )
                 )
                 .setEntryVisibleWhen {
@@ -267,58 +267,18 @@ object MalumCodexEvent {
         }
 
         screen?.addEntry(
-            "void.ichorium_sword", 0, -5
+            "void.ichorium_terraformer", 0, -5
         ) { b: PlacedBookEntryBuilder ->
             b
                 .configureWidget { w: ProgressionEntryObject ->
                     w.setIcon(
-                        VoidBoundItemRegistry.ICHORIUM_SWORD.get()
+                        VoidBoundItemRegistry.ICHORIUM_TERRAFORMER.get()
                     ).setStyle(VOID_GILDED)
                 }
-                .addPage(HeadlineTextPage("void.ichorium_sword", "void.ichorium_sword.1"))
+                .addPage(HeadlineTextPage("void.ichorium_terraformer", "void.ichorium_terraformer.1"))
                 .addPage(
                     SpiritInfusionPage.fromOutput(
-                        VoidBoundItemRegistry.ICHORIUM_SWORD.get()
-                    )
-                )
-                .setEntryVisibleWhen {
-                    VoidBoundApi.hasIchorKnowledgeClient()
-                }
-        }
-
-        screen?.addEntry(
-            "void.ichorium_shovel", -2, -5
-        ) { b: PlacedBookEntryBuilder ->
-            b
-                .configureWidget { w: ProgressionEntryObject ->
-                    w.setIcon(
-                        VoidBoundItemRegistry.ICHORIUM_SHOVEL.get()
-                    ).setStyle(VOID_GILDED)
-                }
-                .addPage(HeadlineTextPage("void.ichorium_shovel", "void.ichorium_shovel.1"))
-                .addPage(
-                    SpiritInfusionPage.fromOutput(
-                        VoidBoundItemRegistry.ICHORIUM_SHOVEL.get()
-                    )
-                )
-                .setEntryVisibleWhen {
-                    VoidBoundApi.hasIchorKnowledgeClient()
-                }
-        }
-
-        screen?.addEntry(
-            "void.ichorium_axe", 2, -5
-        ) { b: PlacedBookEntryBuilder ->
-            b
-                .configureWidget { w: ProgressionEntryObject ->
-                    w.setIcon(
-                        VoidBoundItemRegistry.ICHORIUM_AXE.get()
-                    ).setStyle(VOID_GILDED)
-                }
-                .addPage(HeadlineTextPage("void.ichorium_axe", "void.ichorium_axe.1"))
-                .addPage(
-                    SpiritInfusionPage.fromOutput(
-                        VoidBoundItemRegistry.ICHORIUM_AXE.get()
+                        VoidBoundItemRegistry.ICHORIUM_TERRAFORMER.get()
                     )
                 )
                 .setEntryVisibleWhen {
