@@ -110,7 +110,7 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
                     minecraft!!.font,
                     Component.translatable("voidbound.ability." + ability.name.lowercase()),
                     abilityX + 24,
-                    y + 34,
+                    y + 35,
                     0xDDCCFF
                 )
             }
@@ -119,8 +119,6 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
             guiGraphics.blit(texture, abilityX + 16, y + 18, 0, 0f, 0f, 16, 16, 16, 16)
 
             matrixStack.popPose()
-
-            // Increment index manually
         }
 
         RenderSystem.disableBlend()
