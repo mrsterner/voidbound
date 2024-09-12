@@ -42,54 +42,7 @@ object VoidBoundEvents {
         BlockEvents.BLOCK_BREAK.register(VoidBoundWorldComponent.Companion::removeWard)
         BlockEvents.BLOCK_BREAK.register(TidecutterItem.Companion::breakBlock)
 
-        BlockEvents.BLOCK_BREAK.register { event ->
-            val player = event?.player
 
-            if (player?.level() is ServerLevel) {
-                val level = player.level() as? ServerLevel
-                val pos = event.pos
-                if (VoidBoundApi.getActiveAbility(player.mainHandItem) == ItemAbility.AUTOSMELT) {
-                    val blockState = level!!.getBlockState(pos)
-                    val blockEntity = level.getBlockEntity(pos)
-
-                    // Get the list of dropped items from the block
-                    val drops: MutableList<ItemStack> = Block.getDrops(blockState, level, pos, blockEntity)
-
-                    // Retrieve all smelting recipes
-                    val allSmeltingRecipes = level.recipeManager.getAllRecipesFor(RecipeType.SMELTING)
-
-                    // Create a map of ItemStack to its smelted result
-                    val smeltedResults = mutableMapOf<ItemStack, ItemStack>()
-
-                    // Populate the smeltedResults map
-                    for (recipe in allSmeltingRecipes) {
-                        if (recipe is SmeltingRecipe) {
-                            for (ingredient in recipe.ingredients) {
-                                val smeltedResult = recipe.getResultItem(level.registryAccess())
-                                for (item in drops) {
-                                    if (ingredient.test(item)) {
-                                        smeltedResults[item] = smeltedResult
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    // Drop smelted items instead of original items
-                    for ((item, smeltedResult) in smeltedResults) {
-                        // Remove the original item from the list
-                        drops.remove(item)
-                        // Drop the smelted result
-                        Block.popResource(level, pos, smeltedResult)
-                    }
-
-                    // Drop the original items that didn't have a smelting recipe
-                    for (item in drops) {
-                        Block.popResource(level, pos, item)
-                    }
-                }
-            }
-        }
 
         /**
          * Add extra damage to UpgradableTools when it has extra damage

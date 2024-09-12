@@ -37,6 +37,11 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
         val compatibleAbilities = ItemAbility.getAvailableAbilitiesFromItem(stack.item)
         val unlockedAbilities = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(minecraft!!.player!!).unlockedItemAbilities
         abilities = compatibleAbilities.intersect(unlockedAbilities)
+
+        val activeAbility = VoidBoundApi.getActiveAbility(stack)
+        if (activeAbility != null && abilities!!.isNotEmpty()) {
+            selection = abilities!!.indexOfFirst { it.name == activeAbility.name }.takeIf { it >= 0 } ?: 0
+        }
     }
 
     fun cycle(direction: Int) {
@@ -120,7 +125,7 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
 
             matrixStack.popPose()
         }
-
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f)
         RenderSystem.disableBlend()
         matrixStack.popPose()
     }
