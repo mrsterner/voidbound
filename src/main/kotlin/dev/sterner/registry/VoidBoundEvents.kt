@@ -5,11 +5,13 @@ import com.sammy.malum.common.events.MalumCodexEvents
 import dev.sterner.VoidBoundClient
 import dev.sterner.api.ClientTickHandler
 import dev.sterner.api.item.ItemAbility
+import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.client.event.*
 import dev.sterner.common.components.VoidBoundPlayerComponent
 import dev.sterner.common.components.VoidBoundWorldComponent
 import dev.sterner.common.item.tool.TidecutterItem
 import dev.sterner.common.item.tool.UpgradableTool
+import io.github.fabricators_of_create.porting_lib.entity.events.living.LivingHurtEvent
 import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
@@ -26,6 +28,7 @@ import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.entity.ai.attributes.Attribute
 import net.minecraft.world.entity.ai.attributes.AttributeModifier
 import net.minecraft.world.entity.ai.attributes.Attributes
+import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.RecipeType
 import net.minecraft.world.item.crafting.SmeltingRecipe
@@ -41,7 +44,21 @@ object VoidBoundEvents {
         BlockEvents.BLOCK_BREAK.register(VoidBoundWorldComponent.Companion::removeWard)
         BlockEvents.BLOCK_BREAK.register(TidecutterItem.Companion::breakBlock)
 
+        LivingHurtEvent.HURT.register{
+            val attacker = it.source.entity
+            if (attacker is Player) {
+                val item = attacker.mainHandItem
+                val bl = VoidBoundItemUtils.getActiveAbility(item) == ItemAbility.VAMPIRISM
+                if (bl) {
+                    attacker.heal(attacker.random.nextInt(2).toFloat())
+                }
 
+                val bl2 = VoidBoundItemUtils.getActiveAbility(item) == ItemAbility.OPENER
+                if (bl2 && it.entity.health / it.entity.maxHealth > 0.95) {
+                    it.amount *= 1.5f
+                }
+            }
+        }
 
         /**
          * Add extra damage to UpgradableTools when it has extra damage

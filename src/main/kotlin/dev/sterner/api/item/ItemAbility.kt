@@ -16,9 +16,9 @@ enum class ItemAbility: StringRepresentable {
     AUTOSMELT,//Fully implemented
     MINING_3X3,//Fully implemented
     MINING_5X5,//Fully implemented
-    VAMPIRISM,//TODO implement
+    VAMPIRISM,//Fully implemented
     HARVEST,//Fully implemented
-    OPENER;//TODO implement
+    OPENER;//Fully implemented
 
     override fun getSerializedName(): String {
         return this.name.lowercase()
