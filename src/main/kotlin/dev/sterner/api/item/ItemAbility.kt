@@ -3,14 +3,9 @@ package dev.sterner.api.item
 import dev.sterner.common.item.tool.ichor.IchoriumScytheItem
 import dev.sterner.common.item.tool.ichor.IchoriumTerraformer
 import dev.sterner.common.item.tool.ichor.IchoriumVorpal
-import dev.sterner.registry.VoidBoundTags
 import net.minecraft.nbt.CompoundTag
-import net.minecraft.tags.TagKey
 import net.minecraft.util.StringRepresentable
-import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.item.*
-
-import kotlin.reflect.KClass
 
 enum class ItemAbility: StringRepresentable {
     NONE,//Fully implemented
@@ -20,7 +15,9 @@ enum class ItemAbility: StringRepresentable {
     VAMPIRISM,//Fully implemented
     HARVEST,//Fully implemented
     OPENER,//Fully implemented
+    TRIPLE_REBOUND,//TODO implement
     PROPAGATION;//TODO implement
+
 
     override fun getSerializedName(): String {
         return this.name.lowercase()
@@ -51,6 +48,7 @@ enum class ItemAbility: StringRepresentable {
                 list.add(HARVEST)
             }
             if (item is IchoriumScytheItem) {
+                list.add(TRIPLE_REBOUND)
                 list.add(PROPAGATION)
             }
 
