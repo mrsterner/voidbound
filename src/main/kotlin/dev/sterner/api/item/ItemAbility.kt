@@ -1,5 +1,6 @@
 package dev.sterner.api.item
 
+import dev.sterner.common.item.tool.ichor.IchoriumScytheItem
 import dev.sterner.common.item.tool.ichor.IchoriumTerraformer
 import dev.sterner.common.item.tool.ichor.IchoriumVorpal
 import dev.sterner.registry.VoidBoundTags
@@ -18,7 +19,8 @@ enum class ItemAbility: StringRepresentable {
     MINING_5X5,//Fully implemented
     VAMPIRISM,//Fully implemented
     HARVEST,//Fully implemented
-    OPENER;//Fully implemented
+    OPENER,//Fully implemented
+    PROPAGATION;//TODO implement
 
     override fun getSerializedName(): String {
         return this.name.lowercase()
@@ -47,6 +49,9 @@ enum class ItemAbility: StringRepresentable {
                 list.add(VAMPIRISM)
                 list.add(OPENER)
                 list.add(HARVEST)
+            }
+            if (item is IchoriumScytheItem) {
+                list.add(PROPAGATION)
             }
 
             return list
