@@ -19,7 +19,7 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
     var unlockedItemAbilities = defaultAbilities()
 
     private fun defaultAbilities(): MutableSet<ItemAbility> {
-        return mutableSetOf(ItemAbility.NONE, ItemAbility.MINING_3X3, ItemAbility.HARVEST, ItemAbility.AUTOSMELT)
+        return mutableSetOf(ItemAbility.NONE, ItemAbility.EXCAVATOR, ItemAbility.HARVEST, ItemAbility.SCORCHING_HEAT)
     }
 
     fun addUnlockedItemAbility(ability: ItemAbility) {

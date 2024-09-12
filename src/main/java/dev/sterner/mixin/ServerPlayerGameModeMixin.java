@@ -35,8 +35,8 @@ public class ServerPlayerGameModeMixin {
     public void voidbound$beforeDestroyBlock(BlockPos blockPos, CallbackInfoReturnable<Boolean> cir) {
         ItemStack itemStack = this.player.getMainHandItem();
         if (itemStack.getItem() instanceof HammerLikeItem hammerLikeItem) {
-            var three = VoidBoundItemUtils.INSTANCE.getActiveAbility(itemStack) == ItemAbility.MINING_3X3;
-            var five = VoidBoundItemUtils.INSTANCE.getActiveAbility(itemStack) == ItemAbility.MINING_5X5;
+            var three = VoidBoundItemUtils.INSTANCE.getActiveAbility(itemStack) == ItemAbility.EXCAVATOR;
+            var five = VoidBoundItemUtils.INSTANCE.getActiveAbility(itemStack) == ItemAbility.EARTH_RUMMAGER;
             if (three || five || !hammerLikeItem.isIchor()) {
                 BlockState blockState = this.level.getBlockState(blockPos);
                 hammerLikeItem.executeHammerAction(this.level, blockPos, blockState, itemStack, this.player, five);

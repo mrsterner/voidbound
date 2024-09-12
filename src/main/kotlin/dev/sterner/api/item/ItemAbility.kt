@@ -9,14 +9,16 @@ import net.minecraft.world.item.*
 
 enum class ItemAbility: StringRepresentable {
     NONE,//Fully implemented
-    AUTOSMELT,//Fully implemented
-    MINING_3X3,//Fully implemented
-    MINING_5X5,//Fully implemented
-    VAMPIRISM,//Fully implemented
-    HARVEST,//Fully implemented
-    OPENER,//Fully implemented
+    SCORCHING_HEAT,//Fully implemented
+    EXCAVATOR,//Fully implemented
+    EARTH_RUMMAGER,//TODO, re-implement. 5x5 mining, 25% mining speed penalty, avoids breaking ores
+    VAMPIRISM,//TODO re-implement. Saps the target's lifeforce, healing half a heart for each spirit their soul has / half a heart for each armor point a player has, with a 10 tick cooldown for each half heart
+    HARVEST,//TODO re-implement. Enables tilling, also allows excavation of plants and whatnot in a 7x7x7 area
+    OPENER,//TODO re-implement. First hit on a mob deals increased damage and grants a stack of Wrath, lasting a minute, up to 10 stacks. Transforms into Finale when you reach 10 stacks, or sneak right click
+    FINALE,//TODO implement. Consumes All stacks of Opening Strike, multiplying damage dealt by the amount of stacks total.
     TRIPLE_REBOUND,//TODO implement
-    PROPAGATION;//TODO implement
+    VENGEANCE,//TODO implement. Rebound now actively seeks the target who most recently attacked you, damage taken by the owner of the scythe extends it's flight time. Initial flight time greatly increased
+    PROPAGATION;//TODO implement, Rebound causes a sweeping attack. Scythe Sweeping now propagates, spreading itself through hordes of enemies like a chain
 
 
     override fun getSerializedName(): String {
@@ -38,9 +40,9 @@ enum class ItemAbility: StringRepresentable {
             val list = mutableSetOf<ItemAbility>()
             list.add(NONE)
             if (item is IchoriumTerraformer) {
-                list.add(AUTOSMELT)
-                list.add(MINING_3X3)
-                list.add(MINING_5X5)
+                list.add(SCORCHING_HEAT)
+                list.add(EXCAVATOR)
+                list.add(EARTH_RUMMAGER)
             }
             if (item is IchoriumVorpal) {
                 list.add(VAMPIRISM)
