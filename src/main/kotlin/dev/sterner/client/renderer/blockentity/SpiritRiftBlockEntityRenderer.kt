@@ -2,7 +2,7 @@ package dev.sterner.client.renderer.blockentity
 
 import com.mojang.blaze3d.vertex.PoseStack
 import com.mojang.math.Axis
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.client.renderer.blockentity.SpiritBinderBlockEntityRenderer.Companion.TOKEN
 import dev.sterner.common.blockentity.SpiritRiftBlockEntity
 import dev.sterner.registry.VoidBoundRenderTypes
@@ -34,7 +34,7 @@ class SpiritRiftBlockEntityRenderer(ctx: BlockEntityRendererProvider.Context) :
 
         var alpha = 0.1f
 
-        if (VoidBoundApi.hasGoggles()) {
+        if (VoidBoundPlayerUtils.hasGoggles()) {
             alpha = 1f
             renderType = VoidBoundRenderTypes.GRAVITY_VORTEX_DEPTH.apply(TOKEN)
         }

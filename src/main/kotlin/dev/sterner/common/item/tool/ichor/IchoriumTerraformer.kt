@@ -2,7 +2,6 @@ package dev.sterner.common.item.tool.ichor
 
 import com.google.common.collect.ImmutableMultimap
 import com.google.common.collect.Multimap
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.item.HammerLikeItem
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.registry.VoidBoundComponentRegistry

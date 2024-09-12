@@ -1,6 +1,6 @@
 package dev.sterner.common.item.focus
 
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.wand.IWandFocus
 import dev.sterner.registry.VoidBoundComponentRegistry
 import eu.pb4.common.protection.api.CommonProtection
@@ -18,7 +18,7 @@ class WardingFocus : IWandFocus {
             val comp = VoidBoundComponentRegistry.VOID_BOUND_WORLD_COMPONENT.get(level)
             val global = GlobalPos.of(level.dimension(), hitResult.blockPos)
 
-            if (VoidBoundApi.canPlayerBreakBlock(level, player, global.pos())) {
+            if (VoidBoundPlayerUtils.canPlayerBreakBlock(level, player, global.pos())) {
                 if (comp.hasBlockPos(player, global)) {
                     comp.removePos(player.uuid, global)
                 } else {

@@ -4,7 +4,6 @@ import com.google.common.collect.Multimap
 import com.sammy.malum.common.events.MalumCodexEvents
 import dev.sterner.VoidBoundClient
 import dev.sterner.api.ClientTickHandler
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.client.event.*
 import dev.sterner.common.components.VoidBoundPlayerComponent

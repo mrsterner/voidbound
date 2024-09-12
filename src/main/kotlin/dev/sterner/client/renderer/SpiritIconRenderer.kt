@@ -1,7 +1,7 @@
 package dev.sterner.client.renderer
 
 import com.mojang.blaze3d.vertex.PoseStack
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.util.VoidBoundRenderUtils
 import dev.sterner.api.util.VoidBoundUtils
 import net.minecraft.client.Minecraft
@@ -27,7 +27,7 @@ object SpiritIconRenderer {
             return
         }
 
-        if (!VoidBoundApi.hasGoggles()) {
+        if (!VoidBoundPlayerUtils.hasGoggles()) {
             return
         }
 

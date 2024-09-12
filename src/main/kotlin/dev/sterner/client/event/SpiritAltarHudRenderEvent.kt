@@ -3,7 +3,7 @@ package dev.sterner.client.event
 import com.sammy.malum.common.block.curiosities.spirit_altar.AltarCraftingHelper.Ranking
 import com.sammy.malum.common.block.curiosities.spirit_altar.SpiritAltarBlockEntity
 import com.sammy.malum.common.recipe.SpiritInfusionRecipe
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.util.VoidBoundRenderUtils
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
@@ -23,7 +23,7 @@ object SpiritAltarHudRenderEvent {
     fun spiritAltarRecipeHud(guiGraphics: GuiGraphics, partialTick: Float) {
         val client: Minecraft = Minecraft.getInstance()
 
-        if (VoidBoundApi.hasGoggles()) {
+        if (VoidBoundPlayerUtils.hasGoggles()) {
             if (client.level != null && client.hitResult is BlockHitResult) {
                 val result = client.hitResult as BlockHitResult
                 val pos: BlockPos = result.blockPos

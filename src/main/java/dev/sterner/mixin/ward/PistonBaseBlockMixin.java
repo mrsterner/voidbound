@@ -1,6 +1,6 @@
 package dev.sterner.mixin.ward;
 
-import dev.sterner.api.VoidBoundApi;
+import dev.sterner.api.util.VoidBoundBlockUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -16,7 +16,7 @@ public class PistonBaseBlockMixin {
 
     @Inject(method = "isPushable", at = @At("HEAD"), cancellable = true)
     private static void isPushable(BlockState state, Level level, BlockPos pos, Direction movementDirection, boolean allowDestroy, Direction pistonFacing, CallbackInfoReturnable<Boolean> cir) {
-        boolean warded = !VoidBoundApi.INSTANCE.canBlockBreak(level, pos);
+        boolean warded = !VoidBoundBlockUtils.INSTANCE.canBlockBreak(level, pos);
         if (warded) {
             cir.setReturnValue(false);
         }

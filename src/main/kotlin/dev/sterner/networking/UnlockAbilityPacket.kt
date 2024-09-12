@@ -1,6 +1,5 @@
 package dev.sterner.networking
 
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.registry.VoidBoundComponentRegistry
 import me.pepperbell.simplenetworking.SimpleChannel

@@ -2,7 +2,7 @@ package dev.sterner.mixin_logic
 
 import com.sammy.malum.common.entity.nitrate.AbstractNitrateEntity
 import com.sammy.malum.visual_effects.SpiritLightSpecs
-import dev.sterner.api.VoidBoundApi.canPlayerBreakBlock
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.util.VoidBoundPosUtils
 import net.minecraft.client.Minecraft
 import net.minecraft.core.BlockPos
@@ -41,7 +41,7 @@ object ParticleEngineMixinLogic {
      */
     fun logic(level: Level, pos: BlockPos, blockState: BlockState, random: RandomSource, side: Direction): Boolean {
         if (level.isClientSide) {
-            if (Minecraft.getInstance().player != null && !canPlayerBreakBlock(
+            if (Minecraft.getInstance().player != null && !VoidBoundPlayerUtils.canPlayerBreakBlock(
                     level,
                     Minecraft.getInstance().player!!, pos
                 )

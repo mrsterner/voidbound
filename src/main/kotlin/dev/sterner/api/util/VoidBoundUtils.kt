@@ -3,6 +3,7 @@ package dev.sterner.api.util
 import com.sammy.malum.core.listeners.SpiritDataReloadListener
 import com.sammy.malum.core.systems.recipe.SpiritWithCount
 import com.sammy.malum.core.systems.spirit.MalumSpiritType
+import com.sammy.malum.registry.common.SpiritTypeRegistry
 import com.sammy.malum.visual_effects.SpiritLightSpecs
 import dev.sterner.VoidBound
 import dev.sterner.common.item.tool.UpgradableTool
@@ -206,5 +207,33 @@ object VoidBoundUtils {
                 )
             )
         }
+    }
+
+    /**
+     * Returns how many spirits of each kind a enchantment is worth for the osmotic enchanter
+     */
+    fun getSpiritFromEnchant(enchantment: Enchantment, level: Int): List<SpiritWithCount> {
+
+        val reg = BuiltInRegistries.ENCHANTMENT.getKey(enchantment)
+        val list = EnchantSpiritDataReloadListener.ENCHANTING_DATA[reg]
+        val out = mutableListOf<SpiritWithCount>()
+        if (list != null) {
+            for (spiritIn in list.spirits) {
+                out.add(SpiritWithCount(spiritIn.type, spiritIn.count * level))
+            }
+        }
+
+        if (out.isEmpty()) {
+            out.add(SpiritWithCount(SpiritTypeRegistry.AQUEOUS_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.INFERNAL_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.EARTHEN_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.AERIAL_SPIRIT, 4 * level))
+
+            out.add(SpiritWithCount(SpiritTypeRegistry.ARCANE_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.ELDRITCH_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.SACRED_SPIRIT, 4 * level))
+            out.add(SpiritWithCount(SpiritTypeRegistry.WICKED_SPIRIT, 4 * level))
+        }
+        return out
     }
 }

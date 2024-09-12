@@ -4,7 +4,7 @@ import com.sammy.malum.core.systems.spirit.MalumSpiritType
 import com.sammy.malum.registry.client.ParticleRegistry
 import com.sammy.malum.registry.common.SpiritTypeRegistry
 import com.sammy.malum.visual_effects.SpiritLightSpecs
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.util.VoidBoundPosUtils
 import dev.sterner.api.wand.IWandFocus
 import dev.sterner.mixin_logic.ParticleEngineMixinLogic
@@ -70,7 +70,7 @@ class ExcavationFocus : IWandFocus {
                     spec(level, player.lookAngle.normalize(), pos, SpiritTypeRegistry.EARTHEN_SPIRIT, level.random)
                 }
 
-                if (!VoidBoundApi.canPlayerBreakBlock(level, player, blockPos)) {
+                if (!VoidBoundPlayerUtils.canPlayerBreakBlock(level, player, blockPos)) {
                     ParticleEngineMixinLogic.logic(level, blockPos, blockState!!, level.random, hit.direction)
                     return
                 }

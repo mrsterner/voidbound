@@ -1,8 +1,8 @@
 package dev.sterner.common.item.tool.ichor
 
 import com.mojang.datafixers.util.Pair
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.item.ItemAbility
+import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.common.item.tool.GalesEdgeItem.Companion.ascend
 import dev.sterner.mixin.HoeItemTillablesAccessor
 import net.minecraft.core.BlockPos
@@ -40,7 +40,7 @@ class IchoriumVorpal(tier: Tier, attackDamageModifier: Int, attackSpeedModifier:
     }
 
     override fun use(level: Level, player: Player, usedHand: InteractionHand): InteractionResultHolder<ItemStack> {
-        if (VoidBoundApi.getActiveAbility(player.mainHandItem) != ItemAbility.HARVEST) {
+        if (VoidBoundItemUtils.getActiveAbility(player.mainHandItem) != ItemAbility.HARVEST) {
             player.startUsingItem(usedHand)
         }
 
@@ -53,7 +53,7 @@ class IchoriumVorpal(tier: Tier, attackDamageModifier: Int, attackSpeedModifier:
         if (player!!.isShiftKeyDown) {
             return super.useOn(context)
         }
-        if (VoidBoundApi.getActiveAbility(player.mainHandItem) == ItemAbility.HARVEST) {
+        if (VoidBoundItemUtils.getActiveAbility(player.mainHandItem) == ItemAbility.HARVEST) {
             for (xx in -1..1) {
                 for (zz in -1..1) {
                     useHoeOn(
@@ -124,7 +124,7 @@ class IchoriumVorpal(tier: Tier, attackDamageModifier: Int, attackSpeedModifier:
     }
 
     override fun onUseTick(level: Level, player: LivingEntity, stack: ItemStack, remainingUseDuration: Int) {
-        if (VoidBoundApi.getActiveAbility(player.mainHandItem) != ItemAbility.HARVEST) {
+        if (VoidBoundItemUtils.getActiveAbility(player.mainHandItem) != ItemAbility.HARVEST) {
             ascend(player, stack, this.getUseDuration(stack) - remainingUseDuration)
         }
 

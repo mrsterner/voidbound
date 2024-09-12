@@ -1,7 +1,7 @@
 package dev.sterner.networking
 
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.item.ItemAbility
+import dev.sterner.api.util.VoidBoundItemUtils
 import me.pepperbell.simplenetworking.SimpleChannel
 import net.fabricmc.fabric.api.networking.v1.PacketSender
 import net.minecraft.network.FriendlyByteBuf
@@ -30,8 +30,8 @@ class AbilityUpdatePacket(val uuid: UUID, val itemAbility: ItemAbility) : Lodest
         server?.execute {
             if (player?.uuid == uuid) {
                 val item = player.mainHandItem
-                VoidBoundApi.addItemAbility(item, itemAbility, true)
-                VoidBoundApi.setActiveAbility(item, itemAbility)
+                VoidBoundItemUtils.addItemAbility(item, itemAbility, true)
+                VoidBoundItemUtils.setActiveAbility(item, itemAbility)
             }
         }
     }

@@ -1,7 +1,9 @@
 package dev.sterner.api.util
 
 import com.sammy.malum.registry.common.block.BlockRegistry
+import dev.sterner.registry.VoidBoundComponentRegistry
 import net.minecraft.core.BlockPos
+import net.minecraft.core.GlobalPos
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.tags.BlockTags
 import net.minecraft.world.entity.player.Player
@@ -192,5 +194,20 @@ object VoidBoundBlockUtils {
         }
 
         return itemStack.copy().also { EnchantmentHelper.setEnchantments(enchantments, it) }
+    }
+
+    /**
+    * Returns false if the block being broken is warded by any player
+    */
+    fun canBlockBreak(level: Level, blockPos: BlockPos): Boolean {
+        val comp = VoidBoundComponentRegistry.VOID_BOUND_WORLD_COMPONENT.get(level)
+        if (comp.isEmpty()) {
+            return true
+        }
+
+        if (comp.hasBlockPos(GlobalPos.of(level.dimension(), blockPos))) {
+            return false
+        }
+        return true
     }
 }

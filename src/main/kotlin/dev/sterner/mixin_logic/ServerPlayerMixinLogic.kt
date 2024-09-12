@@ -3,7 +3,7 @@ package dev.sterner.mixin_logic
 import com.sammy.malum.common.components.MalumComponents
 import com.sammy.malum.common.components.MalumPlayerDataComponent
 import com.sammy.malum.registry.common.block.BlockRegistry
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.registry.VoidBoundComponentRegistry.Companion.VOID_BOUND_REVELATION_COMPONENT
 import dev.sterner.registry.VoidBoundSoundEvents
 import net.minecraft.network.chat.Component
@@ -33,13 +33,13 @@ object ServerPlayerMixinLogic {
             if (comp.hasWellKnowledge) {
                 comp.hasNetherKnowledge = true
                 if (!comp.hasReceivedNetherMessage) {
-                    VoidBoundApi.addThought(player, Component.translatable("voidbound.revelation.nether"), 20 * 5)
+                    VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.revelation.nether"), 20 * 5)
                     comp.hasReceivedNetherMessage = true
                 }
 
             } else {
                 if (!comp.hasReceivedPreWellNetherMessage) {
-                    VoidBoundApi.addThought(player, Component.translatable("voidbound.revelation.pre_well_nether"), 20 * 5)
+                    VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.revelation.pre_well_nether"), 20 * 5)
                     comp.hasReceivedPreWellNetherMessage = true
                 }
             }
@@ -48,13 +48,13 @@ object ServerPlayerMixinLogic {
             if (comp.hasWellKnowledge) {
                 comp.hasEndKnowledge = true
                 if (!comp.hasReceivedEndMessage) {
-                    VoidBoundApi.addThought(player, Component.translatable("voidbound.revelation.end"), 20 * 5)
+                    VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.revelation.end"), 20 * 5)
                     comp.hasReceivedEndMessage = true
                 }
 
             } else {
                 if (!comp.hasReceivedPreWellEndMessage) {
-                    VoidBoundApi.addThought(player, Component.translatable("voidbound.revelation.pre_well_nether"), 20 * 5)
+                    VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.revelation.pre_well_nether"), 20 * 5)
                     comp.hasReceivedPreWellEndMessage = true
                 }
             }

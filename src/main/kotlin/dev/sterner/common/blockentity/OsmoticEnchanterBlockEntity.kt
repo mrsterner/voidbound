@@ -5,8 +5,9 @@ import com.sammy.malum.common.block.storage.jar.SpiritJarBlockEntity
 import com.sammy.malum.core.systems.recipe.SpiritWithCount
 import com.sammy.malum.core.systems.spirit.MalumSpiritType
 import com.sammy.malum.visual_effects.SpiritLightSpecs
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.rift.SimpleSpiritCharge
+import dev.sterner.api.util.VoidBoundItemUtils
+import dev.sterner.api.util.VoidBoundUtils
 import dev.sterner.networking.UpdateSpiritAmountPacket
 import dev.sterner.registry.VoidBoundBlockEntityTypeRegistry
 import dev.sterner.registry.VoidBoundPacketRegistry
@@ -407,7 +408,7 @@ class OsmoticEnchanterBlockEntity(pos: BlockPos, state: BlockState?) : VoudBound
         val spirits = SimpleSpiritCharge()
 
         for (enchantmentInfo in activeEnchantments) {
-            val sc = VoidBoundApi.getSpiritFromEnchant(enchantmentInfo.enchantment, enchantmentInfo.level)
+            val sc = VoidBoundUtils.getSpiritFromEnchant(enchantmentInfo.enchantment, enchantmentInfo.level)
             for (spirit in sc) {
                 spirits.addToCharge(spirit.type, spirit.count)
             }

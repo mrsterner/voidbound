@@ -4,7 +4,7 @@ import com.sammy.malum.common.block.curiosities.spirit_altar.SpiritAltarBlockEnt
 import com.sammy.malum.common.block.storage.jar.SpiritJarBlockEntity
 import com.sammy.malum.common.recipe.SpiritInfusionRecipe
 import dev.sterner.VoidBound
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.util.VoidBoundRenderUtils
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Font
@@ -21,7 +21,7 @@ object SpiritJarHudRenderEvent {
     fun spiritJarHud(guiGraphics: GuiGraphics, partialTick: Float) {
         val client: Minecraft = Minecraft.getInstance()
 
-        if (VoidBoundApi.hasGoggles()) {
+        if (VoidBoundPlayerUtils.hasGoggles()) {
             if (client.level != null && client.hitResult is BlockHitResult) {
                 val result = client.hitResult as BlockHitResult
                 val pos: BlockPos = result.blockPos

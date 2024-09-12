@@ -1,6 +1,6 @@
 package dev.sterner.common.item
 
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.registry.VoidBoundBlockRegistry
 import dev.sterner.registry.VoidBoundComponentRegistry
 import net.minecraft.client.Minecraft
@@ -53,9 +53,9 @@ class GrimBookItem(properties: Properties) : BlockItem(VoidBoundBlockRegistry.GR
 
         if (giveAdvancement) {
             VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player).hasGrimcultKnowledge = true
-            VoidBoundApi.addThought(player, Component.translatable("voidbound.grimcultrites"))
+            VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.grimcultrites"))
         } else if (item.tag!!.getBoolean("open")) {
-            VoidBoundApi.addThought(player, Component.translatable("voidbound.no_grimcultrites"))
+            VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.no_grimcultrites"))
         }
 
 

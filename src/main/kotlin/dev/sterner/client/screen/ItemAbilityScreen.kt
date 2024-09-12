@@ -2,8 +2,8 @@ package dev.sterner.client.screen
 
 import com.mojang.blaze3d.systems.RenderSystem
 import dev.sterner.VoidBound
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.item.ItemAbility
+import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.networking.AbilityUpdatePacket
 import dev.sterner.registry.VoidBoundComponentRegistry
 import dev.sterner.registry.VoidBoundPacketRegistry
@@ -38,7 +38,7 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
         val unlockedAbilities = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(minecraft!!.player!!).unlockedItemAbilities
         abilities = compatibleAbilities.intersect(unlockedAbilities)
 
-        val activeAbility = VoidBoundApi.getActiveAbility(stack)
+        val activeAbility = VoidBoundItemUtils.getActiveAbility(stack)
         if (activeAbility != null && abilities!!.isNotEmpty()) {
             selection = abilities!!.indexOfFirst { it.name == activeAbility.name }.takeIf { it >= 0 } ?: 0
         }

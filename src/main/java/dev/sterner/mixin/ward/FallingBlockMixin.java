@@ -1,6 +1,6 @@
 package dev.sterner.mixin.ward;
 
-import dev.sterner.api.VoidBoundApi;
+import dev.sterner.api.util.VoidBoundBlockUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -16,7 +16,7 @@ public class FallingBlockMixin {
 
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     private void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
-        if (!VoidBoundApi.INSTANCE.canBlockBreak(level, pos)) {
+        if (!VoidBoundBlockUtils.INSTANCE.canBlockBreak(level, pos)) {
             ci.cancel();
         }
     }

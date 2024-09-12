@@ -2,7 +2,6 @@ package dev.sterner.common.components
 
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent
 import dev.onyxstudios.cca.api.v3.component.tick.CommonTickingComponent
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.registry.VoidBoundComponentRegistry
 import dev.sterner.registry.VoidBoundSoundEvents

@@ -4,8 +4,8 @@ import com.google.common.base.Supplier
 import com.mojang.serialization.Codec
 import com.mojang.serialization.codecs.RecordCodecBuilder
 import dev.sterner.VoidBound
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.item.ItemAbility
+import dev.sterner.api.util.VoidBoundItemUtils
 import io.github.fabricators_of_create.porting_lib.loot.IGlobalLootModifier
 import io.github.fabricators_of_create.porting_lib.loot.LootModifier
 import io.github.fabricators_of_create.porting_lib.loot.PortingLibLoot
@@ -31,7 +31,7 @@ class VoidBoundLootModifier(conditionsIn: Array<out LootItemCondition>?) : LootM
     ): ObjectArrayList<ItemStack> {
 
         val stack = context?.getParamOrNull(LootContextParams.TOOL)
-        if (stack != null && VoidBoundApi.getActiveAbility(stack) == ItemAbility.AUTOSMELT) {
+        if (stack != null && VoidBoundItemUtils.getActiveAbility(stack) == ItemAbility.AUTOSMELT) {
 
             val level = context.level
             val smeltedItems = generatedLoot?.asSequence()?.map { originalStack ->

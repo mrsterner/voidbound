@@ -2,7 +2,7 @@ package dev.sterner.mixin.ward;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.sugar.Local;
-import dev.sterner.api.VoidBoundApi;
+import dev.sterner.api.util.VoidBoundBlockUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
@@ -22,6 +22,6 @@ public class ExplosionMixin {
 
     @WrapWithCondition(method = "explode", at = @At(value = "INVOKE", target = "Ljava/util/Set;add(Ljava/lang/Object;)Z"))
     private boolean voidbound$wardExplosion(Set<BlockPos> instance, Object e, @Local BlockPos blockPos) {
-        return VoidBoundApi.INSTANCE.canBlockBreak(this.level, blockPos);
+        return VoidBoundBlockUtils.INSTANCE.canBlockBreak(this.level, blockPos);
     }
 }

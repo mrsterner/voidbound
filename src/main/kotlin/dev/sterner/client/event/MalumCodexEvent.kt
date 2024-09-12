@@ -14,7 +14,7 @@ import com.sammy.malum.client.screen.codex.screens.ArcanaProgressionScreen
 import com.sammy.malum.client.screen.codex.screens.VoidProgressionScreen
 import dev.sterner.VoidBound
 import dev.sterner.VoidBound.modid
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.registry.VoidBoundItemRegistry
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.world.item.ItemStack
@@ -162,7 +162,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundApi.hasTearKnowledgeClient()
+                    VoidBoundPlayerUtils.hasTearKnowledgeClient()
                 }
 
         }
@@ -182,7 +182,7 @@ object MalumCodexEvent {
                 )
             }.addPage(HeadlineTextPage("void.thoughts_about_nether", "void.thoughts_about_nether.1"))
                 .setEntryVisibleWhen {
-                    VoidBoundApi.hasNetherMessage()
+                    VoidBoundPlayerUtils.hasNetherMessage()
             }
         }
 
@@ -201,7 +201,7 @@ object MalumCodexEvent {
                 )
             }.addPage(HeadlineTextPage("void.thoughts_about_end", "void.thoughts_about_end.1"))
                 .setEntryVisibleWhen {
-                    VoidBoundApi.hasEndMessage()
+                    VoidBoundPlayerUtils.hasEndMessage()
                 }
         }
 
@@ -222,7 +222,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundApi.hasGrimcultKnowledgeClient()
+                    VoidBoundPlayerUtils.hasGrimcultKnowledgeClient()
                 }
         }
 
@@ -242,7 +242,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundApi.hasIchorKnowledgeClient()
+                    VoidBoundPlayerUtils.hasIchorKnowledgeClient()
                 }
         }
 
@@ -262,7 +262,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundApi.hasIchorKnowledgeClient()
+                    VoidBoundPlayerUtils.hasIchorKnowledgeClient()
                 }
         }
 
@@ -282,7 +282,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundApi.hasIchorKnowledgeClient()
+                    VoidBoundPlayerUtils.hasIchorKnowledgeClient()
                 }
         }
     }

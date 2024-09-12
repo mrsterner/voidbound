@@ -2,8 +2,8 @@ package dev.sterner.client.screen.widget
 
 import com.sammy.malum.core.systems.recipe.SpiritWithCount
 import dev.sterner.VoidBound
-import dev.sterner.api.VoidBoundApi
 import dev.sterner.api.rift.SimpleSpiritCharge
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.util.VoidBoundUtils
 import dev.sterner.client.screen.OsmoticEnchanterScreen
 import dev.sterner.networking.EnchantmentLevelPacket
@@ -174,7 +174,7 @@ open class EnchantmentWidget(var screen: OsmoticEnchanterScreen, x: Int, y: Int,
     }
 
     private fun canAddLevel(): Boolean {
-        val spirits: List<SpiritWithCount> = VoidBoundApi.getSpiritFromEnchant(enchantment!!, level)
+        val spirits: List<SpiritWithCount> = VoidBoundUtils.getSpiritFromEnchant(enchantment!!, level)
         val toConsume: SimpleSpiritCharge = screen.menu.osmoticEnchanter!!.spiritsToConsume
 
         for (spirit in spirits) {

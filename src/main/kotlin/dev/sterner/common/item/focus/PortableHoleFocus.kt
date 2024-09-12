@@ -1,6 +1,6 @@
 package dev.sterner.common.item.focus
 
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundBlockUtils
 import dev.sterner.api.wand.IWandFocus
 import dev.sterner.registry.VoidBoundBlockRegistry
 import dev.sterner.registry.VoidBoundTags
@@ -71,7 +71,7 @@ class PortableHoleFocus : IWandFocus {
      * Verifies if the block can be broken by the player.
      */
     private fun canBlockBeBroken(level: Level, pos: BlockPos, player: Player): Boolean {
-        return VoidBoundApi.canBlockBreak(level, pos) &&
+        return VoidBoundBlockUtils.canBlockBreak(level, pos) &&
                 CommonProtection.canBreakBlock(level, pos, player.gameProfile, player)
     }
 
@@ -162,7 +162,7 @@ class PortableHoleFocus : IWandFocus {
          * Checks if the block can be broken at the given position by the player.
          */
         private fun canBreakBlock(level: Level, pos: BlockPos, player: Player?): Boolean {
-            return VoidBoundApi.canBlockBreak(level, pos) &&
+            return VoidBoundBlockUtils.canBlockBreak(level, pos) &&
                     CommonProtection.canBreakBlock(level, pos, player?.gameProfile, player)
         }
     }

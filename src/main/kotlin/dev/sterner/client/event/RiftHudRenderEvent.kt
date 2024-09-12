@@ -1,7 +1,7 @@
 package dev.sterner.client.event
 
 import dev.sterner.VoidBound
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.util.VoidBoundRenderUtils
 import dev.sterner.common.blockentity.SpiritRiftBlockEntity
 import net.minecraft.client.Minecraft
@@ -21,7 +21,7 @@ object RiftHudRenderEvent {
     fun spiritRiftHud(guiGraphics: GuiGraphics, partialTick: Float) {
         val client: Minecraft = Minecraft.getInstance()
 
-        if (VoidBoundApi.hasGoggles()) {
+        if (VoidBoundPlayerUtils.hasGoggles()) {
             if (client.level != null && client.hitResult is BlockHitResult) {
                 val result = client.hitResult as BlockHitResult
                 val pos: BlockPos = result.blockPos

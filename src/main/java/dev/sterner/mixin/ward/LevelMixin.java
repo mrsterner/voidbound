@@ -1,6 +1,6 @@
 package dev.sterner.mixin.ward;
 
-import dev.sterner.api.VoidBoundApi;
+import dev.sterner.api.util.VoidBoundBlockUtils;
 import dev.sterner.registry.VoidBoundComponentRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
@@ -25,7 +25,7 @@ public class LevelMixin {
 
     @Inject(method = "destroyBlock", at = @At("HEAD"), cancellable = true)
     private void voidbound$destroyBlock2(BlockPos pos, boolean dropBlock, Entity entity, int recursionLeft, CallbackInfoReturnable<Boolean> cir){
-        if (!VoidBoundApi.INSTANCE.canBlockBreak((Level) (Object) this, pos)) {
+        if (!VoidBoundBlockUtils.INSTANCE.canBlockBreak((Level) (Object) this, pos)) {
             cir.setReturnValue(false);
         }
     }

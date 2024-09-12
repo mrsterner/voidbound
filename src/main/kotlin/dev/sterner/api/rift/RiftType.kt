@@ -1,6 +1,6 @@
 package dev.sterner.api.rift
 
-import dev.sterner.api.VoidBoundApi
+import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.common.blockentity.SpiritRiftBlockEntity
 import net.minecraft.client.Minecraft
 import net.minecraft.core.BlockPos
@@ -33,7 +33,7 @@ abstract class RiftType {
                 ColorParticleData.create(firstColorAlpha, secondColorAlpha).setEasing(Easing.SINE_IN).setCoefficient(0.75f)
                     .build()
             if (Minecraft.getInstance().player != null) {
-                if (VoidBoundApi.hasGoggles()) {
+                if (VoidBoundPlayerUtils.hasGoggles()) {
                     transparency = GenericParticleData.create(0.2f, 0.8f).build()
                     color =
                         ColorParticleData.create(firstColor, secondColor).setEasing(Easing.SINE_IN).setCoefficient(0.75f)
