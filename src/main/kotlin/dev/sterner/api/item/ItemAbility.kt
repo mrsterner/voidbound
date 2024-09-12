@@ -12,12 +12,12 @@ import net.minecraft.world.item.*
 import kotlin.reflect.KClass
 
 enum class ItemAbility: StringRepresentable {
-    NONE,//TODO implement
+    NONE,//Fully implemented
     AUTOSMELT,//Fully implemented
     MINING_3X3,//Fully implemented
     MINING_5X5,//Fully implemented
     VAMPIRISM,//TODO implement
-    HARVEST,//TODO implement
+    HARVEST,//Fully implemented
     OPENER;//TODO implement
 
     override fun getSerializedName(): String {
