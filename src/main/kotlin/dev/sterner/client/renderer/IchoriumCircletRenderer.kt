@@ -1,18 +1,23 @@
 package dev.sterner.client.renderer
 
 import com.mojang.blaze3d.vertex.PoseStack
-import com.sammy.malum.common.item.curiosities.armor.MalumArmorItem
-import dev.sterner.registry.VoidBoundBlockRegistry
+import dev.sterner.VoidBound
+import dev.sterner.client.model.HallowedGogglesModel
+import dev.sterner.client.model.IchoriumCircletModel
+import dev.sterner.client.renderer.HallowedGogglesRenderer.Companion
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer
 import net.minecraft.client.Minecraft
 import net.minecraft.client.model.HumanoidModel
+import net.minecraft.client.model.MinecartModel
 import net.minecraft.client.renderer.MultiBufferSource
-import net.minecraft.client.renderer.texture.OverlayTexture
 import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.entity.LivingEntity
+import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 
 class IchoriumCircletRenderer : ArmorRenderer {
+
+    var model: IchoriumCircletModel<LivingEntity>? = null
 
     override fun render(
         matrices: PoseStack,
@@ -24,8 +29,19 @@ class IchoriumCircletRenderer : ArmorRenderer {
         contextModel: HumanoidModel<LivingEntity>?
     ) {
         if (slot == EquipmentSlot.HEAD) {
-            val state = VoidBoundBlockRegistry.ICHORIUM_CIRCLET.get().defaultBlockState()
-            Minecraft.getInstance().blockRenderer.renderSingleBlock(state, matrices, vertexConsumers, light, OverlayTexture.NO_OVERLAY)
+            matrices.pushPose()
+
+            if (model == null) {
+                model = IchoriumCircletModel(
+                    Minecraft.getInstance().entityModels.bakeLayer(IchoriumCircletModel.LAYER_LOCATION)
+                )
+            } else {
+                contextModel!!.head.translateAndRotate(matrices)
+                matrices.translate(0.0,-1.7,0.0)
+                ArmorRenderer.renderPart(matrices, vertexConsumers, light, stack, model, VoidBound.id("textures/entity/ichorium_circlet.png"))
+            }
+
+            matrices.popPose()
         }
     }
 }

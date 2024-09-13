@@ -22,5 +22,7 @@ object VoidBoundModelLayers {
         EntityModelLayerRegistry.registerModelLayer(ObeliskCoreModel.LAYER_LOCATION) { ObeliskCoreModel.createBodyLayer() }
         EntityModelLayerRegistry.registerModelLayer(ObeliskModel.LAYER_LOCATION) { ObeliskModel.createBodyLayer() }
 
+        EntityModelLayerRegistry.registerModelLayer(IchoriumCircletModel.LAYER_LOCATION) { IchoriumCircletModel.createBodyLayer() }
+
     }
 }
