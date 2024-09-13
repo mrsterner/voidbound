@@ -200,7 +200,7 @@ object VoidBoundItemRegistry {
         IchoriumEdge(VoidBoundTiers.ICHORIUM, -2.5f, 2.1f, ichorProptery)
     }
 
-    val ICHORIUM_CROWN: RegistryObject<IchoriumCrown> = ITEMS.register("ichorium_crown") {
+    val ICHORIUM_CIRCLET: RegistryObject<IchoriumCrown> = ITEMS.register("ichorium_circlet") {
         IchoriumCrown(Item.Properties())
     }
 

@@ -1,12 +1,13 @@
 package dev.sterner.common
 
-import dev.sterner.VoidBound
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.client.screen.ItemAbilityScreen
+import dev.sterner.registry.VoidBoundItemRegistry
 import dev.sterner.registry.VoidBoundTags
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.player.LocalPlayer
+import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.GameType
 import org.lwjgl.glfw.GLFW
@@ -43,6 +44,8 @@ class ItemAbilityHandler {
             // Only create a new screen if the item is not null
             selectionScreen = if (stack != null && stack.`is`(VoidBoundTags.ITEM_WITH_ABILITY)) {
                 ItemAbilityScreen(stack)
+            } else if (player.getItemBySlot(EquipmentSlot.HEAD).`is`(VoidBoundItemRegistry.ICHORIUM_CIRCLET.get())) {
+                ItemAbilityScreen(player.getItemBySlot(EquipmentSlot.HEAD))
             } else {
                 null
             }

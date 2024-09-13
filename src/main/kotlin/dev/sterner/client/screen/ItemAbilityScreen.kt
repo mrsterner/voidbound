@@ -6,6 +6,7 @@ import dev.sterner.api.item.ItemAbility
 import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.networking.AbilityUpdatePacket
 import dev.sterner.registry.VoidBoundComponentRegistry
+import dev.sterner.registry.VoidBoundItemRegistry
 import dev.sterner.registry.VoidBoundPacketRegistry
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
@@ -13,7 +14,7 @@ import net.minecraft.client.gui.screens.Screen
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.ItemStack
 
-class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Selection")) {
+class ItemAbilityScreen(var stack: ItemStack) : Screen(Component.literal("Ability Selection")) {
 
     var focus: Boolean = false
     private var yOffset = 0f
@@ -81,19 +82,19 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
             gray,
             x - 15,
             y,
-           0f,
+            0f,
             0f,
             w,
             h,
             256,
-           256
+            256
         )
 
         val abilityWidth = 50  // Width of one ability + some space
         val totalWidth = abilities!!.size * abilityWidth
-
         val startX = (mainWindow.guiScaledWidth - totalWidth) / 2
 
+        // Render the abilities
         for ((index, ability) in abilities!!.withIndex()) {  // Loop through the Set directly
             RenderSystem.enableBlend()
             matrixStack.pushPose()
@@ -125,6 +126,22 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
 
             matrixStack.popPose()
         }
+        if (focus) {
+            // Render the item name in the middle of the screen
+            val itemName = stack.hoverName // Get the item's display name from the ItemStack
+            val itemNameX = mainWindow.guiScaledWidth / 2
+            val itemNameY = y - 10 // Adjust the Y position above the abilities
+
+            guiGraphics.drawCenteredString(
+                minecraft!!.font,
+                itemName, // Use the item name here
+                itemNameX,
+                itemNameY,
+                0xFFFFFF  // White color
+            )
+        }
+
+
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f)
         RenderSystem.disableBlend()
         matrixStack.popPose()
@@ -132,7 +149,14 @@ class ItemAbilityScreen(stack: ItemStack) : Screen(Component.literal("Ability Se
 
     override fun onClose() {
         if (Minecraft.getInstance().player != null && abilities!!.elementAtOrNull(selection) != null) {
-            VoidBoundPacketRegistry.VOID_BOUND_CHANNEL.sendToServer(AbilityUpdatePacket(Minecraft.getInstance().player!!.uuid, abilities!!.elementAt(selection)))
+
+            VoidBoundPacketRegistry.VOID_BOUND_CHANNEL.sendToServer(
+                AbilityUpdatePacket(
+                    Minecraft.getInstance().player!!.uuid,
+                    abilities!!.elementAt(selection),
+                    stack.`is`(VoidBoundItemRegistry.ICHORIUM_CIRCLET.get())
+                )
+            )
         }
     }
 }

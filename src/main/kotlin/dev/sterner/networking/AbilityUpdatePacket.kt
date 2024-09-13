@@ -8,17 +8,19 @@ import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.server.network.ServerGamePacketListenerImpl
+import net.minecraft.world.entity.EquipmentSlot
 import team.lodestar.lodestone.systems.network.LodestoneServerPacket
 import java.util.UUID
 
-class AbilityUpdatePacket(val uuid: UUID, val itemAbility: ItemAbility) : LodestoneServerPacket() {
+class AbilityUpdatePacket(val uuid: UUID, val itemAbility: ItemAbility, val helm: Boolean) : LodestoneServerPacket() {
 
     override fun encode(buf: FriendlyByteBuf) {
         buf.writeUUID(uuid)
         buf.writeUtf(itemAbility.name)
+        buf.writeBoolean(helm)
     }
 
-    constructor(buf: FriendlyByteBuf) : this(buf.readUUID(), ItemAbility.valueOf(buf.readUtf()))
+    constructor(buf: FriendlyByteBuf) : this(buf.readUUID(), ItemAbility.valueOf(buf.readUtf()), buf.readBoolean())
 
     override fun executeServer(
         server: MinecraftServer?,
@@ -29,7 +31,7 @@ class AbilityUpdatePacket(val uuid: UUID, val itemAbility: ItemAbility) : Lodest
     ) {
         server?.execute {
             if (player?.uuid == uuid) {
-                val item = player.mainHandItem
+                val item = if (helm) player.getItemBySlot(EquipmentSlot.HEAD) else player.mainHandItem
                 VoidBoundItemUtils.addItemAbility(item, itemAbility, true)
                 VoidBoundItemUtils.setActiveAbility(item, itemAbility)
             }

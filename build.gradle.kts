@@ -30,7 +30,7 @@ repositories {
 		dirs("libs")
 	}
 	mavenCentral()
-
+	mavenLocal()
 	maven ("https://maven.theillusivec4.top/")
 	maven("https://dvs1.progwml6.com/files/maven")
 	maven("https://maven.tterrag.com/")

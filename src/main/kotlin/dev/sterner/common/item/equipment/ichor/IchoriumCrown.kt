@@ -21,7 +21,7 @@ class IchoriumCrown(properties: Properties) : MalumArmorItem(
             AttributeModifier(
                 UUID.fromString("745DB17C-C613-495F-8C9F-6020A9A58B5B"),
                 "Soul Ward Recovery Speed",
-                3.0,
+                5.0,
                 AttributeModifier.Operation.ADDITION
             )
         )
@@ -30,8 +30,8 @@ class IchoriumCrown(properties: Properties) : MalumArmorItem(
             AttributeModifier(
                 UUID.fromString("545DB17C-C623-495F-8C9F-6010A9A58B5B"),
                 "Speed",
-                6.0,
-                AttributeModifier.Operation.MULTIPLY_BASE
+                8.0,
+                AttributeModifier.Operation.ADDITION
             )
         )
         return attributes
