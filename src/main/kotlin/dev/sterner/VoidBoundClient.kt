@@ -5,6 +5,7 @@ import dev.emi.trinkets.api.client.TrinketRendererRegistry
 import dev.sterner.VoidBound.id
 import dev.sterner.client.VoidBoundModelLoaderPlugin
 import dev.sterner.client.renderer.HallowedMonocleRenderer
+import dev.sterner.client.renderer.IchoriumCircletRenderer
 import dev.sterner.client.renderer.WandItemRenderer
 import dev.sterner.client.screen.OsmoticEnchanterScreen
 import dev.sterner.common.ItemAbilityHandler
@@ -12,6 +13,7 @@ import dev.sterner.registry.*
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin
+import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry
 import net.minecraft.client.gui.screens.MenuScreens
 import net.minecraft.client.renderer.RenderType
@@ -60,6 +62,8 @@ object VoidBoundClient : ClientModInitializer {
             VoidBoundBlockRegistry.TEAR_OF_BRIMSTONE.get(),
             VoidBoundBlockRegistry.OSMOTIC_ENCHANTER.get()
         )
+
+        ArmorRenderer.register(IchoriumCircletRenderer(), VoidBoundItemRegistry.ICHORIUM_CIRCLET.get())
 
         ModelLoadingPlugin.register(VoidBoundModelLoaderPlugin)
 

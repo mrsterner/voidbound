@@ -75,6 +75,12 @@ object VoidBoundBlockRegistry {
         TearBlock(TearBlock.Type.BRIMSTONE, FabricBlockSettings.create().noOcclusion())
     }
 
+    var ICHORIUM_CIRCLET: RegistryObject<IchoriumCircletBlock> = BLOCKS.register("ichorium_circlet") {
+        IchoriumCircletBlock(FabricBlockSettings.create().noOcclusion())
+    }
+
+
+
     val ELDRITCH_OBELISK: RegistryObject<EldritchObeliskBlock> = BLOCKS.register(
         "eldritch_obelisk"
     ) {
