@@ -1,5 +1,6 @@
 package dev.sterner.api.util
 
+import dev.sterner.api.item.ItemAbility
 import dev.sterner.registry.VoidBoundComponentRegistry
 import dev.sterner.registry.VoidBoundItemRegistry
 import net.minecraft.client.Minecraft
@@ -24,21 +25,11 @@ object VoidBoundPlayerUtils {
                 .`is`(
                     VoidBoundItemRegistry.HALLOWED_GOGGLES.get()
                 )
-            return bl || bl2
+            val bl3 = VoidBoundItemUtils.getActiveAbility(player.mainHandItem) == ItemAbility.SPIRIT_VISION
+
+            return bl || bl2 || bl3
         }
         return false
-    }
-
-    /**
-     * Returns true if a player has the hallowed goggles or monocle equipped
-     */
-    fun hasGoggles(player: Player): Boolean {
-        val bl = TrinketsHelper.hasTrinketEquipped(player, VoidBoundItemRegistry.HALLOWED_MONOCLE.get())
-        val bl2 = Minecraft.getInstance().player!!.getItemBySlot(EquipmentSlot.HEAD)
-            .`is`(
-                VoidBoundItemRegistry.HALLOWED_GOGGLES.get()
-            )
-        return bl || bl2
     }
 
     /**

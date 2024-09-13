@@ -1,4 +1,4 @@
-package dev.sterner.common.item.tool
+package dev.sterner.common.item.equipment
 
 import net.minecraft.world.item.ItemStack
 

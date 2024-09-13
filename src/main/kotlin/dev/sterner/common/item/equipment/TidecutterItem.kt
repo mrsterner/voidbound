@@ -1,4 +1,4 @@
-package dev.sterner.common.item.tool
+package dev.sterner.common.item.equipment
 
 import dev.sterner.api.util.VoidBoundBlockUtils
 import dev.sterner.api.util.VoidBoundUtils

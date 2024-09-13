@@ -6,8 +6,8 @@ import dev.sterner.api.entity.GolemCore
 import dev.sterner.common.blockentity.EldritchObeliskBlockEntity
 import dev.sterner.common.item.*
 import dev.sterner.common.item.focus.*
-import dev.sterner.common.item.tool.*
-import dev.sterner.common.item.tool.ichor.*
+import dev.sterner.common.item.equipment.*
+import dev.sterner.common.item.equipment.ichor.*
 import io.github.fabricators_of_create.porting_lib.util.LazyRegistrar
 import io.github.fabricators_of_create.porting_lib.util.RegistryObject
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
@@ -197,7 +197,11 @@ object VoidBoundItemRegistry {
     }
 
     val ICHORIUM_SCYTHE: RegistryObject<Item> = ITEMS.register("ichorium_scythe") {
-        IchoriumScytheItem(VoidBoundTiers.ICHORIUM, -2.5f, 2.1f, ichorProptery)
+        IchoriumEdge(VoidBoundTiers.ICHORIUM, -2.5f, 2.1f, ichorProptery)
+    }
+
+    val ICHORIUM_CROWN: RegistryObject<IchoriumCrown> = ITEMS.register("ichorium_crown") {
+        IchoriumCrown(Item.Properties())
     }
 
     val ichorProptery = FabricItemSettings().stacksTo(1).fireResistant().rarity(Rarity.RARE)

@@ -1,7 +1,7 @@
 package dev.sterner.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import dev.sterner.common.item.tool.UpgradableTool;
+import dev.sterner.common.item.equipment.UpgradableTool;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

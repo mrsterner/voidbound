@@ -1,23 +1,17 @@
-package dev.sterner.common.item.tool.ichor
+package dev.sterner.common.item.equipment.ichor
 
 import com.google.common.collect.ImmutableMultimap
 import com.google.common.collect.Multimap
 import dev.sterner.api.item.HammerLikeItem
-import dev.sterner.api.item.ItemAbility
-import dev.sterner.registry.VoidBoundComponentRegistry
 import dev.sterner.registry.VoidBoundTiers
 import net.minecraft.tags.BlockTags
 import net.minecraft.tags.TagKey
-import net.minecraft.world.InteractionHand
-import net.minecraft.world.InteractionResultHolder
 import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.entity.ai.attributes.Attribute
 import net.minecraft.world.entity.ai.attributes.AttributeModifier
-import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.AxeItem
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Tier
-import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockState
 import team.lodestar.lodestone.registry.common.LodestoneAttributeRegistry

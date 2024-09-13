@@ -6,7 +6,7 @@ import com.sammy.malum.core.systems.spirit.MalumSpiritType
 import com.sammy.malum.registry.common.SpiritTypeRegistry
 import com.sammy.malum.visual_effects.SpiritLightSpecs
 import dev.sterner.VoidBound
-import dev.sterner.common.item.tool.UpgradableTool
+import dev.sterner.common.item.equipment.UpgradableTool
 import dev.sterner.listener.EnchantSpiritDataReloadListener
 import net.minecraft.ChatFormatting
 import net.minecraft.advancements.Advancement

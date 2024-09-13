@@ -1,9 +1,9 @@
-package dev.sterner.common.item.tool.ichor
+package dev.sterner.common.item.equipment.ichor
 
 import com.mojang.datafixers.util.Pair
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.api.util.VoidBoundItemUtils
-import dev.sterner.common.item.tool.GalesEdgeItem.Companion.ascend
+import dev.sterner.common.item.equipment.GalesEdgeItem.Companion.ascend
 import dev.sterner.mixin.HoeItemTillablesAccessor
 import net.minecraft.core.BlockPos
 import net.minecraft.core.NonNullList
@@ -17,7 +17,6 @@ import net.minecraft.world.InteractionResult
 import net.minecraft.world.InteractionResultHolder
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
-import net.minecraft.world.item.HoeItem
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Tier
 import net.minecraft.world.item.context.UseOnContext

@@ -1,8 +1,9 @@
 package dev.sterner.api.item
 
-import dev.sterner.common.item.tool.ichor.IchoriumScytheItem
-import dev.sterner.common.item.tool.ichor.IchoriumTerraformer
-import dev.sterner.common.item.tool.ichor.IchoriumVorpal
+import dev.sterner.common.item.equipment.ichor.IchoriumCrown
+import dev.sterner.common.item.equipment.ichor.IchoriumEdge
+import dev.sterner.common.item.equipment.ichor.IchoriumTerraformer
+import dev.sterner.common.item.equipment.ichor.IchoriumVorpal
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.util.StringRepresentable
 import net.minecraft.world.item.*
@@ -18,8 +19,8 @@ enum class ItemAbility: StringRepresentable {
     FINALE,//TODO implement. Consumes All stacks of Opening Strike, multiplying damage dealt by the amount of stacks total.
     TRIPLE_REBOUND,//TODO implement
     VENGEANCE,//TODO implement. Rebound now actively seeks the target who most recently attacked you, damage taken by the owner of the scythe extends it's flight time. Initial flight time greatly increased
-    PROPAGATION;//TODO implement, Rebound causes a sweeping attack. Scythe Sweeping now propagates, spreading itself through hordes of enemies like a chain
-
+    PROPAGATION,//TODO implement, Rebound causes a sweeping attack. Scythe Sweeping now propagates, spreading itself through hordes of enemies like a chain
+    SPIRIT_VISION; //TODO implement, hallowed goggles ability
 
     override fun getSerializedName(): String {
         return this.name.lowercase()
@@ -47,11 +48,16 @@ enum class ItemAbility: StringRepresentable {
             if (item is IchoriumVorpal) {
                 list.add(VAMPIRISM)
                 list.add(OPENER)
+                list.add(FINALE)
                 list.add(HARVEST)
             }
-            if (item is IchoriumScytheItem) {
+            if (item is IchoriumEdge) {
                 list.add(TRIPLE_REBOUND)
+                list.add(VENGEANCE)
                 list.add(PROPAGATION)
+            }
+            if (item is IchoriumCrown) {
+                list.add(SPIRIT_VISION)
             }
 
             return list

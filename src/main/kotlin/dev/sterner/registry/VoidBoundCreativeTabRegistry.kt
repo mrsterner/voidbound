@@ -62,6 +62,7 @@ object VoidBoundCreativeTabRegistry {
                 entries.accept(VoidBoundItemRegistry.TEAR_OF_CRIMSON.get())
                 entries.accept(VoidBoundItemRegistry.TEAR_OF_ENDER.get())
                 entries.accept(VoidBoundItemRegistry.ICHOR.get())
+                entries.accept(VoidBoundItemRegistry.ICHORIUM_CROWN.get())
                 entries.accept(VoidBoundItemRegistry.ICHORIUM_SCYTHE.get())
                 entries.accept(VoidBoundItemRegistry.ICHORIUM_VORPAL.get())
                 entries.accept(VoidBoundItemRegistry.ICHORIUM_TERRAFORMER.get())

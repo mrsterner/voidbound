@@ -38,6 +38,15 @@ enum class VoidBoundMaterials(
         SoundEvents.ARMOR_EQUIP_GOLD,
         ItemRegistry.HALLOWED_GOLD_INGOT.get(),
         0.0f
+    ),
+    ICHORIUM(
+        "voidbound:ichorium",
+        24,
+        intArrayOf(4, 4, 4, 4),
+        32,
+        SoundEvents.ARMOR_EQUIP_GOLD,
+        VoidBoundItemRegistry.ICHOR.get(),
+        3.0f
     );
 
     override fun getDurabilityForType(type: ArmorItem.Type): Int {

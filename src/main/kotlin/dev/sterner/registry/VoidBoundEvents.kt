@@ -9,8 +9,8 @@ import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.client.event.*
 import dev.sterner.common.components.VoidBoundPlayerComponent
 import dev.sterner.common.components.VoidBoundWorldComponent
-import dev.sterner.common.item.tool.TidecutterItem
-import dev.sterner.common.item.tool.UpgradableTool
+import dev.sterner.common.item.equipment.TidecutterItem
+import dev.sterner.common.item.equipment.UpgradableTool
 import io.github.fabricators_of_create.porting_lib.entity.events.living.LivingHurtEvent
 import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents
 import net.fabricmc.api.EnvType
@@ -23,16 +23,12 @@ import net.fabricmc.fabric.api.event.player.UseEntityCallback
 import net.fabricmc.fabric.api.item.v1.ModifyItemAttributeModifiersCallback
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
-import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.entity.ai.attributes.Attribute
 import net.minecraft.world.entity.ai.attributes.AttributeModifier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.crafting.RecipeType
-import net.minecraft.world.item.crafting.SmeltingRecipe
-import net.minecraft.world.level.block.Block
 import java.util.*
 
 

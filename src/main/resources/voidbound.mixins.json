@@ -10,6 +10,7 @@
     "ScytheBoomerangEntityMixin",
     "ServerPlayerGameModeMixin",
     "ServerPlayerMixin",
+    "SoulWardHandlerMixin",
     "ward.BlockBehaviourMixin",
     "ward.EndermanTakeBlockGoalMixin",
     "ward.ExplosionMixin",
