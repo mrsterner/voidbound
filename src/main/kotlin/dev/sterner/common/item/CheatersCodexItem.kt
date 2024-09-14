@@ -29,7 +29,7 @@ class CheatersCodexItem(properties: Properties) : Item(properties) {
 
         VoidRevelationHandler.seeTheRevelation(VoidRevelationHandler.RevelationType.VOID_READER)
 
-        VoidBoundPlayerUtils.addThought(player, Component.translatable("You just know everything don't you >:("))
+        VoidBoundPlayerUtils.addThought(player, Component.translatable("You just know everything don't you >:("), 20 * 5, 1)
 
         return super.use(level, player, usedHand)
     }
