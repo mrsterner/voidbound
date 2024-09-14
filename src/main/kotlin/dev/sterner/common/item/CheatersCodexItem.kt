@@ -1,5 +1,6 @@
 package dev.sterner.common.item
 
+import com.sammy.malum.client.VoidRevelationHandler
 import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.registry.VoidBoundComponentRegistry
 import net.minecraft.network.chat.Component
@@ -25,6 +26,8 @@ class CheatersCodexItem(properties: Properties) : Item(properties) {
         component.hasReceivedNetherMessage = true
         component.hasReceivedPreWellNetherMessage = true
         component.hasReceivedPreWellEndMessage = true
+
+        VoidRevelationHandler.seeTheRevelation(VoidRevelationHandler.RevelationType.VOID_READER)
 
         VoidBoundPlayerUtils.addThought(player, Component.translatable("You just know everything don't you >:("))
 
