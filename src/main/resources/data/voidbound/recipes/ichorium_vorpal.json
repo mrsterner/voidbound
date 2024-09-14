@@ -11,19 +11,7 @@
     },
     {
       "count": 1,
-      "item": "cactus"
-    },
-    {
-      "count": 4,
-      "item": "rotten_flesh"
-    },
-    {
-      "count": 4,
-      "item": "bone"
-    },
-    {
-      "count": 1,
-      "item": "tnt"
+      "item": "malum:soul_stained_steel_axe"
     },
     {
       "count": 1,
@@ -36,7 +24,7 @@
   ],
   "input": {
     "count": 1,
-    "item": "voidbound:gales_sword"
+    "item": "malum:soul_stained_steel_sword"
   },
   "output": {
     "item": "voidbound:ichorium_vorpal"
@@ -48,7 +36,11 @@
     },
     {
       "type": "aerial",
-      "count": 64
+      "count": 32
+    },
+    {
+      "type": "arcane",
+      "count": 32
     }
   ]
 }

@@ -10,20 +10,8 @@
       "item": "malum:hallowed_gold_ingot"
     },
     {
-      "count": 2,
-      "item": "raw_iron_block"
-    },
-    {
-      "count": 2,
-      "item": "raw_copper_block"
-    },
-    {
-      "count": 2,
-      "item": "raw_gold_block"
-    },
-    {
       "count": 1,
-      "item": "tnt"
+      "item": "malum:soul_stained_steel_shovel"
     },
     {
       "count": 1,
@@ -36,7 +24,7 @@
   ],
   "input": {
     "count": 1,
-    "item": "voidbound:cragbreaker_pickaxe"
+    "item": "malum:soul_stained_steel_pickaxe"
   },
   "output": {
     "item": "voidbound:ichorium_terraformer"

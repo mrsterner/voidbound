@@ -10,16 +10,16 @@
       "item": "malum:hallowed_gold_ingot"
     },
     {
-      "count": 4,
-      "item": "malum:null_slate"
+      "count": 1,
+      "item": "voidbound:hallowed_goggles"
+    },
+    {
+      "count": 2,
+      "item": "malum:spectral_lens"
     },
     {
       "count": 1,
-      "item": "malum:block_of_soul_stained_steel"
-    },
-    {
-      "count": 1,
-      "item": "voidbound:fire_focus"
+      "item": "voidbound:warding_focus"
     },
     {
       "count": 1,
@@ -28,23 +28,19 @@
   ],
   "input": {
     "count": 1,
-    "item": "malum:soul_stained_steel_scythe"
+    "item": "malum:soul_stained_steel_helmet"
   },
   "output": {
-    "item": "voidbound:ichorium_scythe"
+    "item": "voidbound:ichorium_circlet"
   },
   "spirits": [
-    {
-      "type": "aerial",
-      "count": 32
-    },
     {
       "type": "wicked",
       "count": 32
     },
     {
       "type": "arcane",
-      "count": 32
+      "count": 64
     }
   ]
 }

@@ -75,7 +75,6 @@ object VoidBoundBlockRegistry {
         TearBlock(TearBlock.Type.BRIMSTONE, FabricBlockSettings.create().noOcclusion())
     }
 
-
     val ELDRITCH_OBELISK: RegistryObject<EldritchObeliskBlock> = BLOCKS.register(
         "eldritch_obelisk"
     ) {
