@@ -30,7 +30,7 @@ class IchoriumCrown(properties: Properties) : MalumArmorItem(
             AttributeModifier(
                 UUID.fromString("545DB17C-C623-495F-8C9F-6010A9A58B5B"),
                 "Speed",
-                8.0,
+                9.0,
                 AttributeModifier.Operation.ADDITION
             )
         )

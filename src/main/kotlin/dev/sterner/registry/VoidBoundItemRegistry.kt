@@ -184,10 +184,6 @@ object VoidBoundItemRegistry {
         Item(Item.Properties())
     }
 
-    val STRANGE_MATTER: RegistryObject<Item> = ITEMS.register("strange_matter") {
-        Item(Item.Properties())
-    }
-
     val ICHORIUM_VORPAL: RegistryObject<IchoriumVorpal> = ITEMS.register("ichorium_vorpal") {
         IchoriumVorpal(VoidBoundTiers.ICHORIUM, -2, 1f, 2f, ichorProptery)
     }
