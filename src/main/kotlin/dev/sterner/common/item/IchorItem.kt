@@ -1,5 +1,6 @@
 package dev.sterner.common.item
 
+import dev.sterner.api.revelation.KnowledgeType
 import dev.sterner.registry.VoidBoundComponentRegistry
 import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.network.chat.Component
@@ -18,8 +19,8 @@ class IchorItem(properties: Properties) : Item(properties) {
         if (entity is ServerPlayer) {
             val comp = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(entity)
 
-            if (!comp.hasIchorKnowledge) {
-                comp.hasIchorKnowledge = true
+            if (!comp.hasKnowledge(KnowledgeType.ICHOR)) {
+                comp.unlockKnowledge(KnowledgeType.ICHOR)
             }
         }
         super.inventoryTick(stack, level, entity, slotId, isSelected)

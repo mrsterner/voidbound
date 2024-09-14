@@ -14,6 +14,7 @@ import com.sammy.malum.client.screen.codex.screens.ArcanaProgressionScreen
 import com.sammy.malum.client.screen.codex.screens.VoidProgressionScreen
 import dev.sterner.VoidBound
 import dev.sterner.VoidBound.modid
+import dev.sterner.api.revelation.KnowledgeType
 import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.registry.VoidBoundItemRegistry
 import net.minecraft.nbt.CompoundTag
@@ -163,7 +164,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundPlayerUtils.hasTearKnowledgeClient()
+                    VoidBoundPlayerUtils.hasKnowledge(KnowledgeType.GRIMCULT)
                 }
 
         }
@@ -184,7 +185,7 @@ object MalumCodexEvent {
                     )
                 }.addPage(HeadlineTextPage("void.thoughts_about_nether", "void.thoughts_about_nether.1"))
                 .setEntryVisibleWhen {
-                    VoidBoundPlayerUtils.hasNetherMessage()
+                    VoidBoundPlayerUtils.hasThoughtSentOrUnlocked(KnowledgeType.NETHER)
                 }
         }
 
@@ -204,7 +205,7 @@ object MalumCodexEvent {
                     )
                 }.addPage(HeadlineTextPage("void.thoughts_about_end", "void.thoughts_about_end.1"))
                 .setEntryVisibleWhen {
-                    VoidBoundPlayerUtils.hasEndMessage()
+                    VoidBoundPlayerUtils.hasThoughtSentOrUnlocked(KnowledgeType.END)
                 }
         }
 
@@ -225,7 +226,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundPlayerUtils.hasGrimcultKnowledgeClient()
+                    VoidBoundPlayerUtils.hasThoughtSentOrUnlocked(KnowledgeType.GRIMCULT)
                 }
         }
 
@@ -245,7 +246,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundPlayerUtils.hasIchorKnowledgeClient()
+                    VoidBoundPlayerUtils.hasKnowledge(KnowledgeType.ICHOR)
                 }
         }
 
@@ -265,7 +266,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundPlayerUtils.hasIchorKnowledgeClient()
+                    VoidBoundPlayerUtils.hasKnowledge(KnowledgeType.ICHOR)
                 }
         }
 
@@ -285,7 +286,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundPlayerUtils.hasIchorKnowledgeClient()
+                    VoidBoundPlayerUtils.hasKnowledge(KnowledgeType.ICHOR)
                 }
         }
 
@@ -305,7 +306,7 @@ object MalumCodexEvent {
                     )
                 )
                 .setEntryVisibleWhen {
-                    VoidBoundPlayerUtils.hasIchorKnowledgeClient()
+                    VoidBoundPlayerUtils.hasKnowledge(KnowledgeType.ICHOR)
                 }
         }
     }

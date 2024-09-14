@@ -1,6 +1,7 @@
 package dev.sterner.api.util
 
 import dev.sterner.api.item.ItemAbility
+import dev.sterner.api.revelation.KnowledgeType
 import dev.sterner.registry.VoidBoundComponentRegistry
 import dev.sterner.registry.VoidBoundItemRegistry
 import net.minecraft.client.Minecraft
@@ -44,29 +45,11 @@ object VoidBoundPlayerUtils {
         return !comp.isPosBoundToAnotherPlayer(player, GlobalPos.of(player.level().dimension(), blockPos))
     }
 
-    fun hasTearKnowledgeClient(): Boolean {
+    fun hasKnowledge(knowledge: KnowledgeType): Boolean {
         val player = Minecraft.getInstance().player
         if (player != null) {
             val comp = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player)
-            return comp.isTearKnowledgeComplete()
-        }
-        return false
-    }
-
-    fun hasIchorKnowledgeClient(): Boolean {
-        val player = Minecraft.getInstance().player
-        if (player != null) {
-            val comp = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player)
-            return comp.hasIchorKnowledge && comp.hasGrimcultKnowledge && comp.hasWellKnowledge && comp.hasEndKnowledge && comp.hasNetherKnowledge
-        }
-        return false
-    }
-
-    fun hasGrimcultKnowledgeClient(): Boolean {
-        val player = Minecraft.getInstance().player
-        if (player != null) {
-            val comp = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player)
-            return comp.hasGrimcultKnowledge && comp.hasWellKnowledge && comp.hasEndKnowledge && comp.hasNetherKnowledge
+            return comp.hasKnowledge(knowledge)
         }
         return false
     }
@@ -77,20 +60,15 @@ object VoidBoundPlayerUtils {
         }
     }
 
-    fun hasNetherMessage(): Boolean {
+    fun hasThoughtSentOrUnlocked(knowledge: KnowledgeType) : Boolean {
         val component =
             VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.maybeGet(Minecraft.getInstance().player)
         if (component.isPresent) {
-            return component.get().hasReceivedNetherMessage
-        }
-        return false
-    }
+            if (component.get().hasKnowledge(knowledge)) {
+                return true
+            }
 
-    fun hasEndMessage(): Boolean {
-        val component =
-            VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.maybeGet(Minecraft.getInstance().player)
-        if (component.isPresent) {
-            return component.get().hasReceivedEndMessage
+            return component.get().hasThoughtSentForKnowledge(knowledge)
         }
         return false
     }

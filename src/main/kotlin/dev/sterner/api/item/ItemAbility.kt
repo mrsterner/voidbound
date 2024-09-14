@@ -5,6 +5,7 @@ import dev.sterner.common.item.equipment.ichor.IchoriumEdge
 import dev.sterner.common.item.equipment.ichor.IchoriumTerraformer
 import dev.sterner.common.item.equipment.ichor.IchoriumVorpal
 import net.minecraft.nbt.CompoundTag
+import net.minecraft.nbt.ListTag
 import net.minecraft.util.StringRepresentable
 import net.minecraft.world.item.Item
 
@@ -26,14 +27,35 @@ enum class ItemAbility : StringRepresentable {
         return this.name.lowercase()
     }
 
-    fun writeNbt(): CompoundTag {
+    fun writeSingleNbt(): CompoundTag {
         val tag = CompoundTag()
         tag.putString("Ability", name)
         return tag
     }
 
     companion object {
-        fun readNbt(abilityTag: CompoundTag): ItemAbility {
+
+        fun writeToNbt(unlockedItemAbilities: MutableSet<ItemAbility>, tag: CompoundTag) {
+            val unlockedList = ListTag()
+            unlockedItemAbilities.forEach { unlockedTag ->
+                val abilityTag = unlockedTag.writeSingleNbt()
+                unlockedList.add(abilityTag)
+            }
+            tag.put("UnlockedItems", unlockedList)
+        }
+
+        fun readNbt(tag: CompoundTag): MutableSet<ItemAbility> {
+            val unlockedItemAbilities = mutableSetOf<ItemAbility>()
+            val unlockedList = tag.getList("UnlockedItems", 10)
+            for (i in 0 until unlockedList.size) {
+                val item = unlockedList.getCompound(i)
+                val itemAbility = ItemAbility.readSingleNbt(item)
+                unlockedItemAbilities.add(itemAbility)
+            }
+            return unlockedItemAbilities
+        }
+
+        fun readSingleNbt(abilityTag: CompoundTag): ItemAbility {
             return valueOf(abilityTag.getString("Ability"))
         }
 
@@ -62,5 +84,7 @@ enum class ItemAbility : StringRepresentable {
 
             return list
         }
+
+
     }
 }

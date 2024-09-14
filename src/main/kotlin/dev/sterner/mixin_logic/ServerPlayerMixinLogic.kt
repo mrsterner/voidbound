@@ -1,6 +1,7 @@
 package dev.sterner.mixin_logic
 
 import com.sammy.malum.registry.common.block.BlockRegistry
+import dev.sterner.api.revelation.KnowledgeType
 import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.registry.VoidBoundComponentRegistry.Companion.VOID_BOUND_REVELATION_COMPONENT
 import net.minecraft.network.chat.Component
@@ -15,8 +16,8 @@ object ServerPlayerMixinLogic {
     fun logic1(player: ServerPlayer, state: BlockState) {
         if (state.`is`(BlockRegistry.PRIMORDIAL_SOUP.get())) {
             val comp = VOID_BOUND_REVELATION_COMPONENT[player]
-            if (!comp.hasWellKnowledge) {
-                comp.hasWellKnowledge = true
+            if (!comp.hasKnowledge(KnowledgeType.WEEPING_WELL)) {
+                comp.unlockKnowledge(KnowledgeType.WEEPING_WELL)
             }
         }
     }
@@ -30,45 +31,23 @@ object ServerPlayerMixinLogic {
         val comp = VOID_BOUND_REVELATION_COMPONENT[player]
 
         if (resourceKey2 === Level.NETHER) {
-            if (comp.hasWellKnowledge) {
-                comp.hasNetherKnowledge = true
-                if (!comp.hasReceivedNetherMessage) {
-                    VoidBoundPlayerUtils.addThought(
-                        player,
-                        Component.translatable("voidbound.revelation.nether"),
-                        20 * 5
-                    )
-                    comp.hasReceivedNetherMessage = true
-                }
-
-            } else {
-                if (!comp.hasReceivedPreWellNetherMessage) {
-                    VoidBoundPlayerUtils.addThought(
-                        player,
-                        Component.translatable("voidbound.revelation.pre_well_nether"),
-                        20 * 5
-                    )
-                    comp.hasReceivedPreWellNetherMessage = true
-                }
+            val bl = comp.unlockKnowledge(KnowledgeType.NETHER, "voidbound.revelation.pre_well_nether")
+            if (bl) {
+                VoidBoundPlayerUtils.addThought(
+                    player,
+                    Component.translatable("voidbound.revelation.nether"),
+                    20 * 5
+                )
             }
         }
         if (resourceKey2 === Level.END) {
-            if (comp.hasWellKnowledge) {
-                comp.hasEndKnowledge = true
-                if (!comp.hasReceivedEndMessage) {
-                    VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.revelation.end"), 20 * 5)
-                    comp.hasReceivedEndMessage = true
-                }
-
-            } else {
-                if (!comp.hasReceivedPreWellEndMessage) {
-                    VoidBoundPlayerUtils.addThought(
-                        player,
-                        Component.translatable("voidbound.revelation.pre_well_nether"),
-                        20 * 5
-                    )
-                    comp.hasReceivedPreWellEndMessage = true
-                }
+            val bl = comp.unlockKnowledge(KnowledgeType.END, "voidbound.revelation.pre_well_nether")
+            if (bl) {
+                VoidBoundPlayerUtils.addThought(
+                    player,
+                    Component.translatable("voidbound.revelation.nether"),
+                    20 * 5
+                )
             }
         }
     }

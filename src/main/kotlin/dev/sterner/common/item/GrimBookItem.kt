@@ -1,5 +1,6 @@
 package dev.sterner.common.item
 
+import dev.sterner.api.revelation.KnowledgeType
 import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.registry.VoidBoundBlockRegistry
 import dev.sterner.registry.VoidBoundComponentRegistry
@@ -52,8 +53,8 @@ class GrimBookItem(properties: Properties) : BlockItem(VoidBoundBlockRegistry.GR
         }
 
         if (giveAdvancement) {
-            VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player).hasGrimcultKnowledge = true
-            VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.grimcultrites"))
+            VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player).unlockKnowledge(KnowledgeType.GRIMCULT)
+            VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.grimcultrites"), 20 * 5, 1)
         } else if (item.tag!!.getBoolean("open")) {
             VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.no_grimcultrites"))
         }

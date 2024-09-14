@@ -1,6 +1,7 @@
 package dev.sterner.common.item
 
 import com.sammy.malum.client.VoidRevelationHandler
+import dev.sterner.api.revelation.KnowledgeType
 import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.registry.VoidBoundComponentRegistry
 import net.minecraft.network.chat.Component
@@ -16,16 +17,8 @@ class CheatersCodexItem(properties: Properties) : Item(properties) {
     override fun use(level: Level, player: Player, usedHand: InteractionHand): InteractionResultHolder<ItemStack> {
 
         val component = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player)
-        component.hasGrimcultKnowledge = true
-        component.hasWellKnowledge = true
-        component.hasNetherKnowledge = true
-        component.hasEndKnowledge = true
-        component.hasIchorKnowledge = true
 
-        component.hasReceivedEndMessage = true
-        component.hasReceivedNetherMessage = true
-        component.hasReceivedPreWellNetherMessage = true
-        component.hasReceivedPreWellEndMessage = true
+        component.unlockAllKnowledge()
 
         VoidRevelationHandler.seeTheRevelation(VoidRevelationHandler.RevelationType.VOID_READER)
 

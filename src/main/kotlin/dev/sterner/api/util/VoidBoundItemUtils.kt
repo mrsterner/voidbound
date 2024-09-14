@@ -113,7 +113,7 @@ object VoidBoundItemUtils {
         val abilitiesTag = tag.getList("Abilities", 10) // 10 is the NBT type for CompoundTag
         for (i in 0 until abilitiesTag.size) {
             val abilityTag = abilitiesTag.getCompound(i)
-            val ability = ItemAbility.readNbt(abilityTag)
+            val ability = ItemAbility.readSingleNbt(abilityTag)
             abilities.add(ability) // Add to the set, prevents duplicates
         }
 
@@ -128,14 +128,14 @@ object VoidBoundItemUtils {
         // Check if ability already exists, if so, exit
         for (i in 0 until abilitiesTag.size) {
             val abilityTag = abilitiesTag.getCompound(i)
-            val existingAbility = ItemAbility.readNbt(abilityTag)
+            val existingAbility = ItemAbility.readSingleNbt(abilityTag)
             if (existingAbility == ability) {
                 return // Ability already exists, exit without adding
             }
         }
 
         // Add new ability
-        abilitiesTag.add(ability.writeNbt())
+        abilitiesTag.add(ability.writeSingleNbt())
         tag.put("Abilities", abilitiesTag)
 
         // Optionally set the new ability as the active one
