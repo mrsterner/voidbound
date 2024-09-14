@@ -201,7 +201,7 @@ object VoidBoundItemRegistry {
     }
 
     val ICHORIUM_CIRCLET: RegistryObject<IchoriumCrown> = ITEMS.register("ichorium_circlet") {
-        IchoriumCrown(Item.Properties())
+        IchoriumCrown(ichorProptery)
     }
 
     val ichorProptery = FabricItemSettings().stacksTo(1).fireResistant().rarity(Rarity.RARE)
