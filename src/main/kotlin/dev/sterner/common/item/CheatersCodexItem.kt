@@ -19,6 +19,7 @@ class CheatersCodexItem(properties: Properties) : Item(properties) {
         component.hasWellKnowledge = true
         component.hasNetherKnowledge = true
         component.hasEndKnowledge = true
+        component.hasIchorKnowledge = true
 
         component.hasReceivedEndMessage = true
         component.hasReceivedNetherMessage = true
