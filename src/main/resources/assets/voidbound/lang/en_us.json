@@ -40,6 +40,7 @@
   "item.voidbound.ichorium_terraformer": "Ichorium Terraformer",
   "item.voidbound.ichorium_scythe": "Ichorium Edge",
   "item.voidbound.ichorium_circlet": "Ichorium Circlet",
+  "item.voidbound.cheaters_codex": "Cheaters Codex",
   "block.voidbound.tear_of_ender": "Tear of Ender",
   "block.voidbound.tear_of_brimstone": "Tear of Brimstone",
   "item.voidbound.hallowed_gold_capped_runewood_wand": "Hallowed Gold Capped Runewood Wand",
@@ -207,6 +208,12 @@
   "malum.gui.book.entry.void.ichorium_terraformer.description": "Blood of the Gods",
   "malum.gui.book.entry.page.headline.void.ichorium_terraformer": "Ichorium Terraformer",
   "malum.gui.book.entry.page.text.void.ichorium_terraformer.1": "Use them",
+
+  "malum.gui.book.entry.void.ichorium_circlet": "Ichorium Circlet",
+  "malum.gui.book.entry.void.ichorium_circlet.description": "Blood of the Gods",
+  "malum.gui.book.entry.page.headline.void.ichorium_circlet": "Ichorium Circlet",
+  "malum.gui.book.entry.page.text.void.ichorium_circlet.1": "Use them",
+
 
   "malum.gui.book.entry.void.osmotic_enchanter": "Osmotic Enchanter",
   "malum.gui.book.entry.void.osmotic_enchanter.description": "Enchant everything",

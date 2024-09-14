@@ -164,6 +164,10 @@ object VoidBoundItemRegistry {
         GrimBookItem(Item.Properties().stacksTo(1))
     }
 
+    val CHEATERS_CODEX: RegistryObject<CheatersCodexItem> = ITEMS.register("cheaters_codex") {
+        CheatersCodexItem(Item.Properties().stacksTo(1))
+    }
+
     val NOMADES_STRIDER: RegistryObject<NomadsStriderItem> = ITEMS.register("nomads_strider") {
         NomadsStriderItem(Item.Properties().stacksTo(1))
     }

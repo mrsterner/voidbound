@@ -285,6 +285,26 @@ object MalumCodexEvent {
                     VoidBoundPlayerUtils.hasIchorKnowledgeClient()
                 }
         }
+
+        screen?.addEntry(
+            "void.ichorium_circlet", 0, -6
+        ) { b: PlacedBookEntryBuilder ->
+            b
+                .configureWidget { w: ProgressionEntryObject ->
+                    w.setIcon(
+                        VoidBoundItemRegistry.ICHORIUM_CIRCLET.get()
+                    ).setStyle(VOID_GILDED)
+                }
+                .addPage(HeadlineTextPage("void.ichorium_circlet", "void.ichorium_circlet.1"))
+                .addPage(
+                    SpiritInfusionPage.fromOutput(
+                        VoidBoundItemRegistry.ICHORIUM_CIRCLET.get()
+                    )
+                )
+                .setEntryVisibleWhen {
+                    VoidBoundPlayerUtils.hasIchorKnowledgeClient()
+                }
+        }
     }
 
     fun addVoidBoundEntries(screen: ArcanaProgressionScreen?, entries: MutableList<PlacedBookEntry>) {
