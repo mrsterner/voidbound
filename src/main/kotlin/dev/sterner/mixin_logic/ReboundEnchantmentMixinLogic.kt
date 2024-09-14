@@ -13,7 +13,13 @@ object ReboundEnchantmentMixinLogic {
         shootScythe(player, stack, baseDamage, magicDamage, -25)
     }
 
-    private fun shootScythe(player: ServerPlayer, stack: ItemStack, baseDamage: Float, magicDamage: Float, yRotOffset: Int) {
+    private fun shootScythe(
+        player: ServerPlayer,
+        stack: ItemStack,
+        baseDamage: Float,
+        magicDamage: Float,
+        yRotOffset: Int
+    ) {
         val entity = ScytheBoomerangEntity(
             player.level(),
             player.position().x,

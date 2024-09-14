@@ -2,7 +2,6 @@ package dev.sterner.common.item
 
 import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.registry.VoidBoundComponentRegistry
-import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.network.chat.Component
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResultHolder

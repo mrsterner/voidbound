@@ -55,7 +55,7 @@ open class GalesEdgeItem(
 
     companion object {
 
-        fun ascend(player: LivingEntity, stack: ItemStack, ticks: Int){
+        fun ascend(player: LivingEntity, stack: ItemStack, ticks: Int) {
             var newMotionY = player.deltaMovement.y
 
             if (newMotionY < 0.0) {

@@ -1,15 +1,9 @@
 package dev.sterner.common.block
 
-import dev.sterner.VoidBound
-import dev.sterner.api.util.VoidBoundUtils
-import dev.sterner.common.components.VoidBoundRevelationComponent
 import dev.sterner.registry.VoidBoundComponentRegistry
 import dev.sterner.registry.VoidBoundItemRegistry
-import dev.sterner.registry.VoidBoundPacketRegistry
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
-import net.minecraft.network.chat.Component
-import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.Containers
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack

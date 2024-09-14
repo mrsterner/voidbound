@@ -5,9 +5,12 @@ import dev.sterner.VoidBound
 import dev.sterner.api.entity.GolemCore
 import dev.sterner.common.blockentity.EldritchObeliskBlockEntity
 import dev.sterner.common.item.*
-import dev.sterner.common.item.focus.*
 import dev.sterner.common.item.equipment.*
-import dev.sterner.common.item.equipment.ichor.*
+import dev.sterner.common.item.equipment.ichor.IchoriumCrown
+import dev.sterner.common.item.equipment.ichor.IchoriumEdge
+import dev.sterner.common.item.equipment.ichor.IchoriumTerraformer
+import dev.sterner.common.item.equipment.ichor.IchoriumVorpal
+import dev.sterner.common.item.focus.*
 import io.github.fabricators_of_create.porting_lib.util.LazyRegistrar
 import io.github.fabricators_of_create.porting_lib.util.RegistryObject
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings

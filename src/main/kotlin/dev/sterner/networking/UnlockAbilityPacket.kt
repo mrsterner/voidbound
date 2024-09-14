@@ -9,7 +9,7 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.server.network.ServerGamePacketListenerImpl
 import team.lodestar.lodestone.systems.network.LodestoneServerPacket
-import java.util.UUID
+import java.util.*
 
 class UnlockAbilityPacket(val uuid: UUID, val itemAbility: ItemAbility) : LodestoneServerPacket() {
 
@@ -30,7 +30,8 @@ class UnlockAbilityPacket(val uuid: UUID, val itemAbility: ItemAbility) : Lodest
     ) {
         server?.execute {
             if (player?.uuid == uuid) {
-                VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player).addUnlockedItemAbility(itemAbility)
+                VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player)
+                    .addUnlockedItemAbility(itemAbility)
             }
         }
     }

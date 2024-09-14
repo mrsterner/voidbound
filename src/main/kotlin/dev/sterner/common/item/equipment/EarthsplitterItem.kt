@@ -27,7 +27,6 @@ open class EarthsplitterItem(
     ), HammerLikeItem, UpgradableTool {
 
 
-
     override fun getDestroySpeed(stack: ItemStack, state: BlockState): Float {
         return super.getDestroySpeed(stack, state) + getExtraMiningSpeed(stack)
     }

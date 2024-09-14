@@ -103,7 +103,8 @@ object MalumCodexEvent {
                 .afterUmbralCrystal()
         }
 
-        screen?.addEntry("void.spirit_rift", -6, 10
+        screen?.addEntry(
+            "void.spirit_rift", -6, 10
         ) { b: PlacedBookEntryBuilder ->
 
             b.configureWidget { w: ProgressionEntryObject ->
@@ -119,10 +120,10 @@ object MalumCodexEvent {
                     )
                 }
                 .addPage(WeepingWellTextPage("void.spirit_rift.1", "void.spirit_rift.2", ItemStack.EMPTY.item))
-                //.addPage(HeadlineTextPage("void.spirit_rift", "void.spirit_rift.1"))
-                //.addPage(HeadlineTextPage("void.spirit_rift.1", "void.spirit_rift.2"))
-                //.addPage(HeadlineTextPage("void.spirit_rift.2", "void.spirit_rift.3"))
-                //.addPage(HeadlineTextPage("void.spirit_rift.3", "void.spirit_rift.4"))
+            //.addPage(HeadlineTextPage("void.spirit_rift", "void.spirit_rift.1"))
+            //.addPage(HeadlineTextPage("void.spirit_rift.1", "void.spirit_rift.2"))
+            //.addPage(HeadlineTextPage("void.spirit_rift.2", "void.spirit_rift.3"))
+            //.addPage(HeadlineTextPage("void.spirit_rift.3", "void.spirit_rift.4"))
         }
 
         screen?.addEntry(
@@ -137,8 +138,8 @@ object MalumCodexEvent {
                 }
                 .addPage(
                     HeadlineTextPage(
-                    "void.dimensional_tear",
-                    "void.dimensional_tear.1"
+                        "void.dimensional_tear",
+                        "void.dimensional_tear.1"
                     )
                 )
                 .addPage(
@@ -167,39 +168,41 @@ object MalumCodexEvent {
 
         }
 
-        screen?.addEntry("void.thoughts_about_nether", -1, -2
+        screen?.addEntry(
+            "void.thoughts_about_nether", -1, -2
         ) { b: PlacedBookEntryBuilder ->
             b.configureWidget { w: ProgressionEntryObject ->
                 w.setStyle(DARK_VOID)
             }
                 .withTraceFragmentEntry()
                 .setWidgetSupplier { e: BookEntry?, x: Int, y: Int ->
-                IconObject(
-                    e,
-                    x,
-                    y,
-                    VoidBound.id("textures/gui/nether.png")
-                )
-            }.addPage(HeadlineTextPage("void.thoughts_about_nether", "void.thoughts_about_nether.1"))
+                    IconObject(
+                        e,
+                        x,
+                        y,
+                        VoidBound.id("textures/gui/nether.png")
+                    )
+                }.addPage(HeadlineTextPage("void.thoughts_about_nether", "void.thoughts_about_nether.1"))
                 .setEntryVisibleWhen {
                     VoidBoundPlayerUtils.hasNetherMessage()
-            }
+                }
         }
 
-        screen?.addEntry("void.thoughts_about_end", 1, -2
+        screen?.addEntry(
+            "void.thoughts_about_end", 1, -2
         ) { b: PlacedBookEntryBuilder ->
             b.configureWidget { w: ProgressionEntryObject ->
                 w.setStyle(DARK_VOID)
             }
                 .withTraceFragmentEntry()
                 .setWidgetSupplier { e: BookEntry?, x: Int, y: Int ->
-                IconObject(
-                    e,
-                    x,
-                    y,
-                    VoidBound.id("textures/gui/ender.png")
-                )
-            }.addPage(HeadlineTextPage("void.thoughts_about_end", "void.thoughts_about_end.1"))
+                    IconObject(
+                        e,
+                        x,
+                        y,
+                        VoidBound.id("textures/gui/ender.png")
+                    )
+                }.addPage(HeadlineTextPage("void.thoughts_about_end", "void.thoughts_about_end.1"))
                 .setEntryVisibleWhen {
                     VoidBoundPlayerUtils.hasEndMessage()
                 }

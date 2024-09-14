@@ -20,7 +20,7 @@ object VoidBoundKeyBindings {
     fun init() {
         ClientTickEvents.END_CLIENT_TICK.register(::listenFocusKey)
         KeyInputCallback.EVENT.register(::listenItemAbilitySelect)
-        MouseInputEvents.BEFORE_SCROLL.register(::onMouseScrolled);
+        MouseInputEvents.BEFORE_SCROLL.register(::onMouseScrolled)
     }
 
     private fun onMouseScrolled(deltaX: Double, delta: Double): Boolean {

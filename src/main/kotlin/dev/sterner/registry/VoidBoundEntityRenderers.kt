@@ -43,27 +43,27 @@ object VoidBoundEntityRenderers {
             ::SoulSteelGolemEntityRenderer
         )
         EntityRendererRegistry.register(
-             VoidBoundEntityTypeRegistry.GRIMCULT_KNIGHT_ENTITY.get(),
+            VoidBoundEntityTypeRegistry.GRIMCULT_KNIGHT_ENTITY.get(),
             ::GrimcultKnightEntityRenderer
         )
         EntityRendererRegistry.register(
-             VoidBoundEntityTypeRegistry.GRIMCULT_ARCHER_ENTITY.get(),
+            VoidBoundEntityTypeRegistry.GRIMCULT_ARCHER_ENTITY.get(),
             ::GrimcultArcherEntityRenderer
         )
         EntityRendererRegistry.register(
-             VoidBoundEntityTypeRegistry.GRIMCULT_CLERIC_ENTITY.get(),
+            VoidBoundEntityTypeRegistry.GRIMCULT_CLERIC_ENTITY.get(),
             ::GrimcultClericEntityRenderer
         )
         EntityRendererRegistry.register(
-             VoidBoundEntityTypeRegistry.GRIMCULT_NECROMANCER_ENTITY.get(),
+            VoidBoundEntityTypeRegistry.GRIMCULT_NECROMANCER_ENTITY.get(),
             ::GrimcultNecromancerEntityRenderer
         )
         EntityRendererRegistry.register(
-             VoidBoundEntityTypeRegistry.GRIMCULT_JESTER_ENTITY.get(),
+            VoidBoundEntityTypeRegistry.GRIMCULT_JESTER_ENTITY.get(),
             ::GrimcultJesterEntityRenderer
         )
         EntityRendererRegistry.register(
-             VoidBoundEntityTypeRegistry.GRIMCULT_HEAVY_KNIGHT_ENTITY.get(),
+            VoidBoundEntityTypeRegistry.GRIMCULT_HEAVY_KNIGHT_ENTITY.get(),
             ::GrimcultHeavyKnightEntityRenderer
         )
         EntityRendererRegistry.register(

@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 
 class GrimcultKnightEntity(level: Level) :
-    AbstractCultistEntity( VoidBoundEntityTypeRegistry.GRIMCULT_KNIGHT_ENTITY.get(), level) {
+    AbstractCultistEntity(VoidBoundEntityTypeRegistry.GRIMCULT_KNIGHT_ENTITY.get(), level) {
 
     override fun registerGoals() {
         super.registerGoals()

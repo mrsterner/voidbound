@@ -10,7 +10,6 @@ import dev.sterner.api.wand.IWandFocus
 import dev.sterner.mixin_logic.ParticleEngineMixinLogic
 import dev.sterner.networking.ExcavationPacket
 import dev.sterner.registry.VoidBoundPacketRegistry
-import net.minecraft.client.Minecraft
 import net.minecraft.sounds.SoundSource
 import net.minecraft.util.RandomSource
 import net.minecraft.world.InteractionHand

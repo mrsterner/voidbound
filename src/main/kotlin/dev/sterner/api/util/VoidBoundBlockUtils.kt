@@ -8,14 +8,12 @@ import net.minecraft.server.level.ServerPlayer
 import net.minecraft.tags.BlockTags
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.enchantment.Enchantment
 import net.minecraft.world.item.enchantment.EnchantmentHelper
 import net.minecraft.world.item.enchantment.Enchantments
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockState
 import kotlin.math.abs
-import kotlin.math.max
 
 object VoidBoundBlockUtils {
 
@@ -86,11 +84,12 @@ object VoidBoundBlockUtils {
     private fun removeBlock(player: Player, pos: BlockPos, canHarvest: Boolean = false): Boolean {
         val blockState = player.level().getBlockState(pos)
 
-        return blockState.onDestroyedByPlayer(player.level(), pos, player, canHarvest, blockState.fluidState).also { flag ->
-            if (flag) {
-                blockState.block.destroy(player.level(), pos, blockState)
+        return blockState.onDestroyedByPlayer(player.level(), pos, player, canHarvest, blockState.fluidState)
+            .also { flag ->
+                if (flag) {
+                    blockState.block.destroy(player.level(), pos, blockState)
+                }
             }
-        }
     }
 
     /**
@@ -197,8 +196,8 @@ object VoidBoundBlockUtils {
     }
 
     /**
-    * Returns false if the block being broken is warded by any player
-    */
+     * Returns false if the block being broken is warded by any player
+     */
     fun canBlockBreak(level: Level, blockPos: BlockPos): Boolean {
         val comp = VoidBoundComponentRegistry.VOID_BOUND_WORLD_COMPONENT.get(level)
         if (comp.isEmpty()) {

@@ -40,7 +40,7 @@ object VoidBoundEvents {
         BlockEvents.BLOCK_BREAK.register(VoidBoundWorldComponent.Companion::removeWard)
         BlockEvents.BLOCK_BREAK.register(TidecutterItem.Companion::breakBlock)
 
-        LivingHurtEvent.HURT.register{
+        LivingHurtEvent.HURT.register {
             val attacker = it.source.entity
             if (attacker is Player) {
                 val item = attacker.mainHandItem
@@ -85,7 +85,7 @@ object VoidBoundEvents {
         HudRenderCallback.EVENT.register(SpiritJarHudRenderEvent::spiritJarHud)
         HudRenderCallback.EVENT.register(ThoughtsTextHudRenderEvent::renderThoughts)
         ClientTickEvents.END_CLIENT_TICK.register(ClientTickHandler::clientTickEnd)
-        ClientTickEvents.END_CLIENT_TICK.register{
+        ClientTickEvents.END_CLIENT_TICK.register {
             VoidBoundClient.ITEM_ABILITY_HANDLER.tick()
         }
         HudRenderCallback.EVENT.register(HudRenderCallback { graphics: GuiGraphics, partialTicks: Float ->

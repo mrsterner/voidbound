@@ -3,9 +3,7 @@ package dev.sterner.client.model
 import com.mojang.blaze3d.vertex.PoseStack
 import com.mojang.blaze3d.vertex.VertexConsumer
 import dev.sterner.VoidBound
-import net.minecraft.client.model.EntityModel
 import net.minecraft.client.model.HumanoidModel
-import net.minecraft.client.model.Model
 import net.minecraft.client.model.geom.ModelLayerLocation
 import net.minecraft.client.model.geom.ModelPart
 import net.minecraft.client.model.geom.PartNames
@@ -13,11 +11,8 @@ import net.minecraft.client.model.geom.PartPose
 import net.minecraft.client.model.geom.builders.CubeDeformation
 import net.minecraft.client.model.geom.builders.CubeListBuilder
 import net.minecraft.client.model.geom.builders.LayerDefinition
-import net.minecraft.client.model.geom.builders.MeshDefinition
 import net.minecraft.client.renderer.RenderType
-import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.entity.LivingEntity
-import java.util.function.Function
 
 class IchoriumCircletModel<T : LivingEntity>(root: ModelPart) :
     HumanoidModel<T>(root, RenderType::entityTranslucent) {

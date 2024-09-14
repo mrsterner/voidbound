@@ -30,7 +30,11 @@ class IchorItem(properties: Properties) : Item(properties) {
         if (FabricLoader.getInstance().isDevelopmentEnvironment) {
             if (level.isClientSide) {
                 var comp = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player)
-                comp.addThought(Component.literal("No cost too great. No mind to think. No will to break"), 20 * 5, 20 * 2)
+                comp.addThought(
+                    Component.literal("No cost too great. No mind to think. No will to break"),
+                    20 * 5,
+                    20 * 2
+                )
                 comp.addThought(Component.translatable("No voice to cry"), 20 * 6, 20 * 2)
             }
         }

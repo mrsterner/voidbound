@@ -11,7 +11,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin {
 
-    @Shadow public abstract ItemStack getItem();
+    @Shadow
+    public abstract ItemStack getItem();
 
     @ModifyReturnValue(method = "fireImmune", at = @At("RETURN"))
     private boolean fireImmune(boolean original) {

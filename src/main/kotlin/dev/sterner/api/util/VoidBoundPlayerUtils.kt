@@ -71,22 +71,24 @@ object VoidBoundPlayerUtils {
         return false
     }
 
-    fun addThought(player: Player, text: Component, duration: Int = 20 * 5){
+    fun addThought(player: Player, text: Component, duration: Int = 20 * 5) {
         VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.maybeGet(player).ifPresent {
             it.addThought(text, duration, 20 * 5)
         }
     }
 
-    fun hasNetherMessage() : Boolean {
-        val component = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.maybeGet(Minecraft.getInstance().player)
+    fun hasNetherMessage(): Boolean {
+        val component =
+            VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.maybeGet(Minecraft.getInstance().player)
         if (component.isPresent) {
             return component.get().hasReceivedNetherMessage
         }
         return false
     }
 
-    fun hasEndMessage() : Boolean {
-        val component = VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.maybeGet(Minecraft.getInstance().player)
+    fun hasEndMessage(): Boolean {
+        val component =
+            VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.maybeGet(Minecraft.getInstance().player)
         if (component.isPresent) {
             return component.get().hasReceivedEndMessage
         }

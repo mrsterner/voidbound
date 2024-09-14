@@ -23,7 +23,7 @@ import net.minecraft.world.level.Level
 import java.util.*
 
 class GrimcultClericEntity(level: Level) :
-    AbstractCultistEntity( VoidBoundEntityTypeRegistry.GRIMCULT_CLERIC_ENTITY.get(), level) {
+    AbstractCultistEntity(VoidBoundEntityTypeRegistry.GRIMCULT_CLERIC_ENTITY.get(), level) {
 
     private var healCooldown = 0
 

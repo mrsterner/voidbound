@@ -30,13 +30,15 @@ abstract class RiftType {
         if (level.isClientSide) {
             var transparency = GenericParticleData.create(0.05f, 0.1f).build()
             var color =
-                ColorParticleData.create(firstColorAlpha, secondColorAlpha).setEasing(Easing.SINE_IN).setCoefficient(0.75f)
+                ColorParticleData.create(firstColorAlpha, secondColorAlpha).setEasing(Easing.SINE_IN)
+                    .setCoefficient(0.75f)
                     .build()
             if (Minecraft.getInstance().player != null) {
                 if (VoidBoundPlayerUtils.hasGoggles()) {
                     transparency = GenericParticleData.create(0.2f, 0.8f).build()
                     color =
-                        ColorParticleData.create(firstColor, secondColor).setEasing(Easing.SINE_IN).setCoefficient(0.75f)
+                        ColorParticleData.create(firstColor, secondColor).setEasing(Easing.SINE_IN)
+                            .setCoefficient(0.75f)
                             .build()
                 }
             }

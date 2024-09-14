@@ -19,15 +19,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ScytheBoomerangEntity.class)
 public class ScytheBoomerangEntityMixin implements IchoriumScytheGhost {
 
-    @Unique boolean isGhost = false;
+    @Unique
+    boolean isGhost = false;
 
     @WrapWithCondition(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addFreshEntity(Lnet/minecraft/world/entity/Entity;)Z"))
-    private boolean voidbound$tick(Level instance, Entity entity, @Local ItemEntity itemEntity){
+    private boolean voidbound$tick(Level instance, Entity entity, @Local ItemEntity itemEntity) {
         return !isGhost();
     }
 
     @WrapWithCondition(method = "tick", at = @At(value = "INVOKE", target = "Lio/github/fabricators_of_create/porting_lib/transfer/item/ItemHandlerHelper;giveItemToPlayer(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/item/ItemStack;I)V"))
-    private boolean voidbound$tickGive(Player tx, ItemStack entityitem, int player){
+    private boolean voidbound$tickGive(Player tx, ItemStack entityitem, int player) {
         return !isGhost();
     }
 

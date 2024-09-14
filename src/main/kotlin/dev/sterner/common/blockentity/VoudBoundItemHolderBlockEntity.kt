@@ -9,8 +9,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.phys.Vec3
 
-open class VoudBoundItemHolderBlockEntity(type: BlockEntityType<out MalumItemHolderBlockEntity>?, pos: BlockPos?,
-                                          state: BlockState?
+open class VoudBoundItemHolderBlockEntity(
+    type: BlockEntityType<out MalumItemHolderBlockEntity>?, pos: BlockPos?,
+    state: BlockState?
 ) : MalumItemHolderBlockEntity(
     type, pos, state
 ), Container {

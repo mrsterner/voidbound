@@ -24,7 +24,7 @@ public class LevelMixin {
     }
 
     @Inject(method = "destroyBlock", at = @At("HEAD"), cancellable = true)
-    private void voidbound$destroyBlock2(BlockPos pos, boolean dropBlock, Entity entity, int recursionLeft, CallbackInfoReturnable<Boolean> cir){
+    private void voidbound$destroyBlock2(BlockPos pos, boolean dropBlock, Entity entity, int recursionLeft, CallbackInfoReturnable<Boolean> cir) {
         if (!VoidBoundBlockUtils.INSTANCE.canBlockBreak((Level) (Object) this, pos)) {
             cir.setReturnValue(false);
         }

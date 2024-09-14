@@ -15,7 +15,7 @@ import java.util.function.Predicate;
 public interface HoeItemTillablesAccessor {
 
     @Accessor("TILLABLES")
-    public static Map<Block, Pair<Predicate<UseOnContext>, Consumer<UseOnContext>>> getTILLABLES() {
+    static Map<Block, Pair<Predicate<UseOnContext>, Consumer<UseOnContext>>> getTILLABLES() {
         throw new AssertionError();
     }
 

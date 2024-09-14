@@ -7,7 +7,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.level.Level
 
 class GrimcultJesterEntity(level: Level) :
-    AbstractCultistEntity( VoidBoundEntityTypeRegistry.GRIMCULT_JESTER_ENTITY.get(), level) {
+    AbstractCultistEntity(VoidBoundEntityTypeRegistry.GRIMCULT_JESTER_ENTITY.get(), level) {
 
     companion object {
         fun createGrimcultAttributes(): AttributeSupplier.Builder? {

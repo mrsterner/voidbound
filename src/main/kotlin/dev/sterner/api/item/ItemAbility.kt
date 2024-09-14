@@ -6,9 +6,9 @@ import dev.sterner.common.item.equipment.ichor.IchoriumTerraformer
 import dev.sterner.common.item.equipment.ichor.IchoriumVorpal
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.util.StringRepresentable
-import net.minecraft.world.item.*
+import net.minecraft.world.item.Item
 
-enum class ItemAbility: StringRepresentable {
+enum class ItemAbility : StringRepresentable {
     NONE,//Fully implemented
     SCORCHING_HEAT,//Fully implemented
     EXCAVATOR,//Fully implemented

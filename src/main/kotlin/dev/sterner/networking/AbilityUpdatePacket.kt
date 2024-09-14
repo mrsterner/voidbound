@@ -10,7 +10,7 @@ import net.minecraft.server.level.ServerPlayer
 import net.minecraft.server.network.ServerGamePacketListenerImpl
 import net.minecraft.world.entity.EquipmentSlot
 import team.lodestar.lodestone.systems.network.LodestoneServerPacket
-import java.util.UUID
+import java.util.*
 
 class AbilityUpdatePacket(val uuid: UUID, val itemAbility: ItemAbility, val helm: Boolean) : LodestoneServerPacket() {
 

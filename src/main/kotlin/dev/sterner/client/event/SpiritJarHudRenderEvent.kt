@@ -1,8 +1,6 @@
 package dev.sterner.client.event
 
-import com.sammy.malum.common.block.curiosities.spirit_altar.SpiritAltarBlockEntity
 import com.sammy.malum.common.block.storage.jar.SpiritJarBlockEntity
-import com.sammy.malum.common.recipe.SpiritInfusionRecipe
 import dev.sterner.VoidBound
 import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.util.VoidBoundRenderUtils
@@ -11,8 +9,6 @@ import net.minecraft.client.gui.Font
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.renderer.LightTexture
 import net.minecraft.core.BlockPos
-import net.minecraft.world.item.Item
-import net.minecraft.world.item.ItemStack
 import net.minecraft.world.phys.BlockHitResult
 import java.awt.Color
 

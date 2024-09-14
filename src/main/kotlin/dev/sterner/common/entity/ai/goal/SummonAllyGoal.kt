@@ -44,9 +44,9 @@ class SummonAllyGoal(private val cleric: GrimcultClericEntity) : Goal() {
 
     private fun summonAlly(cleric: GrimcultClericEntity) {
         val cultist = if (cleric.random.nextBoolean()) {
-             VoidBoundEntityTypeRegistry.GRIMCULT_ARCHER_ENTITY.get().create(cleric.level())
+            VoidBoundEntityTypeRegistry.GRIMCULT_ARCHER_ENTITY.get().create(cleric.level())
         } else {
-             VoidBoundEntityTypeRegistry.GRIMCULT_KNIGHT_ENTITY.get().create(cleric.level())
+            VoidBoundEntityTypeRegistry.GRIMCULT_KNIGHT_ENTITY.get().create(cleric.level())
         }
 
         val random = cleric.random

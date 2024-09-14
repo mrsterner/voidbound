@@ -16,9 +16,11 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockState
 import team.lodestar.lodestone.registry.common.LodestoneAttributeRegistry
 
-class IchoriumTerraformer(tier: Tier, attackDamageModifier: Float, attackSpeedModifier: Float,
-                          properties: Properties
-) : AxeItem(tier, attackDamageModifier, attackSpeedModifier, properties
+class IchoriumTerraformer(
+    tier: Tier, attackDamageModifier: Float, attackSpeedModifier: Float,
+    properties: Properties
+) : AxeItem(
+    tier, attackDamageModifier, attackSpeedModifier, properties
 ), HammerLikeItem {
 
     override fun getDestroySpeed(stack: ItemStack, state: BlockState): Float {

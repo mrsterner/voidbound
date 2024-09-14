@@ -3,7 +3,6 @@ package dev.sterner.client.screen.widget
 import com.sammy.malum.core.systems.recipe.SpiritWithCount
 import dev.sterner.VoidBound
 import dev.sterner.api.rift.SimpleSpiritCharge
-import dev.sterner.api.util.VoidBoundPlayerUtils
 import dev.sterner.api.util.VoidBoundUtils
 import dev.sterner.client.screen.OsmoticEnchanterScreen
 import dev.sterner.networking.EnchantmentLevelPacket

@@ -19,7 +19,7 @@ import net.minecraft.world.level.Level
 
 
 class GrimcultHeavyKnightEntity(level: Level) :
-    AbstractCultistEntity( VoidBoundEntityTypeRegistry.GRIMCULT_HEAVY_KNIGHT_ENTITY.get(), level) {
+    AbstractCultistEntity(VoidBoundEntityTypeRegistry.GRIMCULT_HEAVY_KNIGHT_ENTITY.get(), level) {
 
     var shieldCoolDown: Int = 0
 

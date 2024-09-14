@@ -11,8 +11,6 @@ import net.minecraft.core.BlockPos
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.phys.BlockHitResult
-import java.util.function.Function
-import java.util.function.Predicate
 
 
 object SpiritAltarHudRenderEvent {

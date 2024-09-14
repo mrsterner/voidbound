@@ -6,7 +6,6 @@ import com.sammy.malum.core.systems.recipe.SpiritWithCount
 import com.sammy.malum.core.systems.spirit.MalumSpiritType
 import com.sammy.malum.visual_effects.SpiritLightSpecs
 import dev.sterner.api.rift.SimpleSpiritCharge
-import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.api.util.VoidBoundUtils
 import dev.sterner.networking.UpdateSpiritAmountPacket
 import dev.sterner.registry.VoidBoundBlockEntityTypeRegistry
@@ -28,8 +27,6 @@ import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.phys.Vec3
 import team.lodestar.lodestone.helpers.BlockHelper
-import team.lodestar.lodestone.systems.blockentity.ItemHolderBlockEntity
-import team.lodestar.lodestone.systems.blockentity.LodestoneBlockEntity
 import team.lodestar.lodestone.systems.particle.ParticleEffectSpawner
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData
@@ -202,7 +199,12 @@ class OsmoticEnchanterBlockEntity(pos: BlockPos, state: BlockState?) : VoudBound
         return false
     }
 
-    private fun spawnSpiritJarParticle(level: Level, worldPosition: BlockPos, blockPos: BlockPos, type: MalumSpiritType) {
+    private fun spawnSpiritJarParticle(
+        level: Level,
+        worldPosition: BlockPos,
+        blockPos: BlockPos,
+        type: MalumSpiritType
+    ) {
 
         if (!level.isClientSide) {
             return

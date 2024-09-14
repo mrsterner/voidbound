@@ -58,7 +58,7 @@ object VoidBoundUtils {
     fun hasAdvancementCriterion(
         serverPlayerEntity: ServerPlayer,
         advancementIdentifier: ResourceLocation
-    ) : Boolean {
+    ): Boolean {
         if (serverPlayerEntity.getServer() == null) {
             return false
         }

@@ -19,7 +19,7 @@ import net.minecraft.world.item.ProjectileWeaponItem
 import net.minecraft.world.level.Level
 
 class GrimcultArcherEntity(level: Level) :
-    AbstractCultistEntity( VoidBoundEntityTypeRegistry.GRIMCULT_ARCHER_ENTITY.get(), level), CrossbowAttackMob {
+    AbstractCultistEntity(VoidBoundEntityTypeRegistry.GRIMCULT_ARCHER_ENTITY.get(), level), CrossbowAttackMob {
 
     override fun defineSynchedData() {
         super.defineSynchedData()

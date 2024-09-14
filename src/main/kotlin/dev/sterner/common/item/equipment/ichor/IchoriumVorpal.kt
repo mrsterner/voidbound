@@ -28,7 +28,14 @@ import team.lodestar.lodestone.systems.item.tools.magic.MagicSwordItem
 import java.util.function.Consumer
 import java.util.function.Predicate
 
-class IchoriumVorpal(tier: Tier, attackDamageModifier: Int, attackSpeedModifier: Float, magicDamage: Float, properties: Properties) : MagicSwordItem(tier, attackDamageModifier,
+class IchoriumVorpal(
+    tier: Tier,
+    attackDamageModifier: Int,
+    attackSpeedModifier: Float,
+    magicDamage: Float,
+    properties: Properties
+) : MagicSwordItem(
+    tier, attackDamageModifier,
     attackSpeedModifier,
     magicDamage,
     properties
@@ -78,7 +85,8 @@ class IchoriumVorpal(tier: Tier, attackDamageModifier: Int, attackSpeedModifier:
     fun useHoeOn(context: UseOnContext): InteractionResult {
         val level = context.level
         val blockPos = context.clickedPos
-        val pair = HoeItemTillablesAccessor.getTILLABLES()[level.getBlockState(blockPos).block] as Pair<Predicate<UseOnContext>, Consumer<UseOnContext>>?
+        val pair =
+            HoeItemTillablesAccessor.getTILLABLES()[level.getBlockState(blockPos).block] as Pair<Predicate<UseOnContext>, Consumer<UseOnContext>>?
         if (pair == null) {
             return InteractionResult.PASS
         } else {
