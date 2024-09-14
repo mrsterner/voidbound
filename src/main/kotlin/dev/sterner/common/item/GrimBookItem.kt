@@ -7,6 +7,8 @@ import dev.sterner.registry.VoidBoundComponentRegistry
 import net.minecraft.client.Minecraft
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.chat.Component
+import net.minecraft.sounds.SoundEvents
+import net.minecraft.sounds.SoundSource
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.InteractionResultHolder
@@ -53,6 +55,7 @@ class GrimBookItem(properties: Properties) : BlockItem(VoidBoundBlockRegistry.GR
         }
 
         if (giveAdvancement) {
+            level.playSound(player, player, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1f,1f)
             VoidBoundComponentRegistry.VOID_BOUND_REVELATION_COMPONENT.get(player).unlockKnowledge(KnowledgeType.GRIMCULT)
             VoidBoundPlayerUtils.addThought(player, Component.translatable("voidbound.grimcultrites"), 20 * 5, 1)
         } else if (item.tag!!.getBoolean("open")) {
