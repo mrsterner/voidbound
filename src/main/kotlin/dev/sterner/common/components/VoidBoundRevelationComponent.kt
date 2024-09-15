@@ -59,7 +59,7 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
 
     // Unlocks all knowledge without checking prerequisites
     fun unlockAllKnowledge() {
-        KnowledgeType.values().forEach { knowledgeType ->
+        KnowledgeType.entries.forEach { knowledgeType ->
             if (!hasKnowledge(knowledgeType)) {
                 knowledgeDataSet.add(KnowledgeData(knowledgeType))
             }
