@@ -8,10 +8,12 @@ import dev.sterner.networking.AbilityUpdatePacket
 import dev.sterner.registry.VoidBoundComponentRegistry
 import dev.sterner.registry.VoidBoundItemRegistry
 import dev.sterner.registry.VoidBoundPacketRegistry
+import dev.sterner.registry.VoidBoundTags
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.screens.Screen
 import net.minecraft.network.chat.Component
+import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.item.ItemStack
 
 class ItemAbilityScreen(var stack: ItemStack) : Screen(Component.literal("Ability Selection")) {
@@ -64,6 +66,13 @@ class ItemAbilityScreen(var stack: ItemStack) : Screen(Component.literal("Abilit
     fun render(guiGraphics: GuiGraphics, partialTick: Float) {
 
         if (abilities?.isEmpty() == true) {
+            return
+        }
+        val player = Minecraft.getInstance().player ?: return
+
+        val hasHand = player.mainHandItem.`is`(VoidBoundTags.ITEM_WITH_ABILITY)
+        val hasCrown = player.getItemBySlot(EquipmentSlot.HEAD).`is`(VoidBoundTags.ITEM_WITH_ABILITY)
+        if (!hasHand && !hasCrown) {
             return
         }
 

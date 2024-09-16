@@ -84,6 +84,10 @@ class VoidBoundPlayerItemAbilityComponent(private val player: Player) : AutoSync
         sync()
     }
 
+    fun getWrath(): Int{
+        return wrathCounter
+    }
+
     /**
      * if wrath is not maxed out and target has more than 95% health, increase wrath and increase the damage
      */

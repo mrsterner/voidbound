@@ -86,6 +86,7 @@ object VoidBoundEvents {
         HudRenderCallback.EVENT.register(RiftHudRenderEvent::spiritRiftHud)
         HudRenderCallback.EVENT.register(SpiritJarHudRenderEvent::spiritJarHud)
         HudRenderCallback.EVENT.register(ThoughtsTextHudRenderEvent::renderThoughts)
+        HudRenderCallback.EVENT.register(WrathHudRenderEvent::renderWrathBar)
         ClientTickEvents.END_CLIENT_TICK.register(ClientTickHandler::clientTickEnd)
         ClientTickEvents.END_CLIENT_TICK.register {
             VoidBoundClient.ITEM_ABILITY_HANDLER.tick()
