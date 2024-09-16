@@ -8,6 +8,7 @@ import dev.sterner.api.item.ItemAbility
 import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.client.event.*
 import dev.sterner.common.components.VoidBoundPlayerComponent
+import dev.sterner.common.components.VoidBoundPlayerItemAbilityComponent
 import dev.sterner.common.components.VoidBoundWorldComponent
 import dev.sterner.common.item.equipment.TidecutterItem
 import dev.sterner.common.item.equipment.UpgradableTool
@@ -29,6 +30,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
+import team.lodestar.lodestone.events.LodestoneInteractionEvent
 import java.util.*
 
 
@@ -39,7 +41,7 @@ object VoidBoundEvents {
         UseEntityCallback.EVENT.register(VoidBoundPlayerComponent.Companion::useEntity)
         BlockEvents.BLOCK_BREAK.register(VoidBoundWorldComponent.Companion::removeWard)
         BlockEvents.BLOCK_BREAK.register(TidecutterItem.Companion::breakBlock)
-
+        LodestoneInteractionEvent.RIGHT_CLICK_ITEM.register(VoidBoundPlayerItemAbilityComponent::onRightClickItem)
         LivingHurtEvent.HURT.register {
             val attacker = it.source.entity
             if (attacker is Player) {

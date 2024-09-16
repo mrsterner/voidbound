@@ -6,7 +6,6 @@
     "HoeItemTillablesAccessor",
     "ItemEntityMixin",
     "LodestoneBlockEntityRegistryMixin",
-    "ReboundEnchantmentMixin",
     "ScytheBoomerangEntityMixin",
     "ServerPlayerGameModeMixin",
     "ServerPlayerMixin",

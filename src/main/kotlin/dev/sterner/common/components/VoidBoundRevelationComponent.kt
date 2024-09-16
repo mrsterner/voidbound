@@ -27,7 +27,8 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
             ItemAbility.EARTH_RUMMAGER,
             ItemAbility.HARVEST,
             ItemAbility.SCORCHING_HEAT,
-            ItemAbility.SPIRIT_VISION
+            ItemAbility.SPIRIT_VISION,
+            ItemAbility.TRIPLE_REBOUND
         )
     }
 
@@ -143,10 +144,10 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
         knowledgeDataSet = KnowledgeData.readFromNbt(tag)
 
         unlockedItemAbilities.clear()
+        unlockedItemAbilities = ItemAbility.readNbt(tag)
         defaultAbilities().forEach {
             unlockedItemAbilities.add(it)
         }
-        unlockedItemAbilities = ItemAbility.readNbt(tag)
     }
 
     override fun writeToNbt(tag: CompoundTag) {
