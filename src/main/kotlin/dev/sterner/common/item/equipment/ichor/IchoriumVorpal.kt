@@ -23,7 +23,6 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Tier
 import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.Level
-import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.levelgen.structure.BoundingBox
 import net.minecraft.world.phys.BlockHitResult
@@ -46,13 +45,6 @@ class IchoriumVorpal(
 
     override fun getUseDuration(stack: ItemStack): Int {
         return 72000
-    }
-
-    override fun hurtEnemy(stack: ItemStack, target: LivingEntity, attacker: LivingEntity): Boolean {
-        if (attacker is Player && VoidBoundItemUtils.getActiveAbility(stack) == ItemAbility.VAMPIRISM) {
-            VoidBoundComponentRegistry.VOID_BOUND_PLAYER_ITEM_ABILITY_COMPONENT.get(attacker).tryUseVampirism(target)
-        }
-        return super.hurtEnemy(stack, target, attacker)
     }
 
     override fun canAttackBlock(state: BlockState?, level: Level?, pos: BlockPos?, player: Player): Boolean {

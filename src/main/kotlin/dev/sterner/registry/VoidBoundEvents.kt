@@ -46,14 +46,14 @@ object VoidBoundEvents {
             val attacker = it.source.entity
             if (attacker is Player) {
                 val item = attacker.mainHandItem
-                val bl = VoidBoundItemUtils.getActiveAbility(item) == ItemAbility.VAMPIRISM
-                if (bl) {
-                    attacker.heal(attacker.random.nextInt(2).toFloat())
-                }
+                val component = VoidBoundComponentRegistry.VOID_BOUND_PLAYER_ITEM_ABILITY_COMPONENT.get(attacker)
 
-                val bl2 = VoidBoundItemUtils.getActiveAbility(item) == ItemAbility.OPENER
-                if (bl2 && it.entity.health / it.entity.maxHealth > 0.95) {
-                    it.amount *= 1.5f
+                if (VoidBoundItemUtils.getActiveAbility(item) == ItemAbility.OPENER) {
+                    it.amount = component.tryUseOpener(it.entity, it.amount)
+                } else if (VoidBoundItemUtils.getActiveAbility(item) == ItemAbility.VAMPIRISM) {
+                    it.amount = component.tryUseVampirism(it.entity, it.amount)
+                } else if (VoidBoundItemUtils.getActiveAbility(item) == ItemAbility.FINALE) {
+                    it.amount = component.tryUseFinale(it.entity, it.amount)
                 }
             }
         }
