@@ -3,6 +3,8 @@ package dev.sterner.common.item.equipment.ichor
 import com.google.common.collect.ImmutableMultimap
 import com.google.common.collect.Multimap
 import dev.sterner.api.item.HammerLikeItem
+import dev.sterner.api.item.ItemAbility
+import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.registry.VoidBoundTiers
 import net.minecraft.tags.BlockTags
 import net.minecraft.tags.TagKey
@@ -24,7 +26,8 @@ class IchoriumTerraformer(
 ), HammerLikeItem {
 
     override fun getDestroySpeed(stack: ItemStack, state: BlockState): Float {
-        return this.speed
+        val bl = VoidBoundItemUtils.getActiveAbility(stack) == ItemAbility.EARTH_RUMMAGER
+        return if (bl) this.speed * 0.75f else this.speed
     }
 
     override fun isCorrectToolForDrops(block: BlockState): Boolean {

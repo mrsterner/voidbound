@@ -24,6 +24,7 @@ class VoidBoundRevelationComponent(private val player: Player) : AutoSyncedCompo
         return mutableSetOf(
             ItemAbility.NONE,
             ItemAbility.EXCAVATOR,
+            ItemAbility.EARTH_RUMMAGER,
             ItemAbility.HARVEST,
             ItemAbility.SCORCHING_HEAT,
             ItemAbility.SPIRIT_VISION

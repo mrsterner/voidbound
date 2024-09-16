@@ -1,17 +1,18 @@
 package dev.sterner.common.item.equipment.ichor
 
 import com.mojang.datafixers.util.Pair
+import dev.sterner.api.item.HammerLikeItem
 import dev.sterner.api.item.ItemAbility
 import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.common.item.equipment.GalesEdgeItem.Companion.ascend
 import dev.sterner.mixin.HoeItemTillablesAccessor
+import io.github.fabricators_of_create.porting_lib.common.util.IPlantable
+import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents.BreakEvent
 import net.minecraft.core.BlockPos
-import net.minecraft.core.NonNullList
-import net.minecraft.server.level.ServerLevel
+import net.minecraft.core.Direction
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
 import net.minecraft.tags.BlockTags
-import net.minecraft.world.Containers
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.InteractionResultHolder
@@ -21,8 +22,9 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Tier
 import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.Level
-import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.levelgen.structure.BoundingBox
 import net.minecraft.world.phys.BlockHitResult
 import team.lodestar.lodestone.systems.item.tools.magic.MagicSwordItem
 import java.util.function.Consumer
@@ -45,9 +47,15 @@ class IchoriumVorpal(
         return 72000
     }
 
+    override fun canAttackBlock(state: BlockState?, level: Level?, pos: BlockPos?, player: Player): Boolean {
+        return VoidBoundItemUtils.getActiveAbility(player.mainHandItem) == ItemAbility.HARVEST
+    }
+
     override fun use(level: Level, player: Player, usedHand: InteractionHand): InteractionResultHolder<ItemStack> {
         if (VoidBoundItemUtils.getActiveAbility(player.mainHandItem) != ItemAbility.HARVEST) {
             player.startUsingItem(usedHand)
+        } else {
+
         }
 
         return super.use(level, player, usedHand)
@@ -119,15 +127,48 @@ class IchoriumVorpal(
         stack: ItemStack,
         level: Level,
         state: BlockState,
-        pos: BlockPos,
+        blockPos: BlockPos,
         miningEntity: LivingEntity
     ): Boolean {
-        if (level is ServerLevel && state.`is`(BlockTags.CROPS)) {
-            val list = NonNullList.create<ItemStack>()
-            list.addAll(Block.getDrops(state, level, pos, null, miningEntity, stack))
-            Containers.dropContents(level, pos, list)
+        val bl = VoidBoundItemUtils.getActiveAbility(stack) == ItemAbility.HARVEST
+        if (bl && tags(state)) {
+            val size = 3
+            val areaOfEffect = BoundingBox(
+                blockPos.x - size,
+                blockPos.y - size,
+                blockPos.z - size,
+                blockPos.x + size,
+                blockPos.y + size,
+                blockPos.z + size
+            )
+
+            var blocksBroken = 0
+            val iterator = BlockPos.betweenClosedStream(areaOfEffect).iterator()
+            val removedBlocks = mutableSetOf<BlockPos>()
+
+            while (iterator.hasNext()) {
+                val pos = iterator.next()
+
+                val targetState = level.getBlockState(pos)
+                if (pos == blockPos || removedBlocks.contains(pos)) continue
+
+                val state = level.getBlockState(pos)
+                if (tags(state)) {
+                    // Trigger block break event
+                    BreakEvent.BLOCK_BREAK.invoker().onBlockBreak(BreakEvent(level, pos, targetState, miningEntity as Player))
+
+                    removedBlocks.add(pos)
+                    level.destroyBlock(pos, false, miningEntity)
+
+                    if (!miningEntity.isCreative) {
+                        HammerLikeItem.handleBlockDrops(targetState, pos, stack, level, miningEntity, Direction.UP)
+                    }
+
+                    blocksBroken++
+                }
+            }
         }
-        return super.mineBlock(stack, level, state, pos, miningEntity)
+        return super.mineBlock(stack, level, state, blockPos, miningEntity)
     }
 
     override fun onUseTick(level: Level, player: LivingEntity, stack: ItemStack, remainingUseDuration: Int) {
@@ -138,4 +179,12 @@ class IchoriumVorpal(
         super.onUseTick(level, player, stack, remainingUseDuration)
     }
 
+    override fun isCorrectToolForDrops(block: BlockState): Boolean {
+        return tags(block)
+    }
+
+
+    fun tags(state: BlockState) : Boolean {
+        return state.canBeReplaced() || state.`is`(BlockTags.CROPS) || state.block is IPlantable || state.`is`(BlockTags.FLOWERS)
+    }
 }

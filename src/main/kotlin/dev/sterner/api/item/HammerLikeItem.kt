@@ -1,6 +1,7 @@
 package dev.sterner.api.item
 
 import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents.BreakEvent
+import io.github.fabricators_of_create.porting_lib.tags.Tags
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
@@ -108,6 +109,10 @@ interface HammerLikeItem {
 
             if (!isToolEffective(targetState)) continue
 
+            if (five && targetState.`is`(Tags.Blocks.ORES)) {
+                continue
+            }
+
             // Trigger block break event
             BreakEvent.BLOCK_BREAK.invoker().onBlockBreak(BreakEvent(level, pos, targetState, entity))
 
@@ -115,7 +120,7 @@ interface HammerLikeItem {
             level.destroyBlock(pos, false, entity)
 
             if (!entity.isCreative) {
-                handleBlockDrops(targetState, pos, hammerStack, level, entity, hitResult)
+                handleBlockDrops(targetState, pos, hammerStack, level, entity, hitResult.direction)
             }
 
             blocksBroken++
@@ -168,21 +173,24 @@ interface HammerLikeItem {
     /**
      * Handles block drops when the hammer breaks a block.
      */
-    private fun handleBlockDrops(
-        targetState: BlockState,
-        pos: BlockPos,
-        hammerStack: ItemStack,
-        level: Level,
-        entity: LivingEntity,
-        hitResult: BlockHitResult
-    ) {
-        val isCorrectTool = hammerStack.isCorrectToolForDrops(targetState)
-        if (isCorrectTool) {
-            targetState.spawnAfterBreak(level as ServerLevel, pos, hammerStack, true)
-            val drops = Block.getDrops(targetState, level, pos, level.getBlockEntity(pos), entity, hammerStack)
-            drops.forEach { drop ->
-                Block.popResourceFromFace(level, pos, hitResult.direction, drop)
+    companion object {
+        fun handleBlockDrops(
+            targetState: BlockState,
+            pos: BlockPos,
+            hammerStack: ItemStack,
+            level: Level,
+            entity: LivingEntity,
+            direction: Direction
+        ) {
+            val isCorrectTool = hammerStack.isCorrectToolForDrops(targetState)
+            if (isCorrectTool) {
+                targetState.spawnAfterBreak(level as ServerLevel, pos, hammerStack, true)
+                val drops = Block.getDrops(targetState, level, pos, level.getBlockEntity(pos), entity, hammerStack)
+                drops.forEach { drop ->
+                    Block.popResourceFromFace(level, pos, direction, drop)
+                }
             }
         }
     }
+
 }
