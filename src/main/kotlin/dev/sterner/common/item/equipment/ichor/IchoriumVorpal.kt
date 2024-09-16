@@ -6,6 +6,7 @@ import dev.sterner.api.item.ItemAbility
 import dev.sterner.api.util.VoidBoundItemUtils
 import dev.sterner.common.item.equipment.GalesEdgeItem.Companion.ascend
 import dev.sterner.mixin.HoeItemTillablesAccessor
+import dev.sterner.registry.VoidBoundComponentRegistry
 import io.github.fabricators_of_create.porting_lib.common.util.IPlantable
 import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents.BreakEvent
 import net.minecraft.core.BlockPos
@@ -45,6 +46,13 @@ class IchoriumVorpal(
 
     override fun getUseDuration(stack: ItemStack): Int {
         return 72000
+    }
+
+    override fun hurtEnemy(stack: ItemStack, target: LivingEntity, attacker: LivingEntity): Boolean {
+        if (attacker is Player && VoidBoundItemUtils.getActiveAbility(stack) == ItemAbility.VAMPIRISM) {
+            VoidBoundComponentRegistry.VOID_BOUND_PLAYER_ITEM_ABILITY_COMPONENT.get(attacker).tryUseVampirism(target)
+        }
+        return super.hurtEnemy(stack, target, attacker)
     }
 
     override fun canAttackBlock(state: BlockState?, level: Level?, pos: BlockPos?, player: Player): Boolean {

@@ -14,7 +14,7 @@ enum class ItemAbility : StringRepresentable {
     SCORCHING_HEAT,//Fully implemented
     EXCAVATOR,//Fully implemented
     EARTH_RUMMAGER,
-    VAMPIRISM,//TODO re-implement. Saps the target's lifeforce, healing half a heart for each spirit their soul has / half a heart for each armor point a player has, with a 10 tick cooldown for each half heart
+    VAMPIRISM,
     HARVEST,
     OPENER,//TODO re-implement. First hit on a mob deals increased damage and grants a stack of Wrath, lasting a minute, up to 10 stacks. Transforms into Finale when you reach 10 stacks, or sneak right click
     FINALE,//TODO implement. Consumes All stacks of Opening Strike, multiplying damage dealt by the amount of stacks total.

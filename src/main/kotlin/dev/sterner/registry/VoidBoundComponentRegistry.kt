@@ -8,10 +8,7 @@ import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy
 import dev.onyxstudios.cca.api.v3.world.WorldComponentFactoryRegistry
 import dev.onyxstudios.cca.api.v3.world.WorldComponentInitializer
 import dev.sterner.VoidBound
-import dev.sterner.common.components.VoidBoundEntityComponent
-import dev.sterner.common.components.VoidBoundPlayerComponent
-import dev.sterner.common.components.VoidBoundRevelationComponent
-import dev.sterner.common.components.VoidBoundWorldComponent
+import dev.sterner.common.components.*
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
 
@@ -46,6 +43,15 @@ class VoidBoundComponentRegistry : WorldComponentInitializer, EntityComponentIni
                 )
             }, RespawnCopyStrategy.ALWAYS_COPY
         )
+
+        registry.registerForPlayers(
+            VOID_BOUND_PLAYER_ITEM_ABILITY_COMPONENT,
+            { entity: Player ->
+                VoidBoundPlayerItemAbilityComponent(
+                    entity
+                )
+            }, RespawnCopyStrategy.ALWAYS_COPY
+        )
     }
 
     companion object {
@@ -62,6 +68,11 @@ class VoidBoundComponentRegistry : WorldComponentInitializer, EntityComponentIni
         val VOID_BOUND_PLAYER_COMPONENT: ComponentKey<VoidBoundPlayerComponent> = ComponentRegistry.getOrCreate(
             VoidBound.id("player"),
             VoidBoundPlayerComponent::class.java
+        )
+
+        val VOID_BOUND_PLAYER_ITEM_ABILITY_COMPONENT: ComponentKey<VoidBoundPlayerItemAbilityComponent> = ComponentRegistry.getOrCreate(
+            VoidBound.id("player_item_ability"),
+            VoidBoundPlayerItemAbilityComponent::class.java
         )
 
         val VOID_BOUND_REVELATION_COMPONENT: ComponentKey<VoidBoundRevelationComponent> = ComponentRegistry.getOrCreate(
