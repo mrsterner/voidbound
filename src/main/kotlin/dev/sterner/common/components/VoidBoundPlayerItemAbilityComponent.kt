@@ -23,6 +23,12 @@ import team.lodestar.lodestone.registry.common.LodestoneAttributeRegistry
 class VoidBoundPlayerItemAbilityComponent(private val player: Player) : AutoSyncedComponent, CommonTickingComponent {
 
     private var vampirismCooldown: Int = 0
+    private var wrathCooldown: Int = 0
+    private val wrathCooldownMax = 20 * 60
+    private var finalStrike = false
+    private val finalStrikeCooldownMax = 20 * 20
+    private var finalStrikeDuration = 0
+    private var wrathCounter = 0
 
     fun tryUseVampirism(target: LivingEntity){
         if (vampirismCooldown <= 0) {
@@ -55,17 +61,61 @@ class VoidBoundPlayerItemAbilityComponent(private val player: Player) : AutoSync
         return healing
     }
 
+    fun increaseWrath() {
+        if (!finalStrike) {
+            wrathCounter++
+            wrathCooldown = wrathCooldownMax
+        }
+        sync()
+    }
+
     override fun readFromNbt(tag: CompoundTag) {
-        vampirismCooldown = tag.getInt("vampirm")
+        vampirismCooldown = tag.getInt("vampirismCooldown")
+        wrathCooldown = tag.getInt("wrathCooldown")
+        wrathCounter = tag.getInt("wrathCounter")
+        finalStrike = tag.getBoolean("finalStrike")
     }
 
     override fun writeToNbt(tag: CompoundTag) {
-       tag.putInt("vampirm", vampirismCooldown)
+        tag.putInt("vampirismCooldown", vampirismCooldown)
+        tag.putInt("wrathCooldown", wrathCooldown)
+        tag.putInt("wrathCounter", wrathCounter)
+        tag.putBoolean("finalStrike", finalStrike)
     }
 
     override fun tick() {
         if (vampirismCooldown > 0 && VoidBoundItemUtils.getActiveAbility(player.mainHandItem) == ItemAbility.VAMPIRISM) {
             vampirismCooldown--
+            sync()
+        }
+
+        if (!finalStrike) {
+            // Wrath logic
+            if (wrathCounter in 1..9) {
+                if (wrathCooldown > 0) {
+                    wrathCooldown--
+                } else {
+                    // If cooldown hits 0, reset the wrath counter
+                    wrathCounter = 0
+                }
+                sync()
+            }
+
+            // FinalStrike logic when wrathCounter reaches 10
+            if (wrathCounter == 10) {
+                finalStrike = true
+                wrathCounter = 0
+                wrathCooldown = 0
+                finalStrikeDuration = finalStrikeCooldownMax
+                sync()
+            }
+        } else {
+            // Handle ticking down the finalStrike duration
+            if (finalStrikeDuration > 0) {
+                finalStrikeDuration--
+            } else {
+                finalStrike = false
+            }
             sync()
         }
     }
