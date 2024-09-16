@@ -21,7 +21,7 @@ enum class ItemAbility : StringRepresentable {
     TRIPLE_REBOUND,
     VENGEANCE,//TODO implement. Rebound now actively seeks the target who most recently attacked you, damage taken by the owner of the scythe extends it's flight time. Initial flight time greatly increased
     PROPAGATION,//TODO implement, Rebound causes a sweeping attack. Scythe Sweeping now propagates, spreading itself through hordes of enemies like a chain
-    SPIRIT_VISION; //TODO implement, hallowed goggles ability
+    SPIRIT_VISION;
 
     override fun getSerializedName(): String {
         return this.name.lowercase()
