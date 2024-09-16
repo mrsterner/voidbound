@@ -13,15 +13,15 @@ enum class ItemAbility : StringRepresentable {
     NONE,//Fully implemented
     SCORCHING_HEAT,//Fully implemented
     EXCAVATOR,//Fully implemented
-    EARTH_RUMMAGER,
-    VAMPIRISM,
-    HARVEST,
+    EARTH_RUMMAGER,//Fully implemented
+    VAMPIRISM,//Fully implemented
+    HARVEST,//Fully implemented
     OPENER,//TODO re-implement. First hit on a mob deals increased damage and grants a stack of Wrath, lasting a minute, up to 10 stacks. Transforms into Finale when you reach 10 stacks, or sneak right click
     FINALE,//TODO implement. Consumes All stacks of Opening Strike, multiplying damage dealt by the amount of stacks total.
-    TRIPLE_REBOUND,
+    TRIPLE_REBOUND,//Fully implemented
     VENGEANCE,//TODO implement. Rebound now actively seeks the target who most recently attacked you, damage taken by the owner of the scythe extends it's flight time. Initial flight time greatly increased
     PROPAGATION,//TODO implement, Rebound causes a sweeping attack. Scythe Sweeping now propagates, spreading itself through hordes of enemies like a chain
-    SPIRIT_VISION;
+    SPIRIT_VISION;//Fully implemented
 
     override fun getSerializedName(): String {
         return this.name.lowercase()
