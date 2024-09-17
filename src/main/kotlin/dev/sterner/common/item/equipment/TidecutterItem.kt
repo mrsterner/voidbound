@@ -16,6 +16,7 @@ import net.minecraft.server.level.ServerLevel
 import net.minecraft.tags.BlockTags
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResultHolder
+import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.item.ItemEntity
 import net.minecraft.world.entity.player.Player
@@ -26,7 +27,6 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
-import team.lodestar.lodestone.helpers.ItemHelper
 import team.lodestar.lodestone.helpers.RandomHelper
 import team.lodestar.lodestone.systems.item.tools.magic.MagicAxeItem
 import java.awt.Color
@@ -77,12 +77,14 @@ open class TidecutterItem(
     override fun onUseTick(level: Level, livingEntity: LivingEntity, stack: ItemStack, remainingUseDuration: Int) {
         val nearbyItems: MutableList<ItemEntity> = level.getEntitiesOfClass(ItemEntity::class.java, livingEntity.boundingBox.inflate(10.0))
         if (nearbyItems.isNotEmpty()) {
+            println(level.isClientSide)
             for (item in nearbyItems) {
 
                 val newStack = item.item.copy()
                 newStack.count = newStack.count
                 newStack.tag = newStack.tag
 
+                val speed: Float = 0.15f + 0.25f / 5
                 val entity = ItemCarrierItemEntity(
                     level, livingEntity.uuid, newStack,
                     item.x,
@@ -92,8 +94,7 @@ open class TidecutterItem(
                     RandomHelper.randomBetween(level.random, 0.05f, 0.06f).toDouble(),
                     RandomHelper.randomBetween(level.random, -speed, speed).toDouble()
                 )
-                entity.entityData.set(ItemCarrierItemEntity.DATA_ITEM_STACK, newStack)
-                item.discard()
+                item.remove(Entity.RemovalReason.DISCARDED)
                 level.addFreshEntity(entity)
             }
         }

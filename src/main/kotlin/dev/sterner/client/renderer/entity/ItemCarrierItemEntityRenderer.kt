@@ -42,6 +42,7 @@ class ItemCarrierItemEntityRenderer(context: EntityRendererProvider.Context) :
         bufferIn: MultiBufferSource,
         packedLightIn: Int
     ) {
+        println(entity.getItem())
         val spiritType = SpiritTypeRegistry.AQUEOUS_SPIRIT
         val trailBuilder = SpiritBasedWorldVFXBuilder.create(spiritType).setRenderType(TRAIL_TYPE)
         RenderUtils.renderEntityTrail(
@@ -86,7 +87,7 @@ class ItemCarrierItemEntityRenderer(context: EntityRendererProvider.Context) :
             bufferIn: MultiBufferSource?,
             packedLightIn: Int
         ) {
-            val itemStack = entity.itemStack
+            val itemStack = entity.getItem()
             val model = itemRenderer.getModel(itemStack, entity.level(), null as LivingEntity?, entity.itemStack.count)
             val yOffset = entity.getYOffset(partialTicks)
             val scale = model.transforms.getTransform(ItemDisplayContext.GROUND).scale.y()

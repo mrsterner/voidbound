@@ -1,11 +1,15 @@
 package dev.sterner.common.entity
 
 import com.sammy.malum.common.entity.FloatingEntity
+import com.sammy.malum.common.entity.spirit.SpiritItemEntity
 import com.sammy.malum.registry.common.SpiritTypeRegistry
 import com.sammy.malum.registry.common.item.ItemRegistry
 import com.sammy.malum.visual_effects.SpiritLightSpecs
+import dev.sterner.common.entity.ParticleEntity.Companion.DATA_SPIRIT
 import dev.sterner.registry.VoidBoundEntityTypeRegistry
 import net.minecraft.nbt.CompoundTag
+import net.minecraft.network.protocol.Packet
+import net.minecraft.network.protocol.game.ClientGamePacketListener
 import net.minecraft.network.syncher.EntityDataAccessor
 import net.minecraft.network.syncher.EntityDataSerializers
 import net.minecraft.network.syncher.SynchedEntityData
@@ -39,11 +43,20 @@ class ItemCarrierItemEntity(level: Level?) : FloatingEntity(VoidBoundEntityTypeR
         this.itemStack = stack
         this.setPos(posX, posY, posZ)
         this.setDeltaMovement(velX, velY, velZ)
-        this.maxAge = 800
+        this.maxAge = 8000
+        this.age = 0
+    }
+
+    init {
+        this.maxAge = 8000
     }
 
     override fun addAdditionalSaveData(pCompound: CompoundTag) {
-        super.addAdditionalSaveData(pCompound)
+        pCompound.putInt("age", this.age)
+        pCompound.putFloat("windUp", this.windUp)
+        if (this.ownerUUID != null) {
+            pCompound.putUUID("ownerUUID", this.ownerUUID)
+        }
         val itemstack = this.getItemRaw()
         if (!itemstack.isEmpty) {
             pCompound.put("Item", itemstack.save(CompoundTag()))
@@ -51,25 +64,23 @@ class ItemCarrierItemEntity(level: Level?) : FloatingEntity(VoidBoundEntityTypeR
     }
 
     override fun readAdditionalSaveData(pCompound: CompoundTag) {
-        super.readAdditionalSaveData(pCompound)
-        val itemstack = ItemStack.of(pCompound.getCompound("Item"))
-        this.setItem(itemstack)
+        this.age = pCompound.getInt("age")
+        this.windUp = pCompound.getFloat("windUp")
+        if (pCompound.contains("ownerUUID")) {
+            this.setOwner(pCompound.getUUID("ownerUUID"))
+        }
+        if (pCompound.contains("Item")) {
+            val itemstack = ItemStack.of(pCompound.getCompound("Item"))
+            this.setItem(itemstack)
+        }
     }
 
     fun setItem(pStack: ItemStack) {
-        getEntityData().set(DATA_ITEM_STACK, pStack)
+        entityData.set(DATA_ITEM_STACK, pStack)
     }
 
     override fun defineSynchedData() {
-        getEntityData().define(DATA_ITEM_STACK, ItemStack.EMPTY)
-    }
-
-    override fun onSyncedDataUpdated(pKey: EntityDataAccessor<*>) {
-        if (DATA_ITEM_STACK == pKey) {
-            this.itemStack = getEntityData().get(DATA_ITEM_STACK) as ItemStack
-        }
-
-        super.onSyncedDataUpdated(pKey)
+        entityData.define(DATA_ITEM_STACK, ItemStack.EMPTY)
     }
 
     override fun collect() {
@@ -81,7 +92,7 @@ class ItemCarrierItemEntity(level: Level?) : FloatingEntity(VoidBoundEntityTypeR
     }
 
     protected fun getItemRaw(): ItemStack {
-        return getEntityData().get(DATA_ITEM_STACK) as ItemStack
+        return entityData.get(DATA_ITEM_STACK) as ItemStack
     }
 
     protected fun getDefaultItem(): Item {
@@ -93,11 +104,24 @@ class ItemCarrierItemEntity(level: Level?) : FloatingEntity(VoidBoundEntityTypeR
         return if (itemstack.isEmpty) ItemStack(this.getDefaultItem()) else itemstack
     }
 
+    override fun tick() {
+        super.tick()
+        println("$age : $maxAge : $isAlive : ${level().isClientSide}")
+    }
+
+    override fun onSyncedDataUpdated(pKey: EntityDataAccessor<*>) {
+        if (DATA_ITEM_STACK.equals(pKey)) {
+            itemStack = getEntityData().get(DATA_ITEM_STACK)
+        }
+
+        super.onSyncedDataUpdated(pKey)
+    }
+
+
     override fun spawnParticles(x: Double, y: Double, z: Double) {
         val motion = this.deltaMovement
         val norm = motion.normalize().scale(0.05000000074505806)
-        val lightSpecs: ParticleEffectSpawner =
-            SpiritLightSpecs.spiritLightSpecs(this.level(), Vec3(x, y, z), SpiritTypeRegistry.AQUEOUS_SPIRIT)
+        val lightSpecs: ParticleEffectSpawner = SpiritLightSpecs.spiritLightSpecs(this.level(), Vec3(x, y, z), SpiritTypeRegistry.AQUEOUS_SPIRIT)
         lightSpecs.builder.setMotion(norm)
         lightSpecs.bloomBuilder.setMotion(norm)
         lightSpecs.spawnParticles()

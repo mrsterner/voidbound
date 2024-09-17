@@ -32,7 +32,7 @@ object VoidBoundEntityTypeRegistry {
                     w
                 )
             }, MobCategory.MISC
-        ).sized(0.05f, 0.05f).clientTrackingRange(50).build(VoidBound.id("item_carrier").toString())
+        ).sized(0.5f, 0.75f).clientTrackingRange(50).build(VoidBound.id("item_carrier").toString())
     }
 
     var SOUL_STEEL_GOLEM_ENTITY: RegistryObject<EntityType<SoulSteelGolemEntity>> =
