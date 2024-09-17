@@ -43,8 +43,6 @@
   "item.voidbound.cheaters_codex": "Cheaters Codex",
   "block.voidbound.tear_of_ender": "Tear of Ender",
   "block.voidbound.tear_of_brimstone": "Tear of Brimstone",
-  "item.voidbound.hallowed_gold_capped_runewood_wand": "Hallowed Gold Capped Runewood Wand",
-  "item.voidbound.soul_stained_steel_capped_soulwood_wand": "Soul Stained Steel Capped Soulwood Wand",
   "tooltip.voidbound.guard": "Guard",
   "tooltip.voidbound.harvest": "Harvest",
   "tooltip.voidbound.gather": "Gather",
@@ -143,11 +141,6 @@
   "malum.gui.book.entry.hallowed_goggles.description": "",
   "malum.gui.book.entry.page.headline.hallowed_goggles": "Hallowed Goggles",
   "malum.gui.book.entry.page.text.hallowed_goggles.1": "See Rifts and entities spirits",
-
-  "malum.gui.book.entry.hallowed_wand": "Wands",
-  "malum.gui.book.entry.hallowed_wand.description": "",
-  "malum.gui.book.entry.page.headline.hallowed_wand": "Hallowed Wand",
-  "malum.gui.book.entry.page.text.hallowed_wand.1": "Used with Focus. To add a Focus to the wand use it like a Bundle, adding it bu applying a focus to the Wand in the inventory. To then select a different focus, use the keybind to open focus selection screen",
 
   "malum.gui.book.entry.nomads_strider": "Nomad's Striders",
   "malum.gui.book.entry.nomads_strider.description": "",

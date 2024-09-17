@@ -31,7 +31,6 @@ object VoidBound : ModInitializer {
         VoidBoundParticleTypeRegistry.PARTICLES.register()
         VoidBoundMemoryTypeRegistry.MEMORY_TYPES.register()
         VoidBoundSensorTypeRegistry.SENSOR_TYPES.register()
-        VoidBoundWandFocusRegistry.WAND_FOCI.register()
         VoidBoundRiftTypeRegistry.RIFT_TYPES.register()
         VoidBoundMenuTypeRegistry.MENU_TYPES.register()
         VoidBoundStructureRegistry.STRUCTURES.register()

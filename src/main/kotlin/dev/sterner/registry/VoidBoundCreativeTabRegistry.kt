@@ -24,11 +24,10 @@ object VoidBoundCreativeTabRegistry {
                 item
             }
             .displayItems { _: ItemDisplayParameters?, entries: CreativeModeTab.Output ->
-                entries.accept(VoidBoundItemRegistry.HALLOWED_GOLD_CAPPED_RUNEWOOD_WAND.get())
-                entries.accept(VoidBoundItemRegistry.SOUL_STAINED_STEEL_CAPPED_SOULWOOD_WAND.get())
                 entries.accept(VoidBoundItemRegistry.HALLOWED_GOGGLES.get())
                 entries.accept(VoidBoundItemRegistry.HALLOWED_MONOCLE.get())
                 entries.accept(VoidBoundItemRegistry.CALL_OF_THE_VOID.get())
+                entries.accept(VoidBoundItemRegistry.SEALER_ITEM.get())
                 entries.accept(VoidBoundItemRegistry.CRYSTAL_FOCUS.get())
                 entries.accept(VoidBoundItemRegistry.FIRE_FOCUS.get())
                 entries.accept(VoidBoundItemRegistry.SHOCK_FOCUS.get())

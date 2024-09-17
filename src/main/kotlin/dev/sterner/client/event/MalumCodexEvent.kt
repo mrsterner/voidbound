@@ -441,27 +441,6 @@ object MalumCodexEvent {
                 )
         }
 
-        screen?.addEntry("hallowed_wand", -13, 5) { builder ->
-            builder.configureWidget {
-                it.setIcon(VoidBoundItemRegistry.HALLOWED_GOLD_CAPPED_RUNEWOOD_WAND.get()).setStyle(VOID)
-            }.addPage(HeadlineTextPage("hallowed_wand", "hallowed_wand.1"))
-                .addPage(
-                    SpiritInfusionPage.fromOutput(
-                        VoidBoundItemRegistry.HALLOWED_GOLD_CAPPED_RUNEWOOD_WAND.get()
-                    )
-                )
-                .addPage(
-                    SpiritInfusionPage.fromOutput(
-                        VoidBoundItemRegistry.SOUL_STAINED_STEEL_CAPPED_SOULWOOD_WAND.get()
-                    )
-                )
-                .addPage(
-                    SpiritInfusionPage.fromOutput(
-                        VoidBoundItemRegistry.CRYSTAL_FOCUS.get()
-                    )
-                )
-        }
-
         screen?.addEntry("fire_focus", -14, 5) { builder ->
             builder.configureWidget {
                 it.setIcon(VoidBoundItemRegistry.FIRE_FOCUS.get()).setStyle(DARK_VOID)

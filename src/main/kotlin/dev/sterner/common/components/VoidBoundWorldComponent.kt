@@ -3,10 +3,8 @@ package dev.sterner.common.components
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent
 import dev.sterner.api.util.VoidBoundRenderUtils
 import dev.sterner.client.VoidBoundTokens
-import dev.sterner.common.item.WandItem
-import dev.sterner.common.item.focus.WardingFocus
+import dev.sterner.common.item.equipment.SealerItem
 import dev.sterner.registry.VoidBoundComponentRegistry
-import dev.sterner.registry.VoidBoundWandFocusRegistry
 import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext
 import net.minecraft.client.Minecraft
@@ -227,29 +225,21 @@ class VoidBoundWorldComponent(val level: Level) : AutoSyncedComponent {
             val poseStack = ctx.matrixStack()
             val localPlayer = Minecraft.getInstance().player
             if (localPlayer != null) {
-                if (localPlayer.mainHandItem.item is WandItem) {
-                    val wand = localPlayer.mainHandItem
-                    if (wand.tag?.contains("FocusName") == true) {
-                        val focusName = wand.tag?.getString("FocusName")
-                        val focus = VoidBoundWandFocusRegistry.WAND_FOCUS.getOptional(focusName?.let {
-                            ResourceLocation.tryParse(it)
-                        })
-                        if (focus.isPresent && focus.get() is WardingFocus) {
-                            val levelComp =
-                                VoidBoundComponentRegistry.VOID_BOUND_WORLD_COMPONENT.get(localPlayer.level())
+                if (localPlayer.mainHandItem.item is SealerItem) {
+                    val sealer = localPlayer.mainHandItem
+                    val levelComp =
+                        VoidBoundComponentRegistry.VOID_BOUND_WORLD_COMPONENT.get(localPlayer.level())
 
-                            val poses: List<BlockPos> = levelComp.getAllPos(localPlayer)
-                            for (pos in poses) {
-                                VoidBoundRenderUtils.renderCubeAtPos(
-                                    camera,
-                                    poseStack,
-                                    pos,
-                                    VoidBoundTokens.wardBorder,
-                                    20,
-                                    20
-                                )
-                            }
-                        }
+                    val poses: List<BlockPos> = levelComp.getAllPos(localPlayer)
+                    for (pos in poses) {
+                        VoidBoundRenderUtils.renderCubeAtPos(
+                            camera,
+                            poseStack,
+                            pos,
+                            VoidBoundTokens.wardBorder,
+                            20,
+                            20
+                        )
                     }
                 }
             }

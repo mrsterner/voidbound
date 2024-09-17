@@ -1,6 +1,6 @@
 package dev.sterner.common.blockentity
 
-import dev.sterner.common.item.focus.PortableHoleFocus
+import dev.sterner.common.item.focus.PortableHoleFocusItem
 import dev.sterner.registry.VoidBoundBlockEntityTypeRegistry
 import dev.sterner.registry.VoidBoundBlockRegistry
 import net.minecraft.core.BlockPos
@@ -56,7 +56,7 @@ class PortableHoleBlockEntity(pos: BlockPos, state: BlockState) : LodestoneBlock
         if (duration == maxDuration - 1 && distance > 1) {
             val nextPos = blockPos.relative(direction)
             if (owner != null) {
-                PortableHoleFocus.createHole(owner!!, level!!, nextPos, direction, distance - 1)
+                PortableHoleFocusItem.createHole(owner!!, level!!, nextPos, direction, distance - 1)
             }
         }
 

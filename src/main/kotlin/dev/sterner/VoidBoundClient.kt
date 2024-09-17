@@ -6,7 +6,6 @@ import dev.sterner.VoidBound.id
 import dev.sterner.client.VoidBoundModelLoaderPlugin
 import dev.sterner.client.renderer.HallowedMonocleRenderer
 import dev.sterner.client.renderer.IchoriumCircletRenderer
-import dev.sterner.client.renderer.WandItemRenderer
 import dev.sterner.client.screen.OsmoticEnchanterScreen
 import dev.sterner.common.ItemAbilityHandler
 import dev.sterner.registry.*
@@ -46,15 +45,6 @@ object VoidBoundClient : ClientModInitializer {
                 if (itemStack.tag != null && itemStack.tag!!.contains("Glowing") && itemStack.tag!!.getBoolean("Glowing")) 1f else 0f
             return@register v
         }
-
-        BuiltinItemRendererRegistry.INSTANCE.register(
-            VoidBoundItemRegistry.HALLOWED_GOLD_CAPPED_RUNEWOOD_WAND.get(),
-            WandItemRenderer("hallowed_gold_capped_runewood_wand")
-        )
-        BuiltinItemRendererRegistry.INSTANCE.register(
-            VoidBoundItemRegistry.SOUL_STAINED_STEEL_CAPPED_SOULWOOD_WAND.get(),
-            WandItemRenderer("soul_stained_steel_capped_soulwood_wand")
-        )
 
         BlockRenderLayerMap.INSTANCE.putBlocks(
             RenderType.cutout(),

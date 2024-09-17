@@ -1,6 +1,6 @@
 package dev.sterner.common.entity
 
-import dev.sterner.common.item.focus.ShockFocus.Companion.spawnChargeParticles
+import dev.sterner.common.item.focus.ShockFocusItem
 import dev.sterner.registry.VoidBoundEntityTypeRegistry
 import net.minecraft.core.BlockPos
 import net.minecraft.nbt.CompoundTag
@@ -74,7 +74,7 @@ class BoltEntity(entityType: EntityType<BoltEntity>, level: Level) : Entity(enti
 
         val forwardPosition = this.position().add(forwardX, 0.0, forwardZ)
 
-        spawnChargeParticles(this.level(), this, forwardPosition, 0.5f)
+        ShockFocusItem.spawnChargeParticles(this.level(), this, forwardPosition, 0.5f)
 
         ambientTick--
         if (ambientTick < 0) {

@@ -2,8 +2,6 @@ package dev.sterner.registry
 
 import com.mojang.blaze3d.platform.InputConstants
 import dev.sterner.VoidBoundClient
-import dev.sterner.client.screen.FocusSelectionScreen
-import dev.sterner.common.item.WandItem
 import io.github.fabricators_of_create.porting_lib.event.client.KeyInputCallback
 import io.github.fabricators_of_create.porting_lib.event.client.MouseInputEvents
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
@@ -13,8 +11,8 @@ import net.minecraft.client.Minecraft
 
 object VoidBoundKeyBindings {
 
-    private var focusKeyBind: KeyMapping? = KeyBindingHelper.registerKeyBinding(
-        KeyMapping("key.voidbound.focus_select", InputConstants.KEY_F, "category.voidbound")
+    private var abilityKeyBind: KeyMapping? = KeyBindingHelper.registerKeyBinding(
+        KeyMapping("key.voidbound.ability_select", InputConstants.KEY_F, "category.voidbound")
     )
 
     fun init() {
@@ -40,10 +38,8 @@ object VoidBoundKeyBindings {
 
     private fun listenFocusKey(minecraft: Minecraft) {
         if (minecraft.player != null) {
-            if (focusKeyBind?.isDown == true) {
-                if (minecraft.screen == null && minecraft.player!!.mainHandItem.item is WandItem) {
-                    minecraft.setScreen(FocusSelectionScreen(minecraft.player!!))
-                }
+            if (abilityKeyBind?.isDown == true) {
+                //TODO make new ability selection screen
             }
         }
     }

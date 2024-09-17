@@ -33,15 +33,9 @@ object VoidBoundItemRegistry {
         HallowedMonocleItem(Item.Properties())
     }
 
-    val HALLOWED_GOLD_CAPPED_RUNEWOOD_WAND: RegistryObject<WandItem> =
-        ITEMS.register("hallowed_gold_capped_runewood_wand") {
-            WandItem(Item.Properties())
-        }
-
-    val SOUL_STAINED_STEEL_CAPPED_SOULWOOD_WAND: RegistryObject<WandItem> =
-        ITEMS.register("soul_stained_steel_capped_soulwood_wand") {
-            WandItem(Item.Properties())
-        }
+    val SEALER_ITEM: RegistryObject<SealerItem> = ITEMS.register("sealer") {
+        SealerItem(Item.Properties())
+    }
 
     val CRYSTAL_FOCUS: RegistryObject<Item> = ITEMS.register("crystal_focus") {
         Item(Item.Properties())
@@ -52,7 +46,7 @@ object VoidBoundItemRegistry {
     }
 
     val WARDING_FOCUS: RegistryObject<Item> = ITEMS.register("warding_focus") {
-        WardingFocusItem(Item.Properties().stacksTo(1))
+        WardingStaffItem(Item.Properties().stacksTo(1))
     }
 
     val EXCAVATION_FOCUS: RegistryObject<Item> = ITEMS.register("excavation_focus") {

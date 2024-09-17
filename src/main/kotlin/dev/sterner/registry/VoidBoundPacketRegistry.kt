@@ -45,9 +45,6 @@ object VoidBoundPacketRegistry {
             StartEnchantingPacket::class.java, index++
         )
         VOID_BOUND_CHANNEL.registerC2SPacket(
-            SelectFocusPacket::class.java, index++
-        )
-        VOID_BOUND_CHANNEL.registerC2SPacket(
             ExcavationPacket::class.java, index++
         )
         VOID_BOUND_CHANNEL.registerC2SPacket(
