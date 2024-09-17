@@ -52,6 +52,15 @@ class VoidBoundComponentRegistry : WorldComponentInitializer, EntityComponentIni
                 )
             }, RespawnCopyStrategy.ALWAYS_COPY
         )
+
+        registry.registerForPlayers(
+            VOID_BOUND_PLAYER_SEALER_COMPONENT,
+            { entity: Player ->
+                VoidBoundPlayerSealerComponent(
+                    entity
+                )
+            }, RespawnCopyStrategy.ALWAYS_COPY
+        )
     }
 
     companion object {
@@ -73,6 +82,11 @@ class VoidBoundComponentRegistry : WorldComponentInitializer, EntityComponentIni
         val VOID_BOUND_PLAYER_ITEM_ABILITY_COMPONENT: ComponentKey<VoidBoundPlayerItemAbilityComponent> = ComponentRegistry.getOrCreate(
             VoidBound.id("player_item_ability"),
             VoidBoundPlayerItemAbilityComponent::class.java
+        )
+
+        val VOID_BOUND_PLAYER_SEALER_COMPONENT: ComponentKey<VoidBoundPlayerSealerComponent> = ComponentRegistry.getOrCreate(
+            VoidBound.id("player_sealer"),
+            VoidBoundPlayerSealerComponent::class.java
         )
 
         val VOID_BOUND_REVELATION_COMPONENT: ComponentKey<VoidBoundRevelationComponent> = ComponentRegistry.getOrCreate(

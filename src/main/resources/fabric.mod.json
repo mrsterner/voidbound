@@ -50,7 +50,8 @@
       "voidbound:entity",
       "voidbound:player",
       "voidbound:revelation",
-      "voidbound:player_item_ability"
+      "voidbound:player_item_ability",
+      "voidbound:player_sealer"
     ]
   }
 }
