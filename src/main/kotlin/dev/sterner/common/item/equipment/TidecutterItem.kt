@@ -8,8 +8,10 @@ import dev.sterner.registry.VoidBoundItemRegistry
 import dev.sterner.registry.VoidBoundPacketRegistry
 import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup
+import net.minecraft.ChatFormatting
 import net.minecraft.core.BlockPos
 import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.Style
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.tags.BlockTags
 import net.minecraft.world.InteractionHand
@@ -27,6 +29,7 @@ import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.phys.Vec3
 import org.joml.Vector3f
 import team.lodestar.lodestone.systems.item.tools.magic.MagicAxeItem
+import java.awt.Color
 
 
 open class TidecutterItem(
@@ -42,6 +45,21 @@ open class TidecutterItem(
         properties
     ), UpgradableTool {
 
+    override fun appendHoverText(
+        stack: ItemStack,
+        level: Level?,
+        tooltipComponents: MutableList<Component>,
+        isAdvanced: TooltipFlag
+    ) {
+        VoidBoundUtils.addNetheritedTooltip(stack, tooltipComponents)
+        tooltipComponents.add(
+            Component.translatable("Not yet implemented").withStyle(ChatFormatting.ITALIC).withStyle(
+                Style.EMPTY.withColor(Color.red.rgb)
+            )
+        )
+
+        super.appendHoverText(stack, level, tooltipComponents, isAdvanced)
+    }
 
     override fun getDestroySpeed(stack: ItemStack, state: BlockState): Float {
         return super.getDestroySpeed(stack, state) + getExtraMiningSpeed(stack)
@@ -64,16 +82,6 @@ open class TidecutterItem(
         }
 
         super.onUseTick(level, livingEntity, stack, remainingUseDuration)
-    }
-
-    override fun appendHoverText(
-        stack: ItemStack,
-        level: Level?,
-        tooltipComponents: MutableList<Component>,
-        isAdvanced: TooltipFlag
-    ) {
-        VoidBoundUtils.addNetheritedTooltip(stack, tooltipComponents)
-        super.appendHoverText(stack, level, tooltipComponents, isAdvanced)
     }
 
     companion object {

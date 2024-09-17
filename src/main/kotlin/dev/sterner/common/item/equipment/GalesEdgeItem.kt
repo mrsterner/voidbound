@@ -2,7 +2,9 @@ package dev.sterner.common.item.equipment
 
 import dev.sterner.api.util.VoidBoundUtils
 import dev.sterner.registry.VoidBoundParticleTypeRegistry
+import net.minecraft.ChatFormatting
 import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.Style
 import net.minecraft.util.Mth
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResultHolder
@@ -23,6 +25,7 @@ import team.lodestar.lodestone.systems.particle.SimpleParticleOptions
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder
 import team.lodestar.lodestone.systems.particle.data.GenericParticleData
 import team.lodestar.lodestone.systems.particle.render_types.LodestoneWorldParticleRenderType
+import java.awt.Color
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -115,6 +118,12 @@ open class GalesEdgeItem(
         isAdvanced: TooltipFlag
     ) {
         VoidBoundUtils.addNetheritedTooltip(stack, tooltipComponents)
+        tooltipComponents.add(
+            Component.translatable("Not yet implemented").withStyle(ChatFormatting.ITALIC).withStyle(
+                Style.EMPTY.withColor(Color.red.rgb)
+            )
+        )
+
         super.appendHoverText(stack, level, tooltipComponents, isAdvanced)
     }
 }
