@@ -60,50 +60,7 @@ open class TidecutterItem(
         val stuff = level.getEntitiesOfClass(ItemEntity::class.java, livingEntity.boundingBox.inflate(10.0))
 
         if (stuff != null && stuff.isNotEmpty()) {
-            val iterator = stuff.iterator()
-            while (iterator.hasNext()) {
-                val e: ItemEntity = iterator.next() as ItemEntity
-                if (!e.isRemoved) {
-                    val direction = Vec3(
-                        livingEntity.x - e.x,
-                        (livingEntity.y + livingEntity.bbHeight / 2.0) - (e.y + e.bbHeight / 2.0),
-                        livingEntity.z - e.z
-                    ).normalize()
-
-                    val speedFactor = 0.045
-
-                    val newMotion = direction.scale(speedFactor)
-
-                    val clampedMotion = Vec3(
-                        newMotion.x.coerceIn(-0.25, 0.25),
-                        newMotion.y.coerceIn(-0.25, 0.25),
-                        newMotion.z.coerceIn(-0.25, 0.25)
-                    )
-
-                    e.deltaMovement = e.deltaMovement.add(clampedMotion)
-
-                    if (!level.isClientSide) {
-                        for (player in PlayerLookup.tracking(e)) {
-                            for (i in 0..5) {
-                                val pos = Vector3f(
-                                    e.x.toFloat() + (level.random.nextFloat() - level.random.nextFloat()) * 0.2f,
-                                    e.y.toFloat() + e.bbHeight + (level.random.nextFloat() - level.random.nextFloat()) * 0.2f,
-                                    e.z.toFloat() + (level.random.nextFloat() - level.random.nextFloat()) * 0.2f
-                                )
-                                VoidBoundPacketRegistry.VOID_BOUND_CHANNEL.sendToClient(
-                                    BubbleParticlePacket(
-                                        Vector3f(
-                                            clampedMotion.x.toFloat(),
-                                            clampedMotion.y.toFloat(),
-                                            clampedMotion.z.toFloat()
-                                        ), pos
-                                    ), player
-                                )
-                            }
-                        }
-                    }
-                }
-            }
+           //TODO
         }
 
         super.onUseTick(level, livingEntity, stack, remainingUseDuration)
@@ -166,7 +123,7 @@ open class TidecutterItem(
                             }
                         }
 
-                        VoidBoundBlockUtils.breakFurthestLog(level, pos, block, player)
+                        //TODO break furthest block
                         breakEvent.isCanceled = true
                     }
                 }
