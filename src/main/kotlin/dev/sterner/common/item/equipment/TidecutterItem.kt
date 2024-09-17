@@ -2,8 +2,8 @@ package dev.sterner.common.item.equipment
 
 import dev.sterner.api.util.VoidBoundBlockUtils
 import dev.sterner.api.util.VoidBoundUtils
+import dev.sterner.common.entity.ItemCarrierItemEntity
 import dev.sterner.networking.AxeOfTheStreamParticlePacket
-import dev.sterner.networking.BubbleParticlePacket
 import dev.sterner.registry.VoidBoundItemRegistry
 import dev.sterner.registry.VoidBoundPacketRegistry
 import io.github.fabricators_of_create.porting_lib.event.common.BlockEvents
@@ -26,8 +26,8 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
-import net.minecraft.world.phys.Vec3
-import org.joml.Vector3f
+import team.lodestar.lodestone.helpers.ItemHelper
+import team.lodestar.lodestone.helpers.RandomHelper
 import team.lodestar.lodestone.systems.item.tools.magic.MagicAxeItem
 import java.awt.Color
 
@@ -75,10 +75,27 @@ open class TidecutterItem(
     }
 
     override fun onUseTick(level: Level, livingEntity: LivingEntity, stack: ItemStack, remainingUseDuration: Int) {
-        val stuff = level.getEntitiesOfClass(ItemEntity::class.java, livingEntity.boundingBox.inflate(10.0))
+        val nearbyItems: MutableList<ItemEntity> = level.getEntitiesOfClass(ItemEntity::class.java, livingEntity.boundingBox.inflate(10.0))
+        if (nearbyItems.isNotEmpty()) {
+            for (item in nearbyItems) {
 
-        if (stuff != null && stuff.isNotEmpty()) {
-           //TODO
+                val newStack = item.item.copy()
+                newStack.count = newStack.count
+                newStack.tag = newStack.tag
+
+                val entity = ItemCarrierItemEntity(
+                    level, livingEntity.uuid, newStack,
+                    item.x,
+                    item.y,
+                    item.z,
+                    RandomHelper.randomBetween(level.random, -speed, speed).toDouble(),
+                    RandomHelper.randomBetween(level.random, 0.05f, 0.06f).toDouble(),
+                    RandomHelper.randomBetween(level.random, -speed, speed).toDouble()
+                )
+                entity.entityData.set(ItemCarrierItemEntity.DATA_ITEM_STACK, newStack)
+                item.discard()
+                level.addFreshEntity(entity)
+            }
         }
 
         super.onUseTick(level, livingEntity, stack, remainingUseDuration)
@@ -131,7 +148,17 @@ open class TidecutterItem(
                             }
                         }
 
-                        //TODO break furthest block
+                        val theOneLog = VoidBoundBlockUtils.gatherConnectedLogs(level, pos, mutableListOf(), level.getBlockState(pos).block, true)
+
+                        for (logPos in theOneLog) {
+
+                            val logState = level.getBlockState(logPos)
+                            val be = level.getBlockEntity(logPos)
+
+                            Block.dropResources(logState, level, logPos, be)
+                            level.setBlock(logPos, Blocks.AIR.defaultBlockState(), 3)
+                        }
+
                         breakEvent.isCanceled = true
                     }
                 }

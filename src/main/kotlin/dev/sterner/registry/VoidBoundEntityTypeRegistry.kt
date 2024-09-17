@@ -25,6 +25,16 @@ object VoidBoundEntityTypeRegistry {
         ).sized(0.05f, 0.05f).clientTrackingRange(50).build(VoidBound.id("particle_entity").toString())
     }
 
+    var ITEM_CARRIER_ENTITY: RegistryObject<EntityType<ItemCarrierItemEntity?>> = ENTITY_TYPES.register("item_carrier") {
+        EntityType.Builder.of(
+            { _: EntityType<ItemCarrierItemEntity?>?, w: Level ->
+                ItemCarrierItemEntity(
+                    w
+                )
+            }, MobCategory.MISC
+        ).sized(0.05f, 0.05f).clientTrackingRange(50).build(VoidBound.id("item_carrier").toString())
+    }
+
     var SOUL_STEEL_GOLEM_ENTITY: RegistryObject<EntityType<SoulSteelGolemEntity>> =
         ENTITY_TYPES.register("soul_steel_golem") {
             FabricEntityTypeBuilder.Mob.createMob<SoulSteelGolemEntity>()

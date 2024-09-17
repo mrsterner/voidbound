@@ -1,5 +1,6 @@
 package dev.sterner.registry
 
+import com.sammy.malum.client.renderer.entity.FloatingItemEntityRenderer
 import dev.sterner.client.renderer.blockentity.*
 import dev.sterner.client.renderer.entity.*
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
@@ -69,6 +70,10 @@ object VoidBoundEntityRenderers {
         EntityRendererRegistry.register(
             VoidBoundEntityTypeRegistry.BOLT_ENTITY.get(),
             ::BoltEntityRenderer
+        )
+        EntityRendererRegistry.register(
+            VoidBoundEntityTypeRegistry.ITEM_CARRIER_ENTITY.get(),
+            ::ItemCarrierItemEntityRenderer
         )
     }
 }

@@ -17,15 +17,24 @@ import kotlin.math.abs
 
 object VoidBoundBlockUtils {
 
+    /**
+     * Finds the furthest block from the origin.
+     */
+    private fun findFurthestBlock(logs: List<BlockPos>, origin: BlockPos): BlockPos {
+        return logs.maxByOrNull { it.distManhattan(origin) } ?: origin
+    }
 
     /**
      * Recursively gathers all connected log blocks of the same type.
+     * If returnFurthestOnly is true, it returns only the furthest block away from the origin.
      */
     fun gatherConnectedLogs(
         level: Level,
         pos: BlockPos,
         logsToBreak: MutableList<BlockPos>,
-        logType: Block
+        logType: Block,
+        returnFurthestOnly: Boolean = false,
+        origin: BlockPos = pos
     ): List<BlockPos> {
         if (logsToBreak.size > 256) return logsToBreak
 
@@ -36,12 +45,18 @@ object VoidBoundBlockUtils {
         val checkPositions = surroundingLogs.filter { !logsToBreak.contains(it) && isLogMatch(level, it, logType) }
         logsToBreak.addAll(checkPositions)
 
-        if (checkPositions.isEmpty()) return logsToBreak
+        if (checkPositions.isEmpty()) {
+            return if (returnFurthestOnly) {
+                listOf(findFurthestBlock(logsToBreak, origin))
+            } else {
+                logsToBreak
+            }
+        }
 
-        checkPositions.forEach { gatherConnectedLogs(level, it, logsToBreak, logType) }
+        checkPositions.forEach { gatherConnectedLogs(level, it, logsToBreak, logType, returnFurthestOnly, origin) }
 
         val upwardPosition = pos.above(2)
-        return gatherConnectedLogs(level, upwardPosition.immutable(), logsToBreak, logType)
+        return gatherConnectedLogs(level, upwardPosition.immutable(), logsToBreak, logType, returnFurthestOnly, origin)
     }
 
     /**
